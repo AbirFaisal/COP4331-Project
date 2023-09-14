@@ -22,4 +22,5 @@ Compile and Package:
 `mvn compile package -f pom.xml`
 
 Running (Test):
-`java TTT3D-*.jar`
+`java -cp TTT3D*.jar edu.fau.eng.cop4331.ttt3d.Main`
+

@@ -8,9 +8,11 @@ Professor: Ionut Cardei
 Team members: Abir Faisal, Jamahl Farrington, Bryan Barreto, Ruth Jimenez
 
 System Requirements:
-- Java Runtime
+- Java Runtime 20
 
 Build Requirements:
+- OpenJDK 20
+- Maven
 
 Build System: Maven
 
@@ -19,8 +21,9 @@ Build Instructions
 - Install Maven if not installed already
 
 Compile and Package:
-`mvn compile package -f pom.xml`
+- Switch to directory TTT3D
+- Run: `mvn compile package -f pom.xml`
 
 Running (Test):
-`java -cp TTT3D*.jar edu.fau.eng.cop4331.ttt3d.Main`
+`java -jar TTT3D*.jar`
 

@@ -19,12 +19,14 @@ public class Main {
                 System.out.println(key + "=" + value);
             }
         }
-        
+
         //if --server then launch game server instead of
         if (argmap.get("--server") != null) {
             System.out.println("Run Server");
         } else {
             System.out.println("Launch Game");
+            App app = new App();
+            app.run();
         }
     }
 }

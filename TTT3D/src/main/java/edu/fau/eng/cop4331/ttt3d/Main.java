@@ -20,7 +20,7 @@ public class Main {
             }
         }
 
-        //if --server then launch game server instead of
+        //if --server then launch game server instead of user application
         if (argmap.get("--server") != null) {
             System.out.println("Run Server");
         } else {

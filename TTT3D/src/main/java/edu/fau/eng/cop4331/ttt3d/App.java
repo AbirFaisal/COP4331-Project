@@ -4,16 +4,15 @@ import javax.swing.*;
 
 public class App {
 
+    JFrame mainWindow;
 
     public App() {
-
+        this.mainWindow = new JFrame("Main Window");
     }
     public void run(){
-        JFrame f = new JFrame();
-        f.setSize(800,600);//400 width and 500 height
-        f.setLayout(null);
-        f.setVisible(true);
-
+        this.mainWindow.setSize(800,600);//400 width and 500 height
+        this.mainWindow.setLayout(null);
+        this.mainWindow.setVisible(true);
     }
 }
 

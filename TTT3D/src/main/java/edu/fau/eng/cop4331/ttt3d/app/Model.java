@@ -1,4 +1,4 @@
-package edu.fau.eng.cop4331.ttt3d;
+package edu.fau.eng.cop4331.ttt3d.app;
 
 import java.io.Serializable;
 import java.nio.charset.StandardCharsets;

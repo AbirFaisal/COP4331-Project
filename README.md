@@ -1,11 +1,18 @@
 # COP4331-Project
 Repository for COP4331 Group Project
 
-##Project: 3-Dimensional multi player tic-tac-toe game using Java
+### Project: 
+A three dimensional multi-player tic-tac-toe game implemented in Java.
+
+<img src="https://i.ibb.co/nwLD1wp/diagonal-run.jpg" width="300">
+
+### Group Info:
 
 Professor: Ionut Cardei
 
 Team members: Abir Faisal, Jamahl Farrington, Bryan Barreto, Ruth Jimenez
+
+### Building, Testing, and Running:
 
 System Requirements:
 - Java Runtime 20
@@ -21,9 +28,10 @@ Build Instructions
 - Install Maven if not installed already
 
 Compile and Package:
-- Switch to directory TTT3D
-- Run: `mvn compile package -f pom.xml`
+- Switch to directory `TTT3D/`
+- Run: `mvn package -f pom.xml`
 
-Running (Test):
-`java -jar TTT3D*.jar`
+Running:
+- Switch to `target/` directory
+- Run `java -jar TTT3D.jar`
 

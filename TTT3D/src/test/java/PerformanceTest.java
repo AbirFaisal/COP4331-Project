@@ -27,9 +27,13 @@ public class PerformanceTest {
     }
 
 
+
+
+
     //TODO try 3d array and compare performance
 
-    private void checkWinnerAlgo3dV1(byte[][][] gamestate3D){
+    private void checkWinnerAlgo3dV1(byte[][][] gamestate3D) {
+
 
 
     }

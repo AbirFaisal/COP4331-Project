@@ -1,0 +1,130 @@
+<mxfile host="Electron" modified="2023-09-19T09:38:37.921Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.1 Chrome/112.0.5615.204 Electron/24.6.1 Safari/537.36" etag="tZ2flIjn3cgObnUILHz2" version="21.6.1" type="device">
+  <diagram name="Page-1" id="dP1O_p-0g8a1WRhFK7fN">
+    <mxGraphModel dx="1190" dy="911" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="cxote1PoROD4nmEdW4lo-21" value="GameView" style="strokeWidth=1;shadow=0;dashed=0;align=center;html=1;shape=mxgraph.mockup.containers.window;align=left;verticalAlign=top;spacingLeft=8;strokeColor2=#008cff;strokeColor3=#c4c4c4;fontColor=#666666;mainText=;fontSize=17;labelBackgroundColor=none;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="200" y="8" width="820" height="615" as="geometry" />
+        </mxCell>
+        <mxCell id="4pME_u2XS22YY2MUiVFc-9" value="Front 1" style="html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;shadow=0;dashed=0;strokeWidth=1;shape=mxgraph.ios7ui.iconGrid;fillColor=#c0c0c0;gridSize=3,3;" parent="1" vertex="1">
+          <mxGeometry x="621.25" y="411" width="125" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="4pME_u2XS22YY2MUiVFc-12" value="3d tic tac toe" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;" parent="1" vertex="1">
+          <mxGeometry x="24" y="158" width="149.5" height="141" as="geometry" />
+        </mxCell>
+        <mxCell id="4pME_u2XS22YY2MUiVFc-13" value="Imagine that these are the sides of the cube" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="42" y="62" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="4pME_u2XS22YY2MUiVFc-24" value="Front 2" style="html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;shadow=0;dashed=0;strokeWidth=1;shape=mxgraph.ios7ui.iconGrid;fillColor=#c0c0c0;gridSize=3,3;" parent="1" vertex="1">
+          <mxGeometry x="461.25" y="398" width="150" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="4pME_u2XS22YY2MUiVFc-32" value="Front 3" style="html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;shadow=0;dashed=0;strokeWidth=1;shape=mxgraph.ios7ui.iconGrid;fillColor=#c0c0c0;gridSize=3,3;" parent="1" vertex="1">
+          <mxGeometry x="275.25" y="389" width="175" height="175" as="geometry" />
+        </mxCell>
+        <mxCell id="4pME_u2XS22YY2MUiVFc-39" value="&lt;h1&gt;Game State Storage&lt;/h1&gt;&lt;p&gt;1 = X&lt;/p&gt;&lt;p&gt;0 = Null&lt;/p&gt;&lt;p&gt;-1 = O&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="760" y="666" width="261" height="145" as="geometry" />
+        </mxCell>
+        <mxCell id="4pME_u2XS22YY2MUiVFc-41" value="Top 3" style="html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;shadow=0;dashed=0;strokeWidth=1;shape=mxgraph.ios7ui.iconGrid;fillColor=#c0c0c0;gridSize=3,3;" parent="1" vertex="1">
+          <mxGeometry x="828" y="441" width="125" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="4pME_u2XS22YY2MUiVFc-42" value="Top 2" style="html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;shadow=0;dashed=0;strokeWidth=1;shape=mxgraph.ios7ui.iconGrid;fillColor=#c0c0c0;gridSize=3,3;" parent="1" vertex="1">
+          <mxGeometry x="815.5" y="264.5" width="150" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="4pME_u2XS22YY2MUiVFc-43" value="Top 1" style="html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;shadow=0;dashed=0;strokeWidth=1;shape=mxgraph.ios7ui.iconGrid;fillColor=#c0c0c0;gridSize=3,3;" parent="1" vertex="1">
+          <mxGeometry x="803" y="65" width="175" height="175" as="geometry" />
+        </mxCell>
+        <mxCell id="4pME_u2XS22YY2MUiVFc-44" value="Side L3" style="html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;shadow=0;dashed=0;strokeWidth=1;shape=mxgraph.ios7ui.iconGrid;fillColor=#c0c0c0;gridSize=3,3;" parent="1" vertex="1">
+          <mxGeometry x="284.25" y="124.5" width="125" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="4pME_u2XS22YY2MUiVFc-45" value="Side L2" style="html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;shadow=0;dashed=0;strokeWidth=1;shape=mxgraph.ios7ui.iconGrid;fillColor=#c0c0c0;gridSize=3,3;" parent="1" vertex="1">
+          <mxGeometry x="419.25" y="114.5" width="150" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="4pME_u2XS22YY2MUiVFc-46" value="Side L1" style="html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;shadow=0;dashed=0;strokeWidth=1;shape=mxgraph.ios7ui.iconGrid;fillColor=#c0c0c0;gridSize=3,3;" parent="1" vertex="1">
+          <mxGeometry x="575.25" y="102" width="175" height="175" as="geometry" />
+        </mxCell>
+        <mxCell id="cxote1PoROD4nmEdW4lo-1" value="Model" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="355" y="1141" width="140" height="104" as="geometry">
+            <mxRectangle x="374" y="1015" width="95" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cxote1PoROD4nmEdW4lo-2" value="+ field: type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="cxote1PoROD4nmEdW4lo-1">
+          <mxGeometry y="26" width="140" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="cxote1PoROD4nmEdW4lo-3" value="+ field: type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="cxote1PoROD4nmEdW4lo-1">
+          <mxGeometry y="52" width="140" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="cxote1PoROD4nmEdW4lo-4" value="+ field: type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="cxote1PoROD4nmEdW4lo-1">
+          <mxGeometry y="78" width="140" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="cxote1PoROD4nmEdW4lo-7" value="View" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="108" y="950" width="140" height="104" as="geometry">
+            <mxRectangle x="374" y="1015" width="95" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cxote1PoROD4nmEdW4lo-8" value="+ field: type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="cxote1PoROD4nmEdW4lo-7">
+          <mxGeometry y="26" width="140" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="cxote1PoROD4nmEdW4lo-9" value="+ field: type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="cxote1PoROD4nmEdW4lo-7">
+          <mxGeometry y="52" width="140" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="cxote1PoROD4nmEdW4lo-10" value="+ field: type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="cxote1PoROD4nmEdW4lo-7">
+          <mxGeometry y="78" width="140" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="cxote1PoROD4nmEdW4lo-11" value="Controller" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="444" y="885" width="140" height="104" as="geometry">
+            <mxRectangle x="374" y="1015" width="95" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cxote1PoROD4nmEdW4lo-12" value="+ field: type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="cxote1PoROD4nmEdW4lo-11">
+          <mxGeometry y="26" width="140" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="cxote1PoROD4nmEdW4lo-13" value="+ field: type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="cxote1PoROD4nmEdW4lo-11">
+          <mxGeometry y="52" width="140" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="cxote1PoROD4nmEdW4lo-14" value="+ field: type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="cxote1PoROD4nmEdW4lo-11">
+          <mxGeometry y="78" width="140" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="cxote1PoROD4nmEdW4lo-16" value="Main" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="129" y="1114" width="160" height="86" as="geometry" />
+        </mxCell>
+        <mxCell id="cxote1PoROD4nmEdW4lo-17" value="+ field: type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="cxote1PoROD4nmEdW4lo-16">
+          <mxGeometry y="26" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="cxote1PoROD4nmEdW4lo-18" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="cxote1PoROD4nmEdW4lo-16">
+          <mxGeometry y="52" width="160" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="cxote1PoROD4nmEdW4lo-19" value="+ method(type): type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="cxote1PoROD4nmEdW4lo-16">
+          <mxGeometry y="60" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="cxote1PoROD4nmEdW4lo-22" value="StartupView" style="strokeWidth=1;shadow=0;dashed=0;align=center;html=1;shape=mxgraph.mockup.containers.window;align=left;verticalAlign=top;spacingLeft=8;strokeColor2=#008cff;strokeColor3=#c4c4c4;fontColor=#666666;mainText=;fontSize=17;labelBackgroundColor=none;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1160" y="13" width="778" height="505" as="geometry" />
+        </mxCell>
+        <mxCell id="cxote1PoROD4nmEdW4lo-23" value="Select the type of game" style="strokeWidth=1;shadow=0;dashed=0;align=center;html=1;shape=mxgraph.mockup.containers.rrect;rSize=0;strokeColor=#666666;fontColor=#666666;fontSize=17;verticalAlign=top;whiteSpace=wrap;fillColor=#ffffff;spacingTop=32;" vertex="1" parent="1">
+          <mxGeometry x="1344" y="138" width="406" height="229" as="geometry" />
+        </mxCell>
+        <mxCell id="cxote1PoROD4nmEdW4lo-24" value="Game Type" style="strokeWidth=1;shadow=0;dashed=0;align=center;html=1;shape=mxgraph.mockup.containers.rrect;rSize=0;fontSize=17;fontColor=#666666;strokeColor=#666666;align=left;spacingLeft=8;fillColor=none;resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="cxote1PoROD4nmEdW4lo-23">
+          <mxGeometry width="406" height="30" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cxote1PoROD4nmEdW4lo-25" value="" style="shape=ellipse;strokeColor=#008cff;resizable=0;fillColor=none;html=1;" vertex="1" parent="cxote1PoROD4nmEdW4lo-24">
+          <mxGeometry x="1" y="0.5" width="20" height="20" relative="1" as="geometry">
+            <mxPoint x="-25" y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cxote1PoROD4nmEdW4lo-26" value="Single Player" style="strokeWidth=1;shadow=0;dashed=0;align=center;html=1;shape=mxgraph.mockup.containers.rrect;rSize=0;fontSize=16;fontColor=#666666;strokeColor=#c4c4c4;whiteSpace=wrap;fillColor=none;" vertex="1" parent="cxote1PoROD4nmEdW4lo-23">
+          <mxGeometry x="0.25" y="1" width="70" height="40" relative="1" as="geometry">
+            <mxPoint x="180" y="-135" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cxote1PoROD4nmEdW4lo-27" value="Join Server" style="strokeWidth=1;shadow=0;dashed=0;align=center;html=1;shape=mxgraph.mockup.containers.rrect;rSize=0;fontSize=16;fontColor=#666666;strokeColor=#c4c4c4;whiteSpace=wrap;fillColor=none;" vertex="1" parent="cxote1PoROD4nmEdW4lo-23">
+          <mxGeometry x="0.75" y="1" width="70" height="40" relative="1" as="geometry">
+            <mxPoint x="-249" y="-134" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cxote1PoROD4nmEdW4lo-28" value="Host" style="strokeWidth=1;shadow=0;dashed=0;align=center;html=1;shape=mxgraph.mockup.containers.rrect;rSize=0;fontSize=16;fontColor=#666666;strokeColor=#c4c4c4;whiteSpace=wrap;fillColor=none;" vertex="1" parent="cxote1PoROD4nmEdW4lo-23">
+          <mxGeometry x="168.5" y="95" width="70" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,11 +1,7 @@
-import edu.fau.eng.cop4331.ttt3d.Model;
+import edu.fau.eng.cop4331.ttt3d.app.Model;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-
-import java.io.ObjectOutputStream;
-import java.util.zip.CRC32;
-import java.util.zip.Checksum;
 
 
 public class ModelTest {

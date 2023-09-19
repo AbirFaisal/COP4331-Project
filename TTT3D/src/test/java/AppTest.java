@@ -1,8 +1,6 @@
-import edu.fau.eng.cop4331.ttt3d.App;
-import edu.fau.eng.cop4331.ttt3d.Model;
+import edu.fau.eng.cop4331.ttt3d.app.App;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 public class AppTest {
 

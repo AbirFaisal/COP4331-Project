@@ -1,0 +1,67 @@
+<mxfile host="Electron" modified="2023-09-17T00:32:48.846Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.1 Chrome/112.0.5615.204 Electron/24.6.1 Safari/537.36" etag="W277aPZYUFUdHuxMElpi" version="21.6.1" type="device">
+  <diagram name="Page-1" id="dP1O_p-0g8a1WRhFK7fN">
+    <mxGraphModel dx="1190" dy="911" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="4pME_u2XS22YY2MUiVFc-9" value="Front 1" style="html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;shadow=0;dashed=0;strokeWidth=1;shape=mxgraph.ios7ui.iconGrid;fillColor=#c0c0c0;gridSize=3,3;" vertex="1" parent="1">
+          <mxGeometry x="602" y="363" width="125" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="4pME_u2XS22YY2MUiVFc-12" value="3d tic tac toe" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;" vertex="1" parent="1">
+          <mxGeometry x="56.5" y="175" width="149.5" height="141" as="geometry" />
+        </mxCell>
+        <mxCell id="4pME_u2XS22YY2MUiVFc-13" value="Imagine that these are the sides of the cube" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="65" y="63" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="4pME_u2XS22YY2MUiVFc-24" value="Front 2" style="html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;shadow=0;dashed=0;strokeWidth=1;shape=mxgraph.ios7ui.iconGrid;fillColor=#c0c0c0;gridSize=3,3;" vertex="1" parent="1">
+          <mxGeometry x="442" y="350" width="150" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="4pME_u2XS22YY2MUiVFc-32" value="Front 3" style="html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;shadow=0;dashed=0;strokeWidth=1;shape=mxgraph.ios7ui.iconGrid;fillColor=#c0c0c0;gridSize=3,3;" vertex="1" parent="1">
+          <mxGeometry x="256" y="341" width="175" height="175" as="geometry" />
+        </mxCell>
+        <mxCell id="4pME_u2XS22YY2MUiVFc-33" value="Instance 1" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="83" y="959" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="4pME_u2XS22YY2MUiVFc-34" value="Instance 2" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="236" y="959" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="4pME_u2XS22YY2MUiVFc-35" value="Game Server" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="156" y="1213" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="4pME_u2XS22YY2MUiVFc-36" value="GameState" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="181" y="1109" width="78" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="4pME_u2XS22YY2MUiVFc-37" value="PlayerMove" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="83" y="1109" width="87" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="4pME_u2XS22YY2MUiVFc-38" value="InvalidMove" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="269" y="1109" width="87" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="4pME_u2XS22YY2MUiVFc-39" value="&lt;h1&gt;Game State Storage&lt;/h1&gt;&lt;p&gt;1 = X&lt;/p&gt;&lt;p&gt;0 = Null&lt;/p&gt;&lt;p&gt;-1 = O&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="656" y="1045" width="261" height="145" as="geometry" />
+        </mxCell>
+        <mxCell id="4pME_u2XS22YY2MUiVFc-40" value="GamePacket" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="1065" width="87" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="4pME_u2XS22YY2MUiVFc-41" value="Top 3" style="html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;shadow=0;dashed=0;strokeWidth=1;shape=mxgraph.ios7ui.iconGrid;fillColor=#c0c0c0;gridSize=3,3;" vertex="1" parent="1">
+          <mxGeometry x="775.5" y="393" width="125" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="4pME_u2XS22YY2MUiVFc-42" value="Top 2" style="html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;shadow=0;dashed=0;strokeWidth=1;shape=mxgraph.ios7ui.iconGrid;fillColor=#c0c0c0;gridSize=3,3;" vertex="1" parent="1">
+          <mxGeometry x="763" y="216.5" width="150" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="4pME_u2XS22YY2MUiVFc-43" value="Top 1" style="html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;shadow=0;dashed=0;strokeWidth=1;shape=mxgraph.ios7ui.iconGrid;fillColor=#c0c0c0;gridSize=3,3;" vertex="1" parent="1">
+          <mxGeometry x="750.5" y="17" width="175" height="175" as="geometry" />
+        </mxCell>
+        <mxCell id="4pME_u2XS22YY2MUiVFc-44" value="Side L3" style="html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;shadow=0;dashed=0;strokeWidth=1;shape=mxgraph.ios7ui.iconGrid;fillColor=#c0c0c0;gridSize=3,3;" vertex="1" parent="1">
+          <mxGeometry x="265" y="76.5" width="125" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="4pME_u2XS22YY2MUiVFc-45" value="Side L2" style="html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;shadow=0;dashed=0;strokeWidth=1;shape=mxgraph.ios7ui.iconGrid;fillColor=#c0c0c0;gridSize=3,3;" vertex="1" parent="1">
+          <mxGeometry x="400" y="66.5" width="150" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="4pME_u2XS22YY2MUiVFc-46" value="Side L1" style="html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;shadow=0;dashed=0;strokeWidth=1;shape=mxgraph.ios7ui.iconGrid;fillColor=#c0c0c0;gridSize=3,3;" vertex="1" parent="1">
+          <mxGeometry x="556" y="54" width="175" height="175" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

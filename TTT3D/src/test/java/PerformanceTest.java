@@ -13,16 +13,16 @@ public class PerformanceTest {
     //Arrays.
     //Vector
 
-    private byte[] gamestate1D = new byte[27];
-    private byte[][][] getGamestate3D = new byte[3][3][3];
+    private int[] gameState1D = new int[27];
+    private int[][][] getGameState3D = new int[3][3][3];
 
     private void initRandGameState() {
         Random r = new Random();
 
-        for (int i = 0; i < gamestate1D.length; i++) {
+        for (int i = 0; i < gameState1D.length; i++) {
             //randomly assign a 1, 0, or -1
-            byte a = (byte) ((r.nextBoolean()) ? 1:-1); // X or O
-            this.gamestate1D[i] = r.nextBoolean() ? a : 0; //played or empty
+            int a = (r.nextBoolean()) ? 1:-1; // X or O
+            this.gameState1D[i] = r.nextBoolean() ? a : 0; //played or empty
         }
     }
 
@@ -32,7 +32,7 @@ public class PerformanceTest {
 
     //TODO try 3d array and compare performance
 
-    private void checkWinnerAlgo3dV1(byte[][][] gamestate3D) {
+    private void checkWinnerAlgo3dV1(int[][][] gamestate3D) {
 
 
 
@@ -197,7 +197,7 @@ public class PerformanceTest {
         for (int j = 0; j < i; j++) {
             startTime = System.nanoTime();
 
-            checkWinnerAlgoV1(this.gamestate1D);
+            checkWinnerAlgoV1(this.gameState1D);
 
             endTime = System.nanoTime();
             diff = endTime - startTime;

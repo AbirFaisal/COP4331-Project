@@ -6,7 +6,10 @@ import java.util.Random;
 public class App {
     JFrame mainWindow;
     private byte[] playerID; //128 bit player id TODO make private
-
+    private Model model;
+    private View view;
+    private Controller controller;
+    
     public App() {
         this.playerID = new byte[16]; //TODO load from a configuration
         Random r = new Random();

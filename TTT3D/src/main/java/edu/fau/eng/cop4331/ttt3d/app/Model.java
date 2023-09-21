@@ -8,7 +8,6 @@ import java.util.Random;
 
 public class Model implements Serializable {
 
-    private byte[] playerID; //used to track player
 
     //    private String someString;
     public Model(String s) {

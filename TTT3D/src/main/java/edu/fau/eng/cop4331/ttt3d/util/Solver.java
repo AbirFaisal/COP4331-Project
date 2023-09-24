@@ -16,7 +16,7 @@ public class Solver {
     }
 
     /**
-     * Solves the game given a 3D representation of the gameState
+     * Solves the game given a 2D representation of the gameState
      * @param gameState2D
      */
     public void solve(int[][] gameState2D) {

@@ -29,9 +29,9 @@ Build Instructions
 
 Compile and Package:
 - Switch to directory `TTT3D/`
-- Run: `mvn package -f pom.xml`
+- Run: `mvn package`
 
 Running:
 - Switch to `target/` directory
-- Run `java -jar TTT3D.jar`
+- Run `java -jar TicTacToe3D.jar`
 

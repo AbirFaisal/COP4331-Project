@@ -31,22 +31,35 @@ public class PerformanceTest {
 
 
     //TODO try 3d array and compare performance
-
     private void checkWinnerAlgo3dV1(int[][][] gamestate3D) {
 
+        //check each layer
+        for (int z = 0; z < 3; z++) {
 
+            //check horizontal and vertical wins
+            for (int i = 0; i < 3; i++) {
+                int pos1 = gamestate3D[0][0][z];
+                int pos2 = gamestate3D[1][0][z];
+                int pos3 = gamestate3D[2][0][z];
 
+                int pos4 = gamestate3D[0][1][z];
+                int pos5 = gamestate3D[0][2][z];
+
+            }
+        }
     }
 
 
     //Check 1D gamestate
-    private void checkWinnerAlgoV1(byte[] gamestate){
+    private void checkWinnerAlgoV1(int[] gamestate){
 
         //check horizontal wins for each layer in the cube
 
-        byte gs1 = 0;
-        byte gs2 = 0;
-        byte gs3 = 0;
+        //TODO REFACTOR, maybe each check should be it's own method?
+
+        int gs1 = 0;
+        int gs2 = 0;
+        int gs3 = 0;
 
         int i = 0;
 
@@ -169,7 +182,7 @@ public class PerformanceTest {
     }
 
 
-    public void printGameStateLayer(int layer, byte[] gamestate1d) {
+    public void printGameStateLayer(int layer, int[] gamestate1d) {
 
         String s = "";
 

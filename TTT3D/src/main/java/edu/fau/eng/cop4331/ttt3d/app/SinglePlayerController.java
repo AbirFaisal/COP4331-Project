@@ -1,6 +1,6 @@
 package edu.fau.eng.cop4331.ttt3d.app;
 
-public class SinglePlayerController extends Controller {
+public class SinglePlayerController implements Controller {
 
 
 }

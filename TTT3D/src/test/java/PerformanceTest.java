@@ -32,21 +32,42 @@ public class PerformanceTest {
 
     //TODO try 3d array and compare performance
     private void checkWinnerAlgo3dV1(int[][][] gamestate3D) {
+        //TODO find better names for these variables
 
-        //check each layer
-        for (int z = 0; z < 3; z++) {
+        int originH;
+        int originV;
+        int pos2;
+        int pos3;
+        int pos4;
+        int pos5;
+
+        //for each layer as i
+        for (int i = 0; i < 3; i++) {
 
             //check horizontal and vertical wins
-            for (int i = 0; i < 3; i++) {
-                int pos1 = gamestate3D[0][0][z];
-                int pos2 = gamestate3D[1][0][z];
-                int pos3 = gamestate3D[2][0][z];
+            for (int j = 0; j < 3; j++) {
+                originH = gamestate3D[0][j][i];
+                pos2 = gamestate3D[1][j][i];
+                pos3 = gamestate3D[2][j][i];
 
-                int pos4 = gamestate3D[0][1][z];
-                int pos5 = gamestate3D[0][2][z];
+                originV = gamestate3D[j][0][i];
+                pos4 = gamestate3D[j][1][i];
+                pos5 = gamestate3D[j][2][i];
+
+                // if these values are 3 or -3 we know
+                // there is a winner
+                // and that either X(3) or O(-3) has won
+                int hWinner = originH + pos2 + pos3;
+
+                int vWinner = originV + pos4 + pos5;
 
             }
         }
+
+        //TODO check diagonals
+
+
+
     }
 
 

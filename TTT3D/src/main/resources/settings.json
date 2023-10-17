@@ -1,0 +1,6 @@
+{
+  "defaultServer": "0.0.0.0",
+  "altServer": "0.0.0.0",
+  "defaultPort": 32034,
+  "rateLimitSeconds": 1
+}

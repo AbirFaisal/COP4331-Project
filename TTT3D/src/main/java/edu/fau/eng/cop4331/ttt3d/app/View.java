@@ -1,5 +1,8 @@
 package edu.fau.eng.cop4331.ttt3d.app;
 
+import javax.swing.*;
+import java.awt.*;
+
 public interface View {
 
     //class that contains the main view and handles basic stuff
@@ -9,5 +12,9 @@ public interface View {
     //View and give it a controller
     //or a Controller and give it a View
     public void updateView();
+
+    public static void main(String[] args) {
+
+    }
 
 }

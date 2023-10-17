@@ -11,7 +11,7 @@ public class AliceAndBob {
         BigInteger[] secretNumbers = new BigInteger[len];
 
         for (int i = 0; i < len; i++) {
-            secretNumbers[i] = BigInteger.probablePrime(32, new Random());
+            secretNumbers[i] = BigInteger.probablePrime(128, new Random());
         }
         return secretNumbers;
     }
@@ -49,7 +49,7 @@ public class AliceAndBob {
         BigInteger[] bobPrivateMods = genPrimesArray(len);
         System.out.println("bobSecret: " +  Arrays.toString(bobPrivateMods));
 
-        //mix privKeyPubKey
+        //generate a public key given the public and private mods
         BigInteger[] alicePubMods = genSecretMods(pubMods, pubBases, alicePrivateMods);
         System.out.println("alicePubMods: " +  Arrays.toString(alicePubMods));
 
@@ -64,16 +64,10 @@ public class AliceAndBob {
         BigInteger[] commonSecret2 = genSecretMods(pubMods, alicePubMods, bobPrivateMods);
         System.out.println("commonSecret2: " +  Arrays.toString(commonSecret2));
 
-        
+
         for (int i = 0; i < len; i++) {
             assert commonSecret1[i].equals(commonSecret2[i]) : "Secrets are not common";
         }
     }
-
-//    BigDecimal bigPow(BigDecimal base, BigDecimal exp) {
-//
-//        return new BigDecimal.valueOf(0);
-//    }
-
 
 }

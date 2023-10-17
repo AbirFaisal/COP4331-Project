@@ -1,7 +1,11 @@
 package edu.fau.eng.cop4331.ttt3d.app;
 
 import javax.swing.*;
+import javax.swing.text.html.Option;
 import java.util.Random;
+
+import static java.lang.System.exit;
+
 
 public class App {
     JFrame mainWindow;
@@ -14,7 +18,6 @@ public class App {
         this.playerID = new byte[16]; //TODO load from a configuration
         Random r = new Random();
         r.nextBytes(this.playerID);
-
         this.mainWindow = new JFrame("Main Window");
     }
     public void run() {

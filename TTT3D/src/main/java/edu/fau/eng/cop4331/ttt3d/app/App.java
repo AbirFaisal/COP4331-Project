@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class App {
     JFrame mainWindow;
-    private byte[] playerID; //128 bit player id TODO make private
+    private byte[] playerID; //128 bit player id
     private Model model;
     private View view;
     private Controller controller;
@@ -17,7 +17,7 @@ public class App {
 
         this.mainWindow = new JFrame("Main Window");
     }
-    public void run(){
+    public void run() {
         this.mainWindow.setSize(800,600);//400 width and 500 height
         this.mainWindow.setLayout(null);
         this.mainWindow.setVisible(true);

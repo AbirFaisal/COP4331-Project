@@ -5,8 +5,8 @@ import java.util.UUID;
 
 public interface View {
 
-    public void updateView();
+    public void updateView(UUID uuid);
 
-    Container getJFrame(UUID uuid);
+    Container getContainer(UUID uuid);
 
 }

@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
 import java.util.UUID;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 public class StartScreenView implements View {
@@ -15,45 +16,67 @@ public class StartScreenView implements View {
 
     //Objects of the view
     HashMap<UUID, Container> jFrames = new HashMap<>();
+
+    //methods that are called when update is called on a UUID mapped to jFrames
+    interface Updater { void update(); }
+    HashMap<UUID, Updater> updateMethods = new HashMap<>();
+
     Controller controller;
 
     public StartScreenView() {
         setup();
     }
 
-    //keys
 
     //set up the view
     void setup() {
         JPanel mainJPanel = new JPanel();
-//        mainJPanel.setSize(800,600);
-
         this.jFrames.put(StartScreenModel.Keys.MAIN, mainJPanel);
 
-        JLabel jLabel = new JLabel("Hello World");
 
-        this.jFrames.get(StartScreenModel.Keys.MAIN).add(jLabel);
-
-//        this.jFrames.get(StartScreenModel.Keys.MAIN).getContentPane().add(jLabel);
-
-//        this.jFrames.get(StartScreenModel.Keys.MAIN).setVisible(true); //TODO not sure if needed
+        this.jFrames.get(StartScreenModel.Keys.MAIN).add(helloWorld());
+//        updateView(StartScreenModel.Keys.HELLO_WORLD_JLABEL);
     }
 
-//    void addChild(UUID uuid, ) {
-//    }
+
+    /**
+     * Example function
+     * @return
+     */
+    JLabel helloWorld() {
+        //instantiate the object
+        JLabel jLabel = new JLabel("Hello World");
+
+        //OPTIONAL: put reference to object into HashMap
+//        this.jFrames.put(StartScreenModel.Keys.HELLO_WORLD_JLABEL, jLabel);
+
+        //create an update method
+        Updater updater = () -> {
+            //handle update logic here
+            //for example get some data from the corresponding model
+            jLabel.setText("Text changed from update()");
+        };
+
+        //put a reference to the update method into the HashMap
+        updateMethods.put(StartScreenModel.Keys.HELLO_WORLD_JLABEL, updater);
+        return jLabel;
+    }
+
 
 
     //Updates the elements of the view
     @Override
-    public void updateView() {
-        Consumer<? super Component> consumer = (Consumer<Component>) jFrame -> {
-            jFrame.update(jFrame.getGraphics());
-        };
-//        jComponents.forEach(consumer);
+    public void updateView(UUID uuid) {
+        this.updateMethods.get(uuid).update();
+    }
+
+    public void refreshView() {
+        BiConsumer<? super UUID, ? super Updater> biConsumer = (uuid, updater) -> updater.update();
+        updateMethods.forEach(biConsumer);
     }
 
     @Override
-    public Container getJFrame(UUID uuid) {
+    public Container getContainer(UUID uuid) {
         return this.jFrames.get(uuid);
     }
 }

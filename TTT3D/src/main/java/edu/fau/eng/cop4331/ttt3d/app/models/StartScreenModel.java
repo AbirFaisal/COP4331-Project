@@ -10,6 +10,7 @@ public class StartScreenModel implements Model {
 
     public class Keys {
         public static UUID MAIN = UUID.randomUUID();
+        public static UUID HELLO_WORLD_JLABEL = UUID.randomUUID();
     }
 
     HashMap<UUID, Object> dataStructures;
@@ -19,7 +20,6 @@ public class StartScreenModel implements Model {
     public Object getData(UUID key) {
         return dataStructures.get(key);
     }
-
 
 
     //The controller will set a dataStructure and the model will notify the view

@@ -36,8 +36,12 @@ public class App {
         StartScreenController startScreenController = new StartScreenController(startScreenModel, startScreenView);
 
         this.mainWindow.add(
-                startScreenView.getJFrame(StartScreenModel.Keys.MAIN)
+                startScreenView.getContainer(StartScreenModel.Keys.MAIN)
         );
+
+        //TODO move into a test class
+        startScreenView.refreshView();
+//        startScreenView.updateView(StartScreenModel.Keys.HELLO_WORLD_JLABEL);
 
         this.mainWindow.setSize(800,600);//400 width and 500 height
         ///TODO this.mainWindow.setLayout();

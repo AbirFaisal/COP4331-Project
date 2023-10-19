@@ -1,7 +1,16 @@
 import org.junit.jupiter.api.Test;
 
+import javax.crypto.Cipher;
+import javax.crypto.CipherOutputStream;
+import javax.crypto.CipherSpi;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.spec.IvParameterSpec;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -11,7 +20,7 @@ public class AliceAndBob {
         BigInteger[] secretNumbers = new BigInteger[len];
 
         for (int i = 0; i < len; i++) {
-            secretNumbers[i] = BigInteger.probablePrime(128, new Random());
+            secretNumbers[i] = BigInteger.probablePrime(16, new Random());
         }
         return secretNumbers;
     }
@@ -30,8 +39,24 @@ public class AliceAndBob {
     }
 
 
+    private class TestObject {
+        //object for encrypt/decrypt test
+        private int i;
+        public TestObject(int i){
+            this.i = i;
+        }
+        public int getI() {
+            return i;
+        }
+        public TestObject setI(int i) {
+            this.i = i;
+            return this;
+        }
+    }
+
+
     @Test
-    public void simDiffieHellmanKeyExchange() {
+    public void simDiffieHellmanKeyExchange() throws Exception {
 
         int len = 1;
 
@@ -63,6 +88,23 @@ public class AliceAndBob {
         //Bob x Alice Key Exchange and Mix
         BigInteger[] commonSecret2 = genSecretMods(pubMods, alicePubMods, bobPrivateMods);
         System.out.println("commonSecret2: " +  Arrays.toString(commonSecret2));
+
+
+        //Test Encryption/Decryption
+        TestObject testObject = new TestObject(123);
+
+
+        String cipherMode = "AES/CBC/PKCS5Padding";
+        Cipher cipher;
+        cipher = Cipher.getInstance(cipherMode);
+        //TODO cipher.init(Cipher.ENCRYPT_MODE, secretKey, IvParameterSpec);
+
+        OutputStream outputStream = null; //TODO
+
+        CipherOutputStream cipherOutputStream = new CipherOutputStream(outputStream, cipher);
+
+        cipherOutputStream.write(0);
+
 
 
         for (int i = 0; i < len; i++) {

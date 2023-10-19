@@ -1,10 +1,11 @@
 package edu.fau.eng.cop4331.ttt3d.app;
 
-import javax.swing.*;
-import javax.swing.text.html.Option;
-import java.util.Random;
+import edu.fau.eng.cop4331.ttt3d.app.controllers.StartScreenController;
+import edu.fau.eng.cop4331.ttt3d.app.models.StartScreenModel;
+import edu.fau.eng.cop4331.ttt3d.app.views.StartScreenView;
 
-import static java.lang.System.exit;
+import javax.swing.*;
+import java.util.Random;
 
 
 public class App {
@@ -18,12 +19,37 @@ public class App {
         this.playerID = new byte[16]; //TODO load from a configuration
         Random r = new Random();
         r.nextBytes(this.playerID);
+
         this.mainWindow = new JFrame("Main Window");
+        setup();
     }
-    public void run() {
+
+    /**
+     * Set up the components of the main window
+     *
+     */
+    public void setup() {
+
+
+        StartScreenModel startScreenModel = new StartScreenModel();
+        StartScreenView startScreenView = new StartScreenView();
+        StartScreenController startScreenController = new StartScreenController(startScreenModel, startScreenView);
+
+        this.mainWindow.add(
+                startScreenView.getJFrame(StartScreenModel.Keys.MAIN)
+        );
+
         this.mainWindow.setSize(800,600);//400 width and 500 height
-        this.mainWindow.setLayout(null);
+        ///TODO this.mainWindow.setLayout();
         this.mainWindow.setVisible(true);
+    }
+
+    /**
+     * run the application
+     *
+     */
+    public void run() {
+
     }
 
 

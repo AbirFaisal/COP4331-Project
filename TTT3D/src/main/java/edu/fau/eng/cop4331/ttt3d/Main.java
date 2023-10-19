@@ -36,31 +36,6 @@ public class Main {
             //server.run();
         } else {
             System.out.println("Launch Game");
-
-
-            String[] options = {"Single Player", "Multi Player"};
-
-            int s = JOptionPane.showOptionDialog(
-                    null,
-                    "Select Game Mode",
-                    "TTT3D",
-                    JOptionPane.DEFAULT_OPTION,
-                    JOptionPane.QUESTION_MESSAGE,
-                    null,
-                    options,
-                    -1);
-
-            System.out.println(s);
-
-            switch (s) {
-                case -1: exit(0);
-                case 0: {};//Launch Single Player Game
-                case 1: {};
-            }
-
-
-
-
             App app = new App();
             app.run();
         }

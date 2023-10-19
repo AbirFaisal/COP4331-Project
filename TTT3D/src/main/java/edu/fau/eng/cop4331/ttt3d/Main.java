@@ -1,9 +1,13 @@
 package edu.fau.eng.cop4331.ttt3d;
 
 import edu.fau.eng.cop4331.ttt3d.app.App;
+import edu.fau.eng.cop4331.ttt3d.server.Server;
 
+import javax.swing.*;
 import java.util.HashMap;
 import java.util.Map;
+
+import static java.lang.System.exit;
 
 public class Main {
     public static void main(String[] args) {
@@ -18,13 +22,18 @@ public class Main {
                 String key = argument.substring(2); //remove -- from key
                 String value = args[i+1]; //get value of key
                 argmap.put(key, Integer.parseInt(value)); //put key and value into map for usage
-                System.out.println(key + "=" + value);
+                System.out.println(key + "=" + value);//TODO remove when no longer needed.
             }
         }
 
         //if --server then launch game server instead of user application
         if (argmap.get("--server") != null) {
             System.out.println("Run Server");
+            //port for server
+            //ip and port for load balance and failover
+
+            //TODO Server server = new Server(port, secondaryServerIP, );
+            //server.run();
         } else {
             System.out.println("Launch Game");
             App app = new App();

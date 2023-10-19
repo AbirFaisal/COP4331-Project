@@ -1,11 +1,16 @@
 package edu.fau.eng.cop4331.ttt3d.app;
 
+import edu.fau.eng.cop4331.ttt3d.app.controllers.StartScreenController;
+import edu.fau.eng.cop4331.ttt3d.app.models.StartScreenModel;
+import edu.fau.eng.cop4331.ttt3d.app.views.StartScreenView;
+
 import javax.swing.*;
 import java.util.Random;
 
+
 public class App {
     JFrame mainWindow;
-    private byte[] playerID; //128 bit player id TODO make private
+    private byte[] playerID; //128 bit player id
     private Model model;
     private View view;
     private Controller controller;
@@ -16,11 +21,39 @@ public class App {
         r.nextBytes(this.playerID);
 
         this.mainWindow = new JFrame("Main Window");
+        setup();
     }
-    public void run(){
+
+    /**
+     * Set up the components of the main window
+     *
+     */
+    public void setup() {
+
+
+        StartScreenModel startScreenModel = new StartScreenModel();
+        StartScreenView startScreenView = new StartScreenView();
+        StartScreenController startScreenController = new StartScreenController(startScreenModel, startScreenView);
+
+        this.mainWindow.add(
+                startScreenView.getContainer(StartScreenModel.Keys.MAIN)
+        );
+
+        //TODO move into a test class
+//        startScreenView.refreshView();
+//        startScreenView.updateView(StartScreenModel.Keys.HELLO_WORLD_JLABEL);
+
         this.mainWindow.setSize(800,600);//400 width and 500 height
-        this.mainWindow.setLayout(null);
+        ///TODO this.mainWindow.setLayout();
         this.mainWindow.setVisible(true);
+    }
+
+    /**
+     * run the application
+     *
+     */
+    public void run() {
+
     }
 
 

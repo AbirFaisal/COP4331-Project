@@ -40,7 +40,7 @@ public class App {
         );
 
         //TODO move into a test class
-        startScreenView.refreshView();
+//        startScreenView.refreshView();
 //        startScreenView.updateView(StartScreenModel.Keys.HELLO_WORLD_JLABEL);
 
         this.mainWindow.setSize(800,600);//400 width and 500 height

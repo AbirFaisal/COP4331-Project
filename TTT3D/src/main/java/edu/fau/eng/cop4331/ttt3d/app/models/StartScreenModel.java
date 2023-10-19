@@ -11,6 +11,8 @@ public class StartScreenModel implements Model {
     public class Keys {
         public static UUID MAIN = UUID.randomUUID();
         public static UUID HELLO_WORLD_JLABEL = UUID.randomUUID();
+        public static UUID TEST_BUTTON = UUID.randomUUID();
+
     }
 
     HashMap<UUID, Object> dataStructures;

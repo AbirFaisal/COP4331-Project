@@ -5,7 +5,7 @@ import java.util.UUID;
 
 public interface View {
 
-    public void updateView(UUID uuid);
+    public void updateElement(UUID uuid);
 
     Container getContainer(UUID uuid);
 

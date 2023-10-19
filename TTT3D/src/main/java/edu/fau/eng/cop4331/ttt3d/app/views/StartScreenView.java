@@ -9,7 +9,6 @@ import java.awt.*;
 import java.util.HashMap;
 import java.util.UUID;
 import java.util.function.BiConsumer;
-import java.util.function.Consumer;
 
 public class StartScreenView implements View {
 
@@ -66,7 +65,7 @@ public class StartScreenView implements View {
 
     //Updates the elements of the view
     @Override
-    public void updateView(UUID uuid) {
+    public void updateElement(UUID uuid) {
         this.updateMethods.get(uuid).update();
     }
 

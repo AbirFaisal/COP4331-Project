@@ -34,7 +34,7 @@ public class StartScreenModel implements Model {
 
     //The controller will set a dataStructure and the model will notify the view
     @Override
-    public void setData(UUID key, Object data) {
+    public synchronized void setData(UUID key, Object data) {
 
         if (dataStructures.containsKey(key)){
             //replace the object

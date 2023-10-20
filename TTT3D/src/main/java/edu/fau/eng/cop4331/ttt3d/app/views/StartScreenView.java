@@ -6,8 +6,6 @@ import edu.fau.eng.cop4331.ttt3d.app.models.StartScreenModel;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.UUID;
 import java.util.function.BiConsumer;
@@ -24,7 +22,7 @@ public class StartScreenView implements View {
 
     Controller controller;
 
-    public StartScreenView() {
+    public StartScreenView(StartScreenModel startScreenModel) {
         setup();
     }
 

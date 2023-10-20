@@ -32,7 +32,8 @@ public class App {
 
 
         StartScreenModel startScreenModel = new StartScreenModel();
-        StartScreenView startScreenView = new StartScreenView();
+        StartScreenView startScreenView = new StartScreenView(startScreenModel);
+
         StartScreenController startScreenController = new StartScreenController(startScreenModel, startScreenView);
 
         this.mainWindow.add(

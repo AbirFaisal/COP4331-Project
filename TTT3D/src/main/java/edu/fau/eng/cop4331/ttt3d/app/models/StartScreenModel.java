@@ -12,10 +12,17 @@ public class StartScreenModel implements Model {
         public static UUID MAIN = UUID.randomUUID();
         public static UUID HELLO_WORLD_JLABEL = UUID.randomUUID();
         public static UUID TEST_BUTTON = UUID.randomUUID();
-
     }
 
+    public  Keys keys;
+
     HashMap<UUID, Object> dataStructures;
+
+    public UUID MAIN = UUID.randomUUID();
+    public StartScreenModel() {
+        this.keys = new Keys();
+        this.dataStructures = new HashMap<>();
+    }
 
     //The view will request a dataStructure from the Model
     @Override

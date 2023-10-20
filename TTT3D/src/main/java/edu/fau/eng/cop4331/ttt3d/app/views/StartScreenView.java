@@ -22,7 +22,10 @@ public class StartScreenView implements View {
 
     Controller controller;
 
+    StartScreenModel startScreenModel;
+
     public StartScreenView(StartScreenModel startScreenModel) {
+        this.startScreenModel = startScreenModel;
         setup();
     }
 
@@ -30,11 +33,11 @@ public class StartScreenView implements View {
     //set up the view
     void setup() {
         JPanel mainJPanel = new JPanel();
-        this.jFrames.put(StartScreenModel.Keys.MAIN, mainJPanel);
+        this.jFrames.put(startScreenModel.MAIN, mainJPanel);
 
 
-        this.jFrames.get(StartScreenModel.Keys.MAIN).add(helloWorld());
-        this.jFrames.get(StartScreenModel.Keys.MAIN).add(testButton());
+        this.jFrames.get(startScreenModel.MAIN).add(helloWorld());
+        this.jFrames.get(startScreenModel.MAIN).add(testButton());
 
 //        updateView(StartScreenModel.Keys.HELLO_WORLD_JLABEL);
     }

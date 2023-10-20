@@ -8,19 +8,20 @@ import java.util.UUID;
 
 public class StartScreenModel implements Model {
 
-    public class Keys {
-        public static UUID MAIN = UUID.randomUUID();
-        public static UUID HELLO_WORLD_JLABEL = UUID.randomUUID();
-        public static UUID TEST_BUTTON = UUID.randomUUID();
-    }
-
-    public  Keys keys;
+    /**
+     * The View uses these constants to get data from the Model
+     * The Controller uses these constants to update data in the Model
+     *
+     * Every element in a view that needs to be updated
+     * needs to have a UUID refrence to it here.
+     *
+     */
+    public UUID MAIN = UUID.randomUUID();
+    public UUID HELLO_WORLD_JLABEL = UUID.randomUUID();
+    public UUID TEST_BUTTON = UUID.randomUUID();
 
     HashMap<UUID, Object> dataStructures;
-
-    public UUID MAIN = UUID.randomUUID();
     public StartScreenModel() {
-        this.keys = new Keys();
         this.dataStructures = new HashMap<>();
     }
 

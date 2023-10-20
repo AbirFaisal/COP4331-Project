@@ -62,7 +62,7 @@ public class StartScreenView implements View {
         };
 
         //put a reference to the update method into the HashMap
-        updateMethods.put(StartScreenModel.Keys.HELLO_WORLD_JLABEL, updater);
+        updateMethods.put(startScreenModel.HELLO_WORLD_JLABEL, updater);
         return jLabel;
     }
 
@@ -80,7 +80,7 @@ public class StartScreenView implements View {
             jButton.setText("Text changed from update()");
 
             //update another object by refrence
-            this.updateMethods.get(StartScreenModel.Keys.HELLO_WORLD_JLABEL).update();
+            this.updateMethods.get(startScreenModel.HELLO_WORLD_JLABEL).update();
         };
 
         //add action listener if needed.
@@ -89,7 +89,7 @@ public class StartScreenView implements View {
         });
 
         //put a reference to the update method into the HashMap
-        updateMethods.put(StartScreenModel.Keys.TEST_BUTTON, updater);
+        updateMethods.put(startScreenModel.TEST_BUTTON, updater);
         return jButton;
     }
 

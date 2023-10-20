@@ -106,13 +106,10 @@ public class StartScreenView implements View {
 
         //create an update method
         Updater updater = () -> {
+//            App.getInstance().setMainContent();
             //TODO launch single player game
         };
-
-        //add action listener if needed.
-        singlePlayerGameButton.addActionListener(e -> {
-            updater.update();
-        });
+        singlePlayerGameButton.addActionListener(e -> updater.update());
 
         //put a reference to the update method into the HashMap
         updateMethods.put(startScreenModel.TEST_BUTTON, updater);

@@ -22,12 +22,12 @@ public class GameModel implements Model {
     }
 
     @Override
-    public Object getData(UUID key) {
+    public Record getData(UUID key) {
         return null;
     }
 
     @Override
-    public void setData(UUID key, Object data) {
+    public void setData(UUID key, Record data) {
 
     }
 }

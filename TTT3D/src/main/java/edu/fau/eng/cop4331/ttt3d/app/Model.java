@@ -11,11 +11,8 @@ import java.util.UUID;
 public interface Model {
 
 //    //get the data from the model
-    Object getData(UUID key);
+    Record getData(UUID key);
 
-    void setData(UUID key, Object data);
-
-
-
+    void setData(UUID key, Record data);
 
 }

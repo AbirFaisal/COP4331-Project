@@ -5,7 +5,9 @@ import edu.fau.eng.cop4331.ttt3d.app.models.StartScreenModel;
 import edu.fau.eng.cop4331.ttt3d.app.views.StartScreenView;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.Random;
+import java.util.UUID;
 
 import static java.lang.System.exit;
 
@@ -16,7 +18,8 @@ public class App {
     private Model model;
     private View view;
     private Controller controller;
-    
+
+    //TODO make into singleton pattern
     public App() {
         this.playerID = new byte[16]; //TODO load from a configuration
         Random r = new Random();
@@ -32,25 +35,22 @@ public class App {
      */
     public void setup() {
 
-
+        //TODO move into a launch(Model, View, Controller) method
         StartScreenModel startScreenModel = new StartScreenModel();
         StartScreenView startScreenView = new StartScreenView(startScreenModel);
-
         StartScreenController startScreenController = new StartScreenController(startScreenModel, startScreenView);
 
-        this.mainWindow.add(
+        setMainWindow(
                 startScreenView.getContainer(startScreenModel.MAIN)
         );
 
 
+        //TODO move into a test
         StartScreenModel startScreenModel0 = new StartScreenModel();
         StartScreenModel startScreenModel1 = new StartScreenModel();
-
-        System.out.println(startScreenModel0.MAIN.toString());
         System.out.println(startScreenModel0.MAIN.toString());
         System.out.println(startScreenModel1.MAIN.toString());
-
-//        exit(0);
+        assert !(startScreenModel0.equals(startScreenModel1)) : "UUID's not unique";
 
         //TODO move into a test class
 //        startScreenView.refreshView();
@@ -59,6 +59,11 @@ public class App {
         this.mainWindow.setSize(800,600);//400 width and 500 height
         ///TODO this.mainWindow.setLayout();
         this.mainWindow.setVisible(true);
+    }
+
+    //set the content of the main window
+    public void setMainWindow(Container c) {
+        this.mainWindow.setContentPane(c);
     }
 
     /**

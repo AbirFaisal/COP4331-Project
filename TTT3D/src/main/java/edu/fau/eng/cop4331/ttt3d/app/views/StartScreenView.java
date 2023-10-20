@@ -6,6 +6,7 @@ import edu.fau.eng.cop4331.ttt3d.app.models.StartScreenModel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.time.Instant;
 import java.util.HashMap;
 import java.util.UUID;
 import java.util.function.BiConsumer;
@@ -58,7 +59,9 @@ public class StartScreenView implements View {
         Updater updater = () -> {
             //handle update logic here
             //for example get some data from the corresponding model
-            jLabel.setText("Text changed from update()");
+
+            String currentTime = Instant.now().toString();
+            jLabel.setText(currentTime);
         };
 
         //put a reference to the update method into the HashMap
@@ -79,8 +82,8 @@ public class StartScreenView implements View {
             //for example get some data from the corresponding model
             jButton.setText("Text changed from update()");
 
-            //update another object by refrence
-            this.updateMethods.get(startScreenModel.HELLO_WORLD_JLABEL).update();
+            //update another element
+            updateElement(startScreenModel.HELLO_WORLD_JLABEL);
         };
 
         //add action listener if needed.
@@ -91,6 +94,29 @@ public class StartScreenView implements View {
         //put a reference to the update method into the HashMap
         updateMethods.put(startScreenModel.TEST_BUTTON, updater);
         return jButton;
+    }
+
+
+    JButton startSinglePlayerGameButton() {
+        //instantiate the object
+        JButton singlePlayerGameButton = new JButton("Single Player");
+
+        //OPTIONAL: put reference to object into HashMap
+//        this.jFrames.put(StartScreenModel.Keys.HELLO_WORLD_JLABEL, jLabel);
+
+        //create an update method
+        Updater updater = () -> {
+            //TODO launch single player game
+        };
+
+        //add action listener if needed.
+        singlePlayerGameButton.addActionListener(e -> {
+            updater.update();
+        });
+
+        //put a reference to the update method into the HashMap
+        updateMethods.put(startScreenModel.TEST_BUTTON, updater);
+        return singlePlayerGameButton;
     }
 
 

@@ -20,6 +20,10 @@ public class StartScreenModel implements Model {
     public UUID HELLO_WORLD_JLABEL = UUID.randomUUID();
     public UUID TEST_BUTTON = UUID.randomUUID();
 
+
+
+    //TODO turn this into an extended class instead of an interface?
+
     HashMap<UUID, Object> dataStructures;
     public StartScreenModel() {
         this.dataStructures = new HashMap<>();
@@ -30,7 +34,6 @@ public class StartScreenModel implements Model {
     public Object getData(UUID key) {
         return dataStructures.get(key);
     }
-
 
     //The controller will set a dataStructure and the model will notify the view
     @Override
@@ -44,6 +47,5 @@ public class StartScreenModel implements Model {
             //add the object
             this.dataStructures.put(key, data);
         }
-
     }
 }

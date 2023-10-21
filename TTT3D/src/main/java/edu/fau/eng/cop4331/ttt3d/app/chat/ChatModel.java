@@ -4,7 +4,7 @@ import edu.fau.eng.cop4331.ttt3d.app.Model;
 
 import java.util.UUID;
 
-public class ChatModel implements Model {
+public class ChatModel extends Model {
 
 
     public ChatModel() {

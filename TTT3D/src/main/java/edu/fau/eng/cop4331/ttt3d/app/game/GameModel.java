@@ -4,7 +4,7 @@ import edu.fau.eng.cop4331.ttt3d.app.Model;
 
 import java.util.UUID;
 
-public class GameModel implements Model {
+public class GameModel extends Model {
 
     public static UUID MAIN = UUID.randomUUID();
 

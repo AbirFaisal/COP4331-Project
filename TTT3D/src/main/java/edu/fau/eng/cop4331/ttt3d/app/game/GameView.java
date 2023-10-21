@@ -1,4 +1,4 @@
-package edu.fau.eng.cop4331.ttt3d.app.views;
+package edu.fau.eng.cop4331.ttt3d.app.game;
 
 import javax.swing.*;
 

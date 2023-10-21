@@ -2,17 +2,12 @@ package edu.fau.eng.cop4331.ttt3d.app;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
+import java.util.UUID;
 
 public interface Controller {
 
 
-
-    //Inserts a frame into the model
-    public void updateModel();
-
-    //
-    public ActionListener actionListener();
-
+    public void updateModel(UUID key, Record data);
 
 
 }

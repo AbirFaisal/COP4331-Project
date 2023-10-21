@@ -1,4 +1,4 @@
-package edu.fau.eng.cop4331.ttt3d.app.models;
+package edu.fau.eng.cop4331.ttt3d.app.chat;
 
 import edu.fau.eng.cop4331.ttt3d.app.Model;
 
@@ -12,12 +12,12 @@ public class ChatModel implements Model {
     }
 
     @Override
-    public Object getData(UUID uuid) {
+    public Record getData(UUID uuid) {
         return null;
     }
 
     @Override
-    public void setData(UUID uuid, Object data) {
+    public void setData(UUID uuid, Record data) {
 
     }
 }

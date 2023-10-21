@@ -10,9 +10,9 @@ import java.util.UUID;
 
 public interface Model {
 
-    //get the data from the model
-    Object getData(UUID key);
+//    //get the data from the model
+    Record getData(UUID key);
 
-    void setData(UUID key, Object data);
+    void setData(UUID key, Record data);
 
 }

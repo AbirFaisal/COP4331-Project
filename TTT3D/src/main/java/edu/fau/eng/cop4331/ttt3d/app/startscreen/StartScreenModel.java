@@ -25,6 +25,8 @@ public class StartScreenModel implements Model {
     public UUID TEST_BUTTON = UUID.randomUUID();
     public UUID SERVER_IP_TEXT_FIELD = UUID.randomUUID();
     public UUID SERVER_PORT_TEXT_FIELD = UUID.randomUUID();
+    public UUID START_SINGLE_PLAYER_GAME_BUTTON = UUID.randomUUID();
+
 
     //example data strcuture holding some information to be
     //used by the view or updated by the controller

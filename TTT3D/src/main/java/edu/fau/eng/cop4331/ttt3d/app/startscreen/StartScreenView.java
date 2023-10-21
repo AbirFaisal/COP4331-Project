@@ -18,7 +18,7 @@ import java.util.function.BiConsumer;
 public class StartScreenView extends View {
 
 
-    Controller controller;
+//    StartScreenController controller;
 
     StartScreenModel model;
 
@@ -160,8 +160,8 @@ public class StartScreenView extends View {
         //instantiate the button
         JButton singlePlayerGameButton = new JButton("Single Player");
 
-        singlePlayerGameButton.addActionListener(e -> {
-            App.getInstance().launchGame(GameType.SINGLE_PLAYER_GAME);
+        singlePlayerGameButton.addActionListener(actionEvent -> {
+            this.controller.handle(model.START_SINGLE_PLAYER_GAME_BUTTON, actionEvent);
         });
 
         return singlePlayerGameButton;

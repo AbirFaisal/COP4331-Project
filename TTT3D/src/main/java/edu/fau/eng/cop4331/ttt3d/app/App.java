@@ -1,6 +1,9 @@
 package edu.fau.eng.cop4331.ttt3d.app;
 
+import edu.fau.eng.cop4331.ttt3d.app.game.GameModel;
 import edu.fau.eng.cop4331.ttt3d.app.game.GameType;
+import edu.fau.eng.cop4331.ttt3d.app.game.GameView;
+import edu.fau.eng.cop4331.ttt3d.app.game.SinglePlayerGameController;
 import edu.fau.eng.cop4331.ttt3d.app.startscreen.StartScreenController;
 import edu.fau.eng.cop4331.ttt3d.app.startscreen.StartScreenModel;
 import edu.fau.eng.cop4331.ttt3d.app.startscreen.StartScreenView;
@@ -74,6 +77,18 @@ public class App {
     }
 
     public void launchGame(GameType gameType) {
+        switch (gameType) {
+            case SINGLE_PLAYER_GAME -> {
+                GameModel gameModel = new GameModel();
+                GameView gameView = new GameView();
+                SinglePlayerGameController gameController = new SinglePlayerGameController();
+
+                setMainWindow(gameView.getContainer(GameModel.MAIN));
+            }
+            case MULTI_PLAYER_CLIENT_GAME -> {}
+            case MULTI_PLAYER_HOST_GAME -> {}
+        }
+
         System.out.println("Launching Game " + gameType);
     }
 

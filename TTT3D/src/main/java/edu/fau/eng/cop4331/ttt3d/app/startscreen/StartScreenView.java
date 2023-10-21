@@ -1,10 +1,11 @@
-package edu.fau.eng.cop4331.ttt3d.app.views;
+package edu.fau.eng.cop4331.ttt3d.app.startscreen;
 
 import edu.fau.eng.cop4331.ttt3d.app.Controller;
 import edu.fau.eng.cop4331.ttt3d.app.View;
-import edu.fau.eng.cop4331.ttt3d.app.models.StartScreenModel;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.time.Instant;
 import java.util.HashMap;
@@ -35,10 +36,12 @@ public class StartScreenView implements View {
     void setup() {
         JPanel mainJPanel = new JPanel();
         this.jFrames.put(startScreenModel.MAIN, mainJPanel);
+        mainJPanel.setLayout(new BoxLayout(mainJPanel, BoxLayout.Y_AXIS));
 
 
-        this.jFrames.get(startScreenModel.MAIN).add(helloWorld());
-        this.jFrames.get(startScreenModel.MAIN).add(testButton());
+        this.jFrames.get(startScreenModel.MAIN).add(serverIPJTextField());
+
+        this.jFrames.get(startScreenModel.MAIN).add(startSinglePlayerGameButton());
 
 //        updateView(StartScreenModel.Keys.HELLO_WORLD_JLABEL);
     }
@@ -97,12 +100,64 @@ public class StartScreenView implements View {
     }
 
 
+
+    JTextField serverIPJTextField() {
+        JTextField serverIPTextField = new JTextField("000.000.000.000:1234");
+        serverIPTextField.setMaximumSize(new Dimension(300, 25));
+
+
+        Updater updater = () -> {
+
+
+
+            StartScreenModel.ServerInfo serverInfo =
+                    new StartScreenModel.ServerInfo(
+                            serverIPTextField.getText(),
+                            "1234"
+                    );
+            System.out.println(serverInfo);
+        };
+        serverIPTextField.getDocument().addDocumentListener(
+                new DocumentListener() {
+                    @Override
+                    public void insertUpdate(DocumentEvent e) { updater.update();}
+                    @Override
+                    public void removeUpdate(DocumentEvent e) { updater.update();}
+                    @Override
+                    public void changedUpdate(DocumentEvent e) {}
+                }
+        );
+        return serverIPTextField;
+    }
+
+    JTextField serverPortJTextField() {
+        JTextField serverPortTextField = new JTextField("0.0.0.0");
+
+        Updater updater = () -> {
+            StartScreenModel.ServerInfo serverInfo =
+                    new StartScreenModel.ServerInfo(
+                            serverPortTextField.getText(),
+                            "1234"
+                    );
+            System.out.println(serverInfo);
+        };
+        serverPortTextField.getDocument().addDocumentListener(
+                new DocumentListener() {
+                    @Override
+                    public void insertUpdate(DocumentEvent e) { updater.update();}
+                    @Override
+                    public void removeUpdate(DocumentEvent e) { updater.update();}
+                    @Override
+                    public void changedUpdate(DocumentEvent e) {}
+                }
+        );
+        return serverPortTextField;
+    }
+
+
     JButton startSinglePlayerGameButton() {
         //instantiate the object
         JButton singlePlayerGameButton = new JButton("Single Player");
-
-        //OPTIONAL: put reference to object into HashMap
-//        this.jFrames.put(StartScreenModel.Keys.HELLO_WORLD_JLABEL, jLabel);
 
         //create an update method
         Updater updater = () -> {
@@ -115,8 +170,6 @@ public class StartScreenView implements View {
         updateMethods.put(startScreenModel.TEST_BUTTON, updater);
         return singlePlayerGameButton;
     }
-
-
 
 
 

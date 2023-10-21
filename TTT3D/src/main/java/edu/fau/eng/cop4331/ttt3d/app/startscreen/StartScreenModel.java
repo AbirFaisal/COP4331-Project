@@ -1,8 +1,7 @@
-package edu.fau.eng.cop4331.ttt3d.app.models;
+package edu.fau.eng.cop4331.ttt3d.app.startscreen;
 
 import edu.fau.eng.cop4331.ttt3d.app.Model;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -23,6 +22,8 @@ public class StartScreenModel implements Model {
     public UUID MAIN = UUID.randomUUID();
     public UUID HELLO_WORLD_JLABEL = UUID.randomUUID();
     public UUID TEST_BUTTON = UUID.randomUUID();
+    public UUID SERVER_IP_TEXT_FIELD = UUID.randomUUID();
+    public UUID SERVER_PORT_TEXT_FIELD = UUID.randomUUID();
 
     //example data strcuture holding some information to be
     //used by the view or updated by the controller
@@ -31,6 +32,12 @@ public class StartScreenModel implements Model {
             double n,
             int i,
             int[] arrayList
+    ){}
+
+
+    public record ServerInfo(
+            String ipAddress,
+            String port
     ){}
 
 

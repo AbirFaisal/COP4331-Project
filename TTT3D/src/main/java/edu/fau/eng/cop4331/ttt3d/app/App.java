@@ -1,15 +1,12 @@
 package edu.fau.eng.cop4331.ttt3d.app;
 
-import edu.fau.eng.cop4331.ttt3d.app.controllers.StartScreenController;
-import edu.fau.eng.cop4331.ttt3d.app.models.StartScreenModel;
-import edu.fau.eng.cop4331.ttt3d.app.views.StartScreenView;
+import edu.fau.eng.cop4331.ttt3d.app.startscreen.StartScreenController;
+import edu.fau.eng.cop4331.ttt3d.app.startscreen.StartScreenModel;
+import edu.fau.eng.cop4331.ttt3d.app.startscreen.StartScreenView;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
-import java.util.UUID;
-
-import static java.lang.System.exit;
 
 
 public class App {
@@ -52,11 +49,8 @@ public class App {
         System.out.println(startScreenModel1.MAIN.toString());
         assert !(startScreenModel0.equals(startScreenModel1)) : "UUID's not unique";
 
-        //TODO move into a test class
-//        startScreenView.refreshView();
-//        startScreenView.updateView(StartScreenModel.Keys.HELLO_WORLD_JLABEL);
-
         this.mainWindow.setSize(800,600);//400 width and 500 height
+        this.mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ///TODO this.mainWindow.setLayout();
         this.mainWindow.setVisible(true);
     }
@@ -72,6 +66,10 @@ public class App {
      */
     public void run() {
 
+    }
+
+    public App getInstance(){
+        return this;
     }
 
 

@@ -1,4 +1,4 @@
-package edu.fau.eng.cop4331.ttt3d.app.models;
+package edu.fau.eng.cop4331.ttt3d.app.chat;
 
 import edu.fau.eng.cop4331.ttt3d.app.Model;
 

@@ -12,6 +12,7 @@ public abstract class View {
 
     //Objects of the view
     public HashMap<UUID, Container> jFrames = new HashMap<>();
+    public Controller controller;
 
 
     //methods that are called when update is called on a UUID mapped to jFrames
@@ -19,6 +20,12 @@ public abstract class View {
     public HashMap<UUID, Updater> updateMethods = new HashMap<>();
 
     public abstract void setup();
+
+
+    //register a controller for the view
+    public void registerController(Controller controller){
+        this.controller = controller;
+    }
 
 
     /**

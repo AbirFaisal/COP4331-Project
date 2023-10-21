@@ -45,6 +45,12 @@ public class App {
         StartScreenView startScreenView = new StartScreenView(startScreenModel);
         StartScreenController startScreenController = new StartScreenController(startScreenModel, startScreenView);
 
+        //The view needs to be registered with the model so it can notify it of changes
+//        startScreenModel.register(startScreenView);
+
+        //The controller needs to be registered with the view so it can inform it of user events.
+//        startScreenView.registerController(startScreenController);
+
         setMainWindow(
                 startScreenView.getContainer(startScreenModel.MAIN)
         );

@@ -26,6 +26,9 @@ public class StartScreenController implements Controller {
 
     }
 
+    //TODO handle events from view
+    
+
 
     @Override
     public void updateModel(UUID key, Record data) {

@@ -1,6 +1,7 @@
 package edu.fau.eng.cop4331.ttt3d.app.startscreen;
 
 import edu.fau.eng.cop4331.ttt3d.app.Model;
+import edu.fau.eng.cop4331.ttt3d.app.View;
 
 import java.util.HashMap;
 import java.util.UUID;
@@ -44,6 +45,12 @@ public class StartScreenModel implements Model {
 
     //TODO turn this into an extended class instead of an interface?
 
+    //Register a view with the model so that it can call its notify method.
+    View view;
+    public void register(View view) {
+        this.view = view;
+    }
+
     HashMap<UUID, Record> dataStructures;
     public StartScreenModel() {
         this.dataStructures = new HashMap<>();
@@ -63,8 +70,8 @@ public class StartScreenModel implements Model {
         if (dataStructures.containsKey(key)){
             //replace the object
             dataStructures.replace(key, data);
-
-
+            //notify the view that data has changed
+            this.view.updateElement(key);
         } else {
             //add the object
             this.dataStructures.put(key, data);

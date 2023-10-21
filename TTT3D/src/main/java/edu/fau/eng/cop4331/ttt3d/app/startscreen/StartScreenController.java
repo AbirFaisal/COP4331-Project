@@ -27,8 +27,7 @@ public class StartScreenController extends Controller {
         this.view.registerController(this);
 
         runHandlers();
-
-        System.out.println("running handlers");
+        System.out.println("running event handlers");
 
         //example handler
         Handler startSinglePlayerGameHandler = value -> {
@@ -36,7 +35,7 @@ public class StartScreenController extends Controller {
             System.out.println("Button Pressed");
         };
         handlers.put(model.START_SINGLE_PLAYER_GAME_BUTTON, startSinglePlayerGameHandler);
-
+        System.out.println("SSPGB=" + model.START_SINGLE_PLAYER_GAME_BUTTON);
 
     }
 

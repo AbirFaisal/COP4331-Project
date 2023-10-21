@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static java.lang.System.exit;
+import static java.lang.System.in;
 
 public class Main {
     public static void main(String[] args) {
@@ -35,9 +36,10 @@ public class Main {
             //TODO Server server = new Server(port, secondaryServerIP, );
             //server.run();
         } else {
-            System.out.println("Launch Game");
-            App app = new App();
-            app.run();
+            System.out.println("Launch Start Screen");
+            App instance = App.getInstance();
+            instance.setup();
+            instance.run();
         }
     }
 }

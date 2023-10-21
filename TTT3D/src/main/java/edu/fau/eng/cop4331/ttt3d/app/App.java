@@ -1,5 +1,6 @@
 package edu.fau.eng.cop4331.ttt3d.app;
 
+import edu.fau.eng.cop4331.ttt3d.app.game.GameType;
 import edu.fau.eng.cop4331.ttt3d.app.startscreen.StartScreenController;
 import edu.fau.eng.cop4331.ttt3d.app.startscreen.StartScreenModel;
 import edu.fau.eng.cop4331.ttt3d.app.startscreen.StartScreenView;
@@ -16,18 +17,22 @@ public class App {
     private View view;
     private Controller controller;
 
-    //TODO make into singleton pattern
-    public App() {
+    //Singleton Pattern
+    private static App instance;
+    private App() {
+        this.mainWindow = new JFrame("Main Window");
+
         this.playerID = new byte[16]; //TODO load from a configuration
         Random r = new Random();
         r.nextBytes(this.playerID);
-
-        this.mainWindow = new JFrame("Main Window");
-        setup();
+    }
+    public static synchronized App getInstance() {
+        if (instance == null) instance = new App();
+        return instance;
     }
 
     /**
-     * Set up the components of the main window
+     * Set up the components of the main window and/or application
      *
      */
     public void setup() {
@@ -68,13 +73,17 @@ public class App {
 
     }
 
-    public App getInstance(){
-        return this;
+    public void launchGame(GameType gameType) {
+        System.out.println("Launching Game " + gameType);
     }
+
+
 
 
     public byte[] getPlayerID() {
         return playerID;
     }
+
+
 }
 

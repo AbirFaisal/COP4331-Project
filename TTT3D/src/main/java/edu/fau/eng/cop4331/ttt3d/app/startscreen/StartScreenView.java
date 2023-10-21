@@ -1,7 +1,9 @@
 package edu.fau.eng.cop4331.ttt3d.app.startscreen;
 
+import edu.fau.eng.cop4331.ttt3d.app.App;
 import edu.fau.eng.cop4331.ttt3d.app.Controller;
 import edu.fau.eng.cop4331.ttt3d.app.View;
+import edu.fau.eng.cop4331.ttt3d.app.game.GameType;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -19,7 +21,7 @@ public class StartScreenView implements View {
     HashMap<UUID, Container> jFrames = new HashMap<>();
 
     //methods that are called when update is called on a UUID mapped to jFrames
-    interface Updater { void update(); }
+    interface Updater { void update();}
     HashMap<UUID, Updater> updateMethods = new HashMap<>();
 
     Controller controller;
@@ -42,6 +44,8 @@ public class StartScreenView implements View {
         this.jFrames.get(startScreenModel.MAIN).add(serverIPJTextField());
 
         this.jFrames.get(startScreenModel.MAIN).add(startSinglePlayerGameButton());
+        this.jFrames.get(startScreenModel.MAIN).add(startMultiPlayerGameButton());
+        this.jFrames.get(startScreenModel.MAIN).add(startHostGameButton());
 
 //        updateView(StartScreenModel.Keys.HELLO_WORLD_JLABEL);
     }
@@ -159,18 +163,45 @@ public class StartScreenView implements View {
         //instantiate the object
         JButton singlePlayerGameButton = new JButton("Single Player");
 
+        singlePlayerGameButton.addActionListener(e -> {
+            App.getInstance().launchGame(GameType.SINGLE_PLAYER_GAME);
+        });
+        
+        return singlePlayerGameButton;
+    }
+
+    JButton startMultiPlayerGameButton() {
+        //instantiate the object
+        JButton multiPlayerGameButton = new JButton("Multi Player");
+
         //create an update method
         Updater updater = () -> {
 //            App.getInstance().setMainContent();
             //TODO launch single player game
         };
-        singlePlayerGameButton.addActionListener(e -> updater.update());
+        multiPlayerGameButton.addActionListener(e -> updater.update());
 
         //put a reference to the update method into the HashMap
         updateMethods.put(startScreenModel.TEST_BUTTON, updater);
-        return singlePlayerGameButton;
+        return multiPlayerGameButton;
     }
 
+
+    JButton startHostGameButton() {
+        //instantiate the object
+        JButton multiPlayerGameButton = new JButton("Host Game");
+
+        //create an update method
+        Updater updater = () -> {
+//            App.getInstance().setMainContent();
+            //TODO launch single player game
+        };
+        multiPlayerGameButton.addActionListener(e -> updater.update());
+
+        //put a reference to the update method into the HashMap
+        updateMethods.put(startScreenModel.TEST_BUTTON, updater);
+        return multiPlayerGameButton;
+    }
 
 
 

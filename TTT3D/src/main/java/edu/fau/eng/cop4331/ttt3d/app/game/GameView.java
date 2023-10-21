@@ -14,7 +14,12 @@ public class GameView extends View {
     Controller controller;
 
     GameModel gameModel;
-    
+
+
+    public GameView(GameModel gameModel) {
+        this.gameModel = gameModel;
+        //TODO register updaters with model
+    }
 
     @Override
     public void setup() {

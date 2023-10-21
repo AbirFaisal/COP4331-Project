@@ -24,9 +24,9 @@ public class StartScreenView extends View {
 
     public StartScreenView(StartScreenModel startScreenModel) {
         this.model = startScreenModel;
-        setup();
+        this.model.register(this);
+        setup(); //TODO this should be called elsewhere?
     }
-
 
     //set up the view
     @Override

@@ -17,7 +17,6 @@ public abstract class View {
     //methods that are called when update is called on a UUID mapped to jFrames
     public interface Updater { void update();}
     public HashMap<UUID, Updater> updateMethods = new HashMap<>();
-    public Model model2;
 
     public abstract void setup();
 

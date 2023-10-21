@@ -80,7 +80,7 @@ public class App {
         switch (gameType) {
             case SINGLE_PLAYER_GAME -> {
                 GameModel gameModel = new GameModel();
-                GameView gameView = new GameView();
+                GameView gameView = new GameView(gameModel);
                 SinglePlayerGameController gameController = new SinglePlayerGameController();
 
                 setMainWindow(gameView.getContainer(GameModel.MAIN));

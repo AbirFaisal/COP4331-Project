@@ -1,10 +1,14 @@
 package edu.fau.eng.cop4331.ttt3d.app;
 
 import edu.fau.eng.cop4331.ttt3d.app.views.GameView;
+import edu.fau.eng.cop4331.ttt3d.app.controllers.StartScreenController;
+import edu.fau.eng.cop4331.ttt3d.app.models.StartScreenModel;
+import edu.fau.eng.cop4331.ttt3d.app.views.StartScreenView;
 
 import javax.swing.*;
-import javax.swing.text.html.Option;
+import java.awt.*;
 import java.util.Random;
+import java.util.UUID;
 
 import static java.lang.System.exit;
 
@@ -16,20 +20,65 @@ public class App {
     private View view;
     private Controller controller;
 
-    
+    //TODO make into singleton pattern
     public App() {
         this.playerID = new byte[16]; //TODO load from a configuration
         Random r = new Random();
         r.nextBytes(this.playerID);
+
         this.mainWindow = new JFrame("Main Window");
         view = new GameView(this.mainWindow);
     }
+
+
+    /**
+     * Set up the components of the main window
+     *
+     */
+    public void setup() {
+
+        //TODO move into a launch(Model, View, Controller) method
+        StartScreenModel startScreenModel = new StartScreenModel();
+        StartScreenView startScreenView = new StartScreenView(startScreenModel);
+        StartScreenController startScreenController = new StartScreenController(startScreenModel, startScreenView);
+
+        setMainWindow(
+                startScreenView.getContainer(startScreenModel.MAIN)
+        );
+
+
+        //TODO move into a test
+        StartScreenModel startScreenModel0 = new StartScreenModel();
+        StartScreenModel startScreenModel1 = new StartScreenModel();
+        System.out.println(startScreenModel0.MAIN.toString());
+        System.out.println(startScreenModel1.MAIN.toString());
+        assert !(startScreenModel0.equals(startScreenModel1)) : "UUID's not unique";
+
+        //TODO move into a test class
+//        startScreenView.refreshView();
+//        startScreenView.updateView(StartScreenModel.Keys.HELLO_WORLD_JLABEL);
+
+        this.mainWindow.setSize(800,600);//400 width and 500 height
+        ///TODO this.mainWindow.setLayout();
+        this.mainWindow.setVisible(true);
+    }
+
+    //set the content of the main window
+    public void setMainWindow(Container c) {
+        this.mainWindow.setContentPane(c);
+    }
+
+    /**
+     * run the application
+     *
+     */
     public void run(){
         boolean running = true;
         while(running){
-            this.view.updateView();
+            this.view.refreshView();
             running = true;
         }
+        setup();
     }
 
 

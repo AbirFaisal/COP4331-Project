@@ -2,16 +2,26 @@ package edu.fau.eng.cop4331.ttt3d.app;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.UUID;
 
 public interface View {
 
-    //class that contains the main view and handles basic stuff
-    //like asking the user the type of game they would like to play.
+    /**
+     * Updates an element of the view given its corresponding UUID
+     * @param uuid UUID as defined in the model of the view
+     */
+    public void updateElement(UUID uuid);
 
-    //TODO figure out if we should instantiate a
-    //View and give it a controller
-    //or a Controller and give it a View
-    public void updateView();
+    //Refresh/Update the whole view.
+    public void refreshView();
+
+    public void init();
+
+    /**
+     * Get a component of the view
+     * @param uuid UUID as defined in the model of the view
+     */
+    Container getContainer(UUID uuid);
 
     public static void main(String[] args) {
 

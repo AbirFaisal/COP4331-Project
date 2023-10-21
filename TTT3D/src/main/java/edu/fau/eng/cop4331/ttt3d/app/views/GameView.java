@@ -11,6 +11,7 @@ import org.lwjgl.system.MemoryStack;
 import javax.swing.*;
 import java.awt.*;
 import java.nio.IntBuffer;
+import java.util.UUID;
 
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
@@ -20,7 +21,11 @@ import static org.lwjgl.system.MemoryUtil.NULL;
 public class GameView implements View {
 
     @Override
-    public void updateView() {
+    public void updateElement(UUID uuid){
+
+    }
+    @Override
+    public void refreshView() {
         glClearColor(1.0f, 0.0f, 0.0f, 0.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
 
@@ -84,6 +89,11 @@ public class GameView implements View {
         glfwShowWindow(window);
 
         GL.createCapabilities();
+    }
+
+    @Override
+    public Container getContainer(UUID uuid) {
+        return null;
     }
 
     public GameView(JFrame window){

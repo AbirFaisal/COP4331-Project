@@ -28,6 +28,33 @@ public class PerformanceTest {
 
 
 
+    private void checkWinnerAlgo3DV2(int[][][] gameState3D) {
+
+        for (int z = 0; z < gameState3D.length; z++) {
+
+            int xSum = 0;
+
+            for (int x = 0; x < gameState3D[z].length; x++) {
+
+                int ySum = 0;
+
+                for (int y = 0; y < gameState3D[z][x].length; y++) {
+                    int a = gameState3D[x][y][z];
+                    xSum += a;
+                    ySum += a;
+
+                }
+
+                if (ySum == 3) {
+                    System.out.println("winner found");
+                } else ySum = 0; //reset ySum
+            }
+
+            if (xSum == 3) {
+                System.out.println("winner found");
+            } else xSum = 0; //reset ySum
+        }
+    }
 
 
     //TODO try 3d array and compare performance

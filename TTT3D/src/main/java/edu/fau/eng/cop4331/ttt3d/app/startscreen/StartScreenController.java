@@ -27,8 +27,7 @@ public class StartScreenController extends Controller {
         this.view.registerController(this);
 
         runHandlers();
-
-        System.out.println("running handlers");
+        System.out.println("running event handlers");
 
         //example handler
         Handler startSinglePlayerGameHandler = value -> {

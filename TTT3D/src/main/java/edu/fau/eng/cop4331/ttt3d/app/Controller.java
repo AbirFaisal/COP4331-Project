@@ -44,7 +44,7 @@ public abstract class Controller {
                     //Handle the event
                     UUID uuid = (UUID) simpleEntry.getKey();
                     ActionEvent actionEvent = (ActionEvent) simpleEntry.getValue();
-                    System.out.println(uuid + "IT WORKS!" + actionEvent);
+                    System.out.println(uuid + "IT WORKS!" + actionEvent);//TODO remove
 
                     //remove from buffer
                     handlerBuffer.remove(i);

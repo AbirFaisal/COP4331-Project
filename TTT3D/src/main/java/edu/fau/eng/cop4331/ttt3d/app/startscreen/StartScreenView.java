@@ -160,35 +160,29 @@ public class StartScreenView implements View {
 
 
     JButton startSinglePlayerGameButton() {
-        //instantiate the object
+        //instantiate the button
         JButton singlePlayerGameButton = new JButton("Single Player");
 
         singlePlayerGameButton.addActionListener(e -> {
             App.getInstance().launchGame(GameType.SINGLE_PLAYER_GAME);
         });
-        
+
         return singlePlayerGameButton;
     }
 
     JButton startMultiPlayerGameButton() {
-        //instantiate the object
+        //instantiate the button
         JButton multiPlayerGameButton = new JButton("Multi Player");
 
-        //create an update method
-        Updater updater = () -> {
-//            App.getInstance().setMainContent();
-            //TODO launch single player game
-        };
-        multiPlayerGameButton.addActionListener(e -> updater.update());
-
-        //put a reference to the update method into the HashMap
-        updateMethods.put(startScreenModel.TEST_BUTTON, updater);
+        multiPlayerGameButton.addActionListener(e -> {
+            App.getInstance().launchGame(GameType.MULTI_PLAYER_CLIENT_GAME);
+        });
         return multiPlayerGameButton;
     }
 
 
     JButton startHostGameButton() {
-        //instantiate the object
+        //instantiate the button
         JButton multiPlayerGameButton = new JButton("Host Game");
 
         //create an update method
@@ -196,8 +190,9 @@ public class StartScreenView implements View {
 //            App.getInstance().setMainContent();
             //TODO launch single player game
         };
-        multiPlayerGameButton.addActionListener(e -> updater.update());
-
+        multiPlayerGameButton.addActionListener(e -> {
+            App.getInstance().launchGame(GameType.MULTI_PLAYER_HOST_GAME);
+        });
         //put a reference to the update method into the HashMap
         updateMethods.put(startScreenModel.TEST_BUTTON, updater);
         return multiPlayerGameButton;

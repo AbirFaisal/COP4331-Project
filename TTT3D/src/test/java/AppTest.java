@@ -38,7 +38,7 @@ public class AppTest {
     //Test player ID generation
     @Test
     public void playerIDTest() throws Exception {
-        App app = new App();
+        App app = App.getInstance();
         String pidb = "";
         byte[] playerID = app.getPlayerID();
 

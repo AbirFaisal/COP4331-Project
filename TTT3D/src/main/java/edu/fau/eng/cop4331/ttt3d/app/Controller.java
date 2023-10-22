@@ -22,7 +22,7 @@ public abstract class Controller {
 
     /**
      * When the user interacts with the View,
-     * the View will notify the Controller that an (UUID, actionEvent) has occurred,
+     * the View will notify the Controller that a (UUID, actionEvent) has occurred,
      * then the (UUID, ActionEvent) will go into a handlerBuffer
      * later it will be handled by a Thread launched by runHandlers().
      */

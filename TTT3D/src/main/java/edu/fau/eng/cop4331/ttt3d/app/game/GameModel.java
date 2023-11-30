@@ -8,7 +8,19 @@ public class GameModel extends Model {
 
     public static UUID MAIN = UUID.randomUUID();
 
-    private int[][][] gameState3D; //used to state of game
+    enum Tile_State {
+        EMPTY,
+        CIRCLE,
+        CROSS
+    }
+    private Tile_State[][][] gameState3D; //used to state of game
+
+    private static int GRID_RANGE_MIN = 0;
+    private static int GRID_RANGE_MAX = 2;
+
+    private String playerName = null;
+    private String opponentName = "CPU";
+
 
     public GameModel() {
 
@@ -21,6 +33,14 @@ public class GameModel extends Model {
 //            }
 //        }
 
+
+        for (int z = GRID_RANGE_MIN; z < GRID_RANGE_MAX; z++) {
+            for (int x = GRID_RANGE_MIN; x < GRID_RANGE_MAX; x++) {
+                for (int y = GRID_RANGE_MIN; y < GRID_RANGE_MAX; y++) {
+                    gameState3D[x][y][z] = Tile_State.EMPTY;
+                }
+            }
+        }
     }
 
     @Override
@@ -32,4 +52,6 @@ public class GameModel extends Model {
     public void setData(UUID key, Record data) {
 
     }
+
+    public String getPlayerName(){return playerName;}
 }

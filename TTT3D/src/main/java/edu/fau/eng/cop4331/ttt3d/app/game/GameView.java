@@ -11,14 +11,16 @@ import java.util.UUID;
 public class GameView extends View {
 
 
-    Controller controller;
+    GameController controller;
 
     GameModel gameModel;
 
 
-    public GameView(GameModel gameModel) {
+    public GameView(GameModel gameModel, GameController controller) {
         this.gameModel = gameModel;
         //TODO register updaters with model
+
+        this.controller = controller;
     }
 
     @Override
@@ -26,6 +28,14 @@ public class GameView extends View {
 
     }
 
+    JButton gridButton(int x, int y, int z) {
+        //instantiate the button
+        JButton gridButton = new JButton("⬜");
 
+        gridButton.addActionListener(e -> {
+            controller.selectGridButton(x,y,z,gameModel.getPlayerName());
+        });
+        return gridButton;
+    }
 
 }

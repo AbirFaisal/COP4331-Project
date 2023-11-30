@@ -40,7 +40,7 @@ public class AppTest {
     public void playerIDTest() throws Exception {
         App app = App.getInstance();
         String pidb = "";
-        byte[] playerID = app.getPlayerID();
+        byte[] playerID = app.getClientID();
 
         for (int i = 0; i < playerID.length; i++) {
             pidb += playerID[i] + " ";

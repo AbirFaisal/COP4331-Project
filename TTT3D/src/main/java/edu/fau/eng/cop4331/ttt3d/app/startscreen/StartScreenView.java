@@ -23,8 +23,9 @@ public class StartScreenView extends View {
     StartScreenModel model;
 
     public StartScreenView(StartScreenModel startScreenModel) {
-        this.model = startScreenModel;
-        this.model.register(this);
+        super(startScreenModel);
+        this.model = startScreenModel; //make view aware of model
+        this.model.register(this); //make model aware of view
         setup(); //TODO this should be called elsewhere?
     }
 
@@ -44,6 +45,11 @@ public class StartScreenView extends View {
 
 //        updateView(StartScreenModel.Keys.HELLO_WORLD_JLABEL);
     }
+
+
+
+
+
 
 
     /**
@@ -99,7 +105,10 @@ public class StartScreenView extends View {
     }
 
 
-
+    /**
+     *
+     * @return
+     */
     JTextField serverIPJTextField() {
         JTextField serverIPTextField = new JTextField("000.000.000.000:1234");
         serverIPTextField.setMaximumSize(new Dimension(300, 25));

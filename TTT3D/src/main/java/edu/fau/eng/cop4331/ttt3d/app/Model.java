@@ -1,17 +1,16 @@
 package edu.fau.eng.cop4331.ttt3d.app;
 
-import javax.swing.*;
-import java.io.Serializable;
-import java.nio.charset.StandardCharsets;
-import java.security.SecureRandom;
-import java.util.Base64;
 import java.util.HashMap;
-import java.util.Random;
 import java.util.UUID;
 
 public abstract class Model {
 
+    // Contains data structures that will be
+    // updated by the controller or read by the view
     HashMap<UUID, Record> dataStructures = new HashMap<>();
+
+    //Just a refrence to the view that should be notified
+    //when data is updated in this model
     View view;
 
     /**
@@ -25,7 +24,7 @@ public abstract class Model {
     /**
      * Register a view with the model so that setData()
      * can call its notify method after updating a value
-     * @param view
+     * @param view the view that should be notified of changes to this model
      */
     public void register(View view) {
         this.view = view;
@@ -33,7 +32,7 @@ public abstract class Model {
 
 
     /**
-     * Allows the controller will set a dataStructure
+     * Allows the controller to set/update a dataStructure
      * and the model to notify the view
      * @param key UUID as defined in a subclass of this Model
      * @param data record object as defined a subclass of this Model

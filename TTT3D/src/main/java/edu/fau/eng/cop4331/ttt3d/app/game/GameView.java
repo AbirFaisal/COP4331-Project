@@ -17,6 +17,7 @@ public class GameView extends View {
 
 
     public GameView(GameModel gameModel) {
+        super(gameModel);
         this.gameModel = gameModel;
         //TODO register updaters with model
     }

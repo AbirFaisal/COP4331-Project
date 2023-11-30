@@ -15,7 +15,7 @@ import java.util.Random;
 
 public class App {
     JFrame mainWindow;
-    private byte[] playerID; //128 bit player id
+    private byte[] clientID; //128 bit client id
     private Model model;
     private View view;
     private Controller controller;
@@ -24,10 +24,7 @@ public class App {
     private static App instance;
     private App() {
         this.mainWindow = new JFrame("Main Window");
-
-        this.playerID = new byte[16]; //TODO load from a configuration
-        Random r = new Random();
-        r.nextBytes(this.playerID);
+        this.clientID = getClientID();
     }
     public static synchronized App getInstance() {
         if (instance == null) instance = new App();
@@ -55,14 +52,6 @@ public class App {
                 startScreenView.getContainer(startScreenModel.MAIN)
         );
 
-
-        //TODO move into a test
-        StartScreenModel startScreenModel0 = new StartScreenModel();
-        StartScreenModel startScreenModel1 = new StartScreenModel();
-        System.out.println(startScreenModel0.MAIN.toString());
-        System.out.println(startScreenModel1.MAIN.toString());
-        assert !(startScreenModel0.equals(startScreenModel1)) : "UUID's not unique";
-
         this.mainWindow.setSize(800,600);//400 width and 500 height
         this.mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ///TODO this.mainWindow.setLayout();
@@ -74,6 +63,8 @@ public class App {
         this.mainWindow.setContentPane(c);
     }
 
+
+
     /**
      * run the application
      *
@@ -83,12 +74,12 @@ public class App {
     }
 
     public void launchGame(GameType gameType) {
+        GameModel gameModel = new GameModel();
+        GameView gameView = new GameView(gameModel);
+
         switch (gameType) {
             case SINGLE_PLAYER_GAME -> {
-                GameModel gameModel = new GameModel();
-                GameView gameView = new GameView(gameModel);
                 SinglePlayerGameController gameController = new SinglePlayerGameController();
-
                 setMainWindow(gameView.getContainer(GameModel.MAIN));
             }
             case MULTI_PLAYER_CLIENT_GAME -> {}
@@ -99,10 +90,15 @@ public class App {
     }
 
 
-
-
-    public byte[] getPlayerID() {
-        return playerID;
+    /**
+     * Generate a client ID or try to load from settings.json
+     * @return 128bit Client ID
+     */
+    public byte[] getClientID() {
+        this.clientID = new byte[16]; //TODO load from a configuration
+        Random r = new Random();
+        r.nextBytes(this.clientID);
+        return clientID;
     }
 
 

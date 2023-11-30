@@ -1,7 +1,5 @@
 package edu.fau.eng.cop4331.ttt3d.app;
 
-import edu.fau.eng.cop4331.ttt3d.app.startscreen.StartScreenView;
-
 import java.awt.*;
 import java.util.HashMap;
 import java.util.UUID;
@@ -18,6 +16,12 @@ public abstract class View {
     //methods that are called when update is called on a UUID mapped to jFrames
     public interface Updater { void update();}
     public HashMap<UUID, Updater> updateMethods = new HashMap<>();
+
+    public Model model;
+    public View(Model model) {
+        this.model = model;
+        this.model.register(this);
+    }
 
     public abstract void setup();
 

@@ -6,19 +6,13 @@ import java.util.UUID;
 
 public class GameModel extends Model {
 
-    public static UUID MAIN = UUID.randomUUID();
+    public UUID MAIN = UUID.randomUUID();
 
-    enum Tile_State {
-        EMPTY,
-        CIRCLE,
-        CROSS
-    }
-    private Tile_State[][][] gameState3D; //used to state of game
+    private TileState[][][] gameState3D; //used to state of game
 
     private static int GRID_RANGE_MIN = 0;
     private static int GRID_RANGE_MAX = 2;
-
-    private String playerName = null;
+    private String playerName = "Player";
     private String opponentName = "CPU";
 
 
@@ -33,11 +27,11 @@ public class GameModel extends Model {
 //            }
 //        }
 
-
+        gameState3D = new TileState[GRID_RANGE_MAX+1][GRID_RANGE_MAX+1][GRID_RANGE_MAX+1];
         for (int z = GRID_RANGE_MIN; z < GRID_RANGE_MAX; z++) {
             for (int x = GRID_RANGE_MIN; x < GRID_RANGE_MAX; x++) {
                 for (int y = GRID_RANGE_MIN; y < GRID_RANGE_MAX; y++) {
-                    gameState3D[x][y][z] = Tile_State.EMPTY;
+                    gameState3D[x][y][z] = TileState.EMPTY;
                 }
             }
         }
@@ -54,4 +48,16 @@ public class GameModel extends Model {
     }
 
     public String getPlayerName(){return playerName;}
+
+    public int gridSize(){return ((GRID_RANGE_MAX + 1)*(GRID_RANGE_MAX + 1)*(GRID_RANGE_MAX + 1));}
+
+    public void createGameBoard(){
+        int gameBoardSize = gridSize();
+        int i = 0;
+
+        while(i<gameBoardSize){
+            i++;
+
+        }
+    }
 }

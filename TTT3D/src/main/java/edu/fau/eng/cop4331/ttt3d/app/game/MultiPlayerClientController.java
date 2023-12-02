@@ -1,17 +1,23 @@
 package edu.fau.eng.cop4331.ttt3d.app.game;
 
-import edu.fau.eng.cop4331.ttt3d.app.Controller;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.UUID;
-
 public class MultiPlayerClientController extends GameController {
 
+
+    public MultiPlayerClientController(GameModel model, GameView view) {
+        super(model, view);
+    }
+
     @Override
-    void selectGridButton(int x, int y, int z, String player) {
+    void determinePlayers(String user1, String user2) {
 
     }
+
+    @Override
+    String selectGridButton(String player) {
+        return null;
+    }
+
+
 
 
     //Use cases

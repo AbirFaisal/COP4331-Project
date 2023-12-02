@@ -31,10 +31,11 @@ public class StartScreenController extends Controller {
 
         //example handler
         Handler startSinglePlayerGameHandler = value -> {
-//            App.getInstance().launchGame(GameType.SINGLE_PLAYER_GAME);
+            App.getInstance().launchGame(GameType.SINGLE_PLAYER_GAME);
             System.out.println("Button Pressed");
         };
         handlers.put(model.START_SINGLE_PLAYER_GAME_BUTTON, startSinglePlayerGameHandler);
+
 
     }
 

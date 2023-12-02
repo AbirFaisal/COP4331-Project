@@ -87,9 +87,10 @@ public class App {
             case SINGLE_PLAYER_GAME -> {
                 GameModel gameModel = new GameModel();
                 GameView gameView = new GameView(gameModel);
-                SinglePlayerGameController gameController = new SinglePlayerGameController();
+                SinglePlayerGameController gameController = new SinglePlayerGameController(gameModel, gameView);
+                setMainWindow(gameView.getContainer(gameModel.MAIN));
 
-                setMainWindow(gameView.getContainer(GameModel.MAIN));
+
             }
             case MULTI_PLAYER_CLIENT_GAME -> {}
             case MULTI_PLAYER_HOST_GAME -> {}

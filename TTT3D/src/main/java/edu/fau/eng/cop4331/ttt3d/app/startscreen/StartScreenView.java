@@ -12,9 +12,7 @@ import java.time.Instant;
 
 public class StartScreenView extends View {
 
-
-//    StartScreenController controller;
-
+    //The model that this view will refrence
     StartScreenModel model;
 
     public StartScreenView(StartScreenModel startScreenModel) {

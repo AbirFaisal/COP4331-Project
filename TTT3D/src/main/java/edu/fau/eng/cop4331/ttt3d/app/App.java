@@ -12,6 +12,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
 
+import static java.lang.System.exit;
+
 
 public class App {
     JFrame mainWindow;
@@ -56,6 +58,7 @@ public class App {
     public void setMainWindowContent(Container c) {
         this.mainWindow.getContentPane().removeAll();
         this.mainWindow.setContentPane(c);
+        this.mainWindow.revalidate();
     }
 
 
@@ -70,6 +73,7 @@ public class App {
 
     public void launchGame(GameType gameType) {
         GameModel gameModel = new GameModel();
+        System.out.println(gameModel.MAIN); //TODO remove
         GameView gameView = new GameView(gameModel);
 
         switch (gameType) {

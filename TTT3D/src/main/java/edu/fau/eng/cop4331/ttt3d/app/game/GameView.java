@@ -11,15 +11,11 @@ import java.util.UUID;
 
 public class GameView extends View {
 
-
-    Controller controller;
-
-    GameModel gameModel;
-
+    GameModel model;
 
     public GameView(GameModel gameModel) {
         super(gameModel);
-        this.gameModel = gameModel; //make view aware of model
+        this.model = gameModel; //make view aware of model
         this.model.register(this); //make model aware of view
         setup(); //setup the view
     }
@@ -27,8 +23,10 @@ public class GameView extends View {
     @Override
     public void setup() {
         JPanel mainJPanel = new JPanel();
-        this.jFrames.put(gameModel.MAIN, mainJPanel);
+        this.jFrames.put(model.MAIN, mainJPanel);
+        mainJPanel.setLayout(new BoxLayout(mainJPanel, BoxLayout.Y_AXIS));
 
+        this.jFrames.get(model.MAIN).add(helloWorld());
     }
 
     JLabel helloWorld() {
@@ -37,12 +35,12 @@ public class GameView extends View {
             String currentTime = Instant.now().toString();
             jLabel.setText(currentTime);
         };
-        updateMethods.put(gameModel.HELLO_WORLD_JLABEL, updater);
+        updateMethods.put(model.HELLO_WORLD_JLABEL, updater);
         return jLabel;
     }
 
 
     public GameModel getGameModel() {
-        return gameModel;
+        return model;
     }
 }

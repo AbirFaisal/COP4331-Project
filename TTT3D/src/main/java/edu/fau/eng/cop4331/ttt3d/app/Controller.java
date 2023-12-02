@@ -33,7 +33,9 @@ public abstract class Controller {
         eventBuffer.add(tuple);
     }
 
-
+    /**
+     * This will monitor the event buffer and handle any events
+     */
     public void runHandlers() {
         new Thread(() -> {
             while (true) {

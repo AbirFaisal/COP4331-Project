@@ -12,10 +12,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
 
+import static java.lang.System.exit;
+
 
 public class App {
     JFrame mainWindow;
-    private byte[] playerID; //128 bit player id
+    private byte[] clientID; //128 bit client id
     private Model model;
     private View view;
     private Controller controller;
@@ -24,10 +26,7 @@ public class App {
     private static App instance;
     private App() {
         this.mainWindow = new JFrame("Main Window");
-
-        this.playerID = new byte[16]; //TODO load from a configuration
-        Random r = new Random();
-        r.nextBytes(this.playerID);
+        this.clientID = getClientID();
     }
     public static synchronized App getInstance() {
         if (instance == null) instance = new App();
@@ -45,23 +44,9 @@ public class App {
         StartScreenView startScreenView = new StartScreenView(startScreenModel);
         StartScreenController startScreenController = new StartScreenController(startScreenModel, startScreenView);
 
-        //The view needs to be registered with the model so it can notify it of changes
-//        startScreenModel.register(startScreenView);
-
-        //The controller needs to be registered with the view so it can inform it of user events.
-//        startScreenView.registerController(startScreenController);
-
-        setMainWindow(
+        setMainWindowContent(
                 startScreenView.getContainer(startScreenModel.MAIN)
         );
-
-
-        //TODO move into a test
-        StartScreenModel startScreenModel0 = new StartScreenModel();
-        StartScreenModel startScreenModel1 = new StartScreenModel();
-        System.out.println(startScreenModel0.MAIN.toString());
-        System.out.println(startScreenModel1.MAIN.toString());
-        assert !(startScreenModel0.equals(startScreenModel1)) : "UUID's not unique";
 
         this.mainWindow.setSize(800,600);//400 width and 500 height
         this.mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -70,9 +55,13 @@ public class App {
     }
 
     //set the content of the main window
-    public void setMainWindow(Container c) {
+    public void setMainWindowContent(Container c) {
+        this.mainWindow.getContentPane().removeAll();
         this.mainWindow.setContentPane(c);
+        this.mainWindow.revalidate();
     }
+
+
 
     /**
      * run the application
@@ -83,14 +72,14 @@ public class App {
     }
 
     public void launchGame(GameType gameType) {
+        GameModel gameModel = new GameModel();
+        System.out.println(gameModel.MAIN); //TODO remove
+        GameView gameView = new GameView(gameModel);
+
         switch (gameType) {
             case SINGLE_PLAYER_GAME -> {
-                GameModel gameModel = new GameModel();
-                GameView gameView = new GameView(gameModel);
                 SinglePlayerGameController gameController = new SinglePlayerGameController(gameModel, gameView);
-                setMainWindow(gameView.getContainer(gameModel.MAIN));
-
-
+                setMainWindowContent(gameView.getContainer(gameModel.MAIN));
             }
             case MULTI_PLAYER_CLIENT_GAME -> {}
             case MULTI_PLAYER_HOST_GAME -> {}
@@ -100,10 +89,15 @@ public class App {
     }
 
 
-
-
-    public byte[] getPlayerID() {
-        return playerID;
+    /**
+     * Generate a client ID or try to load from settings.json
+     * @return 128bit Client ID
+     */
+    public byte[] getClientID() {
+        this.clientID = new byte[16]; //TODO load from a configuration
+        Random r = new Random();
+        r.nextBytes(this.clientID);
+        return clientID;
     }
 
 

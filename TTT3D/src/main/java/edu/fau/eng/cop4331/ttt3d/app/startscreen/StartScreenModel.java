@@ -1,9 +1,7 @@
 package edu.fau.eng.cop4331.ttt3d.app.startscreen;
 
 import edu.fau.eng.cop4331.ttt3d.app.Model;
-import edu.fau.eng.cop4331.ttt3d.app.View;
 
-import java.util.HashMap;
 import java.util.UUID;
 
 
@@ -37,9 +35,7 @@ public class StartScreenModel extends Model {
             int[] arrayList
     ){}
 
-    public record ServerInfo(
-            String ipAddress,
-            String port
-    ){}
+    public record ServerIP(String ipAddress){}
+    public record ServerPort(String port){}
 
 }

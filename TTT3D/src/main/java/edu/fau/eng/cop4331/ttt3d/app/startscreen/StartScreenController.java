@@ -5,6 +5,7 @@ import edu.fau.eng.cop4331.ttt3d.app.Controller;
 import edu.fau.eng.cop4331.ttt3d.app.game.GameType;
 
 import java.awt.event.ActionEvent;
+import java.util.UUID;
 
 public class StartScreenController extends Controller {
 
@@ -29,7 +30,8 @@ public class StartScreenController extends Controller {
 //            System.out.println("Start Single Player Button Pressed");
 //        };
         handlers.put(model.START_SINGLE_PLAYER_GAME_BUTTON, startSinglePlayerGameHandler());
-        handlers.put(model.SERVER_IP_TEXT_FIELD, setServerIPHandler());
+        handlers.put(model.SERVER_IP_TEXT_FIELD, serverIPInfoUpdateHandler());
+        handlers.put(model.SERVER_PORT_TEXT_FIELD, serverPortUpdateHandler());
     }
 
 
@@ -52,19 +54,15 @@ public class StartScreenController extends Controller {
      * When the user changes the server IP
      * @return
      */
-    Handler setServerIPHandler(){
+    Handler serverIPInfoUpdateHandler(){
+        UUID uuid = model.SERVER_IP_TEXT_FIELD;
         return new Handler() {
             @Override
             public void handle(ActionEvent value) {
-                String serverIP = value.getActionCommand(); //get the IP
-
+                String serverIP = value.getActionCommand(); //get the IP:Port
                 //Update the model with the IP
-                model.setData(model.SERVER_IP_TEXT_FIELD,
-                        new StartScreenModel.ServerInfo(
-                                serverIP,""
-                        ));
-
-                System.out.println(serverIP);
+                model.setData(uuid, new StartScreenModel.ServerIP(serverIP));
+                System.out.println(model.getData(uuid));
             }
         };
     }
@@ -73,15 +71,17 @@ public class StartScreenController extends Controller {
      * When the user changes the server Port
      * @return
      */
-    Handler setServerPortHandler(){
+    Handler serverPortUpdateHandler(){
+        UUID uuid = model.SERVER_PORT_TEXT_FIELD;
         return new Handler() {
             @Override
             public void handle(ActionEvent value) {
                 String serverPort = value.getActionCommand();
-                System.out.println(serverPort);
+                //update the model with the port
+                model.setData(uuid, new StartScreenModel.ServerPort(serverPort));
+                System.out.println(model.getData(uuid));
             }
         };
     }
-
 
 }

@@ -3,12 +3,15 @@ package edu.fau.eng.cop4331.ttt3d.app.startscreen;
 import edu.fau.eng.cop4331.ttt3d.app.App;
 import edu.fau.eng.cop4331.ttt3d.app.View;
 import edu.fau.eng.cop4331.ttt3d.app.game.GameType;
+import edu.fau.eng.cop4331.ttt3d.server.Server;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.time.Instant;
+import java.util.UUID;
 
 public class StartScreenView extends View {
 
@@ -29,10 +32,13 @@ public class StartScreenView extends View {
         this.jFrames.put(model.MAIN, mainJPanel);
         mainJPanel.setLayout(new BoxLayout(mainJPanel, BoxLayout.Y_AXIS));
 
+        //add elemets of this view
         this.jFrames.get(model.MAIN).add(serverIPJTextField());
+        this.jFrames.get(model.MAIN).add(serverPortJTextField());
         this.jFrames.get(model.MAIN).add(startSinglePlayerGameButton());
         this.jFrames.get(model.MAIN).add(startMultiPlayerGameButton());
         this.jFrames.get(model.MAIN).add(startHostGameButton());
+
     }
 
     /**
@@ -91,37 +97,57 @@ public class StartScreenView extends View {
 
     /**
      *
-     * @return
+     * @return a JTextField for the user to type in the server IP and port
      */
     JTextField serverIPJTextField() {
-        JTextField serverIPTextField = new JTextField("000.000.000.000:1234");
+        JTextField serverIPTextField = new JTextField("0.0.0.0");
         serverIPTextField.setMaximumSize(new Dimension(300, 25));
+        UUID uuid = this.model.SERVER_IP_TEXT_FIELD;
 
-
-        Updater updater = () -> {
-            StartScreenModel.ServerInfo serverInfo =
-                    new StartScreenModel.ServerInfo(
-                            serverIPTextField.getText(),
-                            "1234"
-                    );
-            System.out.println(serverInfo);
+        //when the text field is changed
+        //notify the controller of the change
+        DocumentListener dl = new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                controller.handle(model.SERVER_IP_TEXT_FIELD,
+                        new ActionEvent(serverIPTextField, 0, serverIPTextField.getText())
+                );
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                controller.handle(model.SERVER_IP_TEXT_FIELD,
+                        new ActionEvent(serverIPTextField, 0, serverIPTextField.getText())
+                );
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {}
         };
-        serverIPTextField.getDocument().addDocumentListener(
-                new DocumentListener() {
-                    @Override
-                    public void insertUpdate(DocumentEvent e) { updater.update();}
-                    @Override
-                    public void removeUpdate(DocumentEvent e) { updater.update();}
-                    @Override
-                    public void changedUpdate(DocumentEvent e) {}
-                }
-        );
+        serverIPTextField.getDocument().addDocumentListener(dl);
+
+        //updates the UI if there is a change in the Model
+        Updater updater = () -> {
+            //set text without triggering event
+            serverIPTextField.getDocument().removeDocumentListener(dl);
+            //get the data from the model as ServerInfo
+            StartScreenModel.ServerInfo si = (StartScreenModel.ServerInfo) this.model.getData(uuid);
+
+            //if the text is different then update it, else do nothing
+            if (!serverIPTextField.getText().equals(si.ipAddress()))
+                serverIPTextField.setText(si.ipAddress());
+
+            //restore the change listener
+            serverIPTextField.getDocument().addDocumentListener(dl);
+        };
+        this.updateMethods.put(this.model.SERVER_IP_TEXT_FIELD, updater);
+        
         return serverIPTextField;
     }
 
     JTextField serverPortJTextField() {
-        JTextField serverPortTextField = new JTextField("0.0.0.0");
+        JTextField serverPortTextField = new JTextField("1234");
+        serverPortTextField.setMaximumSize(new Dimension(300, 25));
 
+        //updates the model when there are changes to the text
         Updater updater = () -> {
             StartScreenModel.ServerInfo serverInfo =
                     new StartScreenModel.ServerInfo(

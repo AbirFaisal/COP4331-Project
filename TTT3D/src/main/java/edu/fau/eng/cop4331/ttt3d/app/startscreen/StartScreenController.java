@@ -29,6 +29,7 @@ public class StartScreenController extends Controller {
 //            System.out.println("Start Single Player Button Pressed");
 //        };
         handlers.put(model.START_SINGLE_PLAYER_GAME_BUTTON, startSinglePlayerGameHandler());
+        handlers.put(model.SERVER_IP_TEXT_FIELD, setServerIPHandler());
     }
 
 
@@ -43,6 +44,41 @@ public class StartScreenController extends Controller {
             public void handle(ActionEvent value) {
                 System.out.println("Start Single Player Button Pressed");
                 App.getInstance().launchGame(GameType.SINGLE_PLAYER_GAME);
+            }
+        };
+    }
+
+    /**
+     * When the user changes the server IP
+     * @return
+     */
+    Handler setServerIPHandler(){
+        return new Handler() {
+            @Override
+            public void handle(ActionEvent value) {
+                String serverIP = value.getActionCommand(); //get the IP
+
+                //Update the model with the IP
+                model.setData(model.SERVER_IP_TEXT_FIELD,
+                        new StartScreenModel.ServerInfo(
+                                serverIP,""
+                        ));
+
+                System.out.println(serverIP);
+            }
+        };
+    }
+
+    /**
+     * When the user changes the server Port
+     * @return
+     */
+    Handler setServerPortHandler(){
+        return new Handler() {
+            @Override
+            public void handle(ActionEvent value) {
+                String serverPort = value.getActionCommand();
+                System.out.println(serverPort);
             }
         };
     }

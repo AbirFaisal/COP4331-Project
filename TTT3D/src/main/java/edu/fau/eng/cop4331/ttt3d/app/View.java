@@ -49,7 +49,8 @@ public abstract class View {
      * @param uuid UUID as defined in the model of the view
      */
     public void updateElement(UUID uuid) {
-        this.updateMethods.get(uuid).update();
+//        if (this.updateMethods.get(uuid) != null)
+            this.updateMethods.get(uuid).update();
     }
 
     /**

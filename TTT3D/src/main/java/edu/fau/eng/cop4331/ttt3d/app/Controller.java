@@ -14,7 +14,7 @@ public abstract class Controller {
     public Model model;
 
     public interface Handler {
-        void handle(ActionEvent value);
+        String handle(ActionEvent value);
     }
 
     public HashMap<UUID, Handler> handlers = new HashMap<>();

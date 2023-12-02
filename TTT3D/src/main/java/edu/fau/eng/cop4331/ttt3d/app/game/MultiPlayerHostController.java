@@ -13,12 +13,12 @@ public class MultiPlayerHostController extends GameController {
     }
 
     @Override
-    void determinePlayers(String user1, String user2) {
+    void determinePlayers() {
 
     }
 
     @Override
-    String selectGridButton(String player) {
+    Handler selectGridButtonHandler() {
         return null;
     }
 

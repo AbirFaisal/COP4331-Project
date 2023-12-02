@@ -7,25 +7,26 @@ public abstract class GameController extends Controller {
     GameModel model;
     GameView view;
 
-    String playerX = null;
     boolean isTurn = false;
-    TileState grid;
 
     public GameController(GameModel model,GameView view){
         this.model = model;
         this.view = view;
         this.view.registerController(this);
 
+        determinePlayers();
+
         runHandlers();
         System.out.println("running game event handlers");
+//        handlers.put(model.PLAYER, selectGridButtonHandler(model.getPlayerName()));
 
     }
 
-    abstract void determinePlayers(String user1, String user2);
-    abstract String selectGridButton(String player);
+    abstract Handler selectGridButtonHandler();
 
     void gameCycle(){
-
+//        determinePlayers();
     }
 
+    abstract void determinePlayers();
 }

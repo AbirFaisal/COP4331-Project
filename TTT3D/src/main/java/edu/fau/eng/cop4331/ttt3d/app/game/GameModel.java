@@ -19,14 +19,15 @@ public class GameModel extends Model {
      */
     public UUID MAIN = UUID.randomUUID();
 	public UUID HELLO_WORLD_JLABEL = UUID.randomUUID();
-
+    public UUID PLAYER = UUID.randomUUID();
     private TileState[][][] gameState3D; //used to state of game
 
     private static int GRID_RANGE_MIN = 0;
     private static int GRID_RANGE_MAX = 2;
     private String playerName = "Player";
     private String opponentName = "CPU";
-
+    String playerX = null;
+    private int[] activeButton = new int[3];
 
     public GameModel() {
 
@@ -70,6 +71,54 @@ public class GameModel extends Model {
         while(i<gameBoardSize){
             i++;
 
+        }
+    }
+
+    public void setActiveButton(int x, int y, int z){
+        activeButton[0] = x;
+        activeButton[1] = y;
+        activeButton[2] = z;
+    }
+
+    public void updateCross(){
+        gameState3D[activeButton[0]][activeButton[1]][activeButton[2]] = TileState.CROSS;
+    }
+
+    public void updateCircle(){
+        gameState3D[activeButton[0]][activeButton[1]][activeButton[2]] = TileState.CIRCLE;
+    }
+
+    public void clearActiveButton(){
+        activeButton = new int[3];
+    }
+
+    public boolean isPlayerX(String player){
+        return player.equals(playerX);
+    }
+
+    public void setPlayers(boolean a){
+        if (a){
+            playerX = playerName;
+        }else{
+            playerX = opponentName;
+        }
+    }
+
+    public String getTileString(){
+        if (gameState3D[activeButton[0]][activeButton[1]][activeButton[2]] == TileState.CROSS){
+            return "X";
+        }else{
+            return "O";
+        }
+
+    }
+    public void selectGridButton() {
+        System.out.println(toString());
+
+        if (isPlayerX(playerName)){
+            updateCross();
+        }else{
+            updateCircle();
         }
     }
 }

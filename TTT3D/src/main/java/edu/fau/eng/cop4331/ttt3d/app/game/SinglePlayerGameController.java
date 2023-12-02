@@ -1,5 +1,6 @@
 package edu.fau.eng.cop4331.ttt3d.app.game;
 
+import java.awt.event.ActionEvent;
 import java.util.Random;
 
 public class SinglePlayerGameController extends GameController {
@@ -10,26 +11,28 @@ public class SinglePlayerGameController extends GameController {
     }
 
     @Override
-    void determinePlayers(String user1, String user2) {
-        Random flip = new Random();
-
-        if (flip.nextInt(2) == 0) {
-            this.playerX = user1;
+    void determinePlayers() {
+        Random r = new Random();
+        if (r.nextInt(2) == 0) {
+            model.setPlayers(true);
             System.out.println("You are 'X'\nYou are first");
         }else{
-            this.playerX = user2;
+            model.setPlayers(false);
             System.out.println("You are 'O'\nYou are second");
         }
     }
 
     @Override
-    String selectGridButton(String player) {
-        if (playerX.equals(player)){
-            return "X";
-        }else{
-            return "O";
-        }
+    Handler selectGridButtonHandler() {
+        return new Handler() {
+            @Override
+            public String handle(ActionEvent event) {
+                return null;
+            }
+        };
+
     }
+
 
 
     //controller that connects the view with a single player game model

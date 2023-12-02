@@ -41,9 +41,10 @@ public class StartScreenController extends Controller {
     Handler startSinglePlayerGameHandler() {
         return new Handler() {
             @Override
-            public void handle(ActionEvent value) {
+            public String handle(ActionEvent value) {
                 System.out.println("Start Single Player Button Pressed");
                 App.getInstance().launchGame(GameType.SINGLE_PLAYER_GAME);
+                return null;
             }
         };
     }

@@ -11,12 +11,10 @@ import java.util.UUID;
 public class GameView extends View {
 
     GameModel model;
-    GameController controller;
 
     public GameView(GameModel gameModel) {
         super(gameModel);
         this.model = gameModel; //make view aware of model
-        this.model.register(this); //make model aware of view
         setup(); //setup the view
     }
 
@@ -24,12 +22,12 @@ public class GameView extends View {
     public void setup() {
 //        gameModel.createGameBoard();
 
-//        this.jFrames.get(this.model.MAIN).add(gridButton(0,0,0));
         JPanel mainJPanel = new JPanel();
         this.jFrames.put(model.MAIN, mainJPanel);
         mainJPanel.setLayout(new BoxLayout(mainJPanel, BoxLayout.Y_AXIS));
 
-        this.jFrames.get(model.MAIN).add(helloWorld());
+//        this.jFrames.get(model.MAIN).add(helloWorld());
+        this.jFrames.get(this.model.MAIN).add(gridButton(0,0,0));
     }
 
     JButton gridButton(int x, int y, int z) {
@@ -37,7 +35,10 @@ public class GameView extends View {
         JButton gridButton = new JButton("⬜");
 
         gridButton.addActionListener(e -> {
-            gridButton.setText(controller.selectGridButton(model.getPlayerName()));
+            model.setActiveButton(x,y,z);
+//            this.controller.handle(model.PLAYER, e);
+            model.selectGridButton();
+            gridButton.setText(model.getTileString());
         });
         return gridButton;
     }

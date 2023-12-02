@@ -10,7 +10,7 @@ public abstract class Model {
     HashMap<UUID, Record> dataStructures = new HashMap<>();
 
     //Just a refrence to the view that should be notified
-    //when data is updated in this model
+    //when data is updated in of this model
     View view;
 
     /**

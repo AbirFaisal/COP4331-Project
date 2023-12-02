@@ -1,8 +1,6 @@
 package edu.fau.eng.cop4331.ttt3d.app.startscreen;
 
 import edu.fau.eng.cop4331.ttt3d.app.App;
-import edu.fau.eng.cop4331.ttt3d.app.Controller;
-import edu.fau.eng.cop4331.ttt3d.app.Model;
 import edu.fau.eng.cop4331.ttt3d.app.View;
 import edu.fau.eng.cop4331.ttt3d.app.game.GameType;
 
@@ -11,9 +9,6 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.time.Instant;
-import java.util.HashMap;
-import java.util.UUID;
-import java.util.function.BiConsumer;
 
 public class StartScreenView extends View {
 
@@ -26,7 +21,7 @@ public class StartScreenView extends View {
         super(startScreenModel);
         this.model = startScreenModel; //make view aware of model
         this.model.register(this); //make model aware of view
-        setup(); //TODO this should be called elsewhere?
+        setup(); //setup the view
     }
 
     //set up the view
@@ -36,21 +31,11 @@ public class StartScreenView extends View {
         this.jFrames.put(model.MAIN, mainJPanel);
         mainJPanel.setLayout(new BoxLayout(mainJPanel, BoxLayout.Y_AXIS));
 
-
         this.jFrames.get(model.MAIN).add(serverIPJTextField());
-
         this.jFrames.get(model.MAIN).add(startSinglePlayerGameButton());
         this.jFrames.get(model.MAIN).add(startMultiPlayerGameButton());
         this.jFrames.get(model.MAIN).add(startHostGameButton());
-
-//        updateView(StartScreenModel.Keys.HELLO_WORLD_JLABEL);
     }
-
-
-
-
-
-
 
     /**
      * Example function
@@ -77,6 +62,7 @@ public class StartScreenView extends View {
         return jLabel;
     }
 
+    //example button
     JButton testButton() {
         //instantiate the object
         JButton jButton = new JButton("button Text");
@@ -115,9 +101,6 @@ public class StartScreenView extends View {
 
 
         Updater updater = () -> {
-
-
-
             StartScreenModel.ServerInfo serverInfo =
                     new StartScreenModel.ServerInfo(
                             serverIPTextField.getText(),

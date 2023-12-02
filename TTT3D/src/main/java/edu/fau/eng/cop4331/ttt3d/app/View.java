@@ -23,6 +23,7 @@ public abstract class View {
         this.model.register(this);
     }
 
+    //used to setup the view, setup the main view and add elements to it
     public abstract void setup();
 
 

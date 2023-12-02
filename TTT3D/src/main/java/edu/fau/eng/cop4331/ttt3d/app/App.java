@@ -12,15 +12,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
 
-import static java.lang.System.exit;
-
 
 public class App {
     JFrame mainWindow;
     private byte[] clientID; //128 bit client id
-    private Model model;
-    private View view;
-    private Controller controller;
 
     //Singleton Pattern
     private static App instance;
@@ -38,39 +33,32 @@ public class App {
      *
      */
     public void setup() {
-
-        //TODO move into a launch(Model, View, Controller) method
-        StartScreenModel startScreenModel = new StartScreenModel();
-        StartScreenView startScreenView = new StartScreenView(startScreenModel);
-        StartScreenController startScreenController = new StartScreenController(startScreenModel, startScreenView);
-
-        setMainWindowContent(
-                startScreenView.getContainer(startScreenModel.MAIN)
-        );
-
+        initStartScreen();
         this.mainWindow.setSize(800,600);//400 width and 500 height
         this.mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ///TODO this.mainWindow.setLayout();
         this.mainWindow.setVisible(true);
     }
 
-    //set the content of the main window
-    public void setMainWindowContent(Container c) {
-        this.mainWindow.getContentPane().removeAll();
-        this.mainWindow.setContentPane(c);
-        this.mainWindow.revalidate();
-    }
-
-
-
     /**
      * run the application
      *
      */
     public void run() {
-
+        //TODO this might be useless...
     }
 
+    public void initStartScreen(){
+        StartScreenModel startScreenModel = new StartScreenModel();
+        StartScreenView startScreenView = new StartScreenView(startScreenModel);
+        StartScreenController startScreenController = new StartScreenController(startScreenModel, startScreenView);
+        setMainWindowContent(startScreenView.getContainer(startScreenModel.MAIN));
+    }
+
+    /**
+     *
+     * @param gameType the type of game you want to launch
+     */
     public void launchGame(GameType gameType) {
         GameModel gameModel = new GameModel();
         System.out.println(gameModel.MAIN); //TODO remove
@@ -94,12 +82,23 @@ public class App {
      * @return 128bit Client ID
      */
     public byte[] getClientID() {
-        this.clientID = new byte[16]; //TODO load from a configuration
-        Random r = new Random();
-        r.nextBytes(this.clientID);
+        if (this.clientID == null) {
+            this.clientID = new byte[16]; //TODO load from a configuration
+            Random r = new Random();
+            r.nextBytes(this.clientID);
+        }
         return clientID;
     }
 
+    /**
+     * set the content of the main window
+     * @param c a JPanel that contains the contents you want to display
+     */
+    public void setMainWindowContent(Container c) {
+        this.mainWindow.getContentPane().removeAll();
+        this.mainWindow.setContentPane(c);
+        this.mainWindow.revalidate();
+    }
 
 }
 

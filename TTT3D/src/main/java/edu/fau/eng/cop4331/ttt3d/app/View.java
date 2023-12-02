@@ -12,9 +12,12 @@ public abstract class View {
     public HashMap<UUID, Container> jFrames = new HashMap<>();
     public Controller controller;
 
-
-    //methods that are called when update is called on a UUID mapped to jFrames
+    /**
+     * Updater interface.
+     * the method update() is called when something in the view needs to be updated.
+     */
     public interface Updater { void update();}
+    //methods that are called when update is called on a UUID mapped to jFrames
     public HashMap<UUID, Updater> updateMethods = new HashMap<>();
 
     public Model model;
@@ -28,6 +31,13 @@ public abstract class View {
 
 
     //register a controller for the view
+
+    /**
+     * Registers a controller with the view so that the view
+     * is aware of where it needs to send actions and events.
+     * The view will call it's handle(UUID) method when soemthing happens.
+     * @param controller A subclass that extends the abstract Controller
+     */
     public void registerController(Controller controller){
         this.controller = controller;
     }
@@ -39,7 +49,8 @@ public abstract class View {
      * @param uuid UUID as defined in the model of the view
      */
     public void updateElement(UUID uuid) {
-        this.updateMethods.get(uuid).update();
+//        if (this.updateMethods.get(uuid) != null)
+            this.updateMethods.get(uuid).update();
     }
 
     /**

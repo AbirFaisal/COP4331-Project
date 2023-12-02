@@ -40,13 +40,6 @@ public class App {
         this.mainWindow.setVisible(true);
     }
 
-    //set the content of the main window
-    public void setMainWindowContent(Container c) {
-        this.mainWindow.getContentPane().removeAll();
-        this.mainWindow.setContentPane(c);
-        this.mainWindow.revalidate();
-    }
-
     /**
      * run the application
      *
@@ -85,12 +78,23 @@ public class App {
      * @return 128bit Client ID
      */
     public byte[] getClientID() {
-        this.clientID = new byte[16]; //TODO load from a configuration
-        Random r = new Random();
-        r.nextBytes(this.clientID);
+        if (this.clientID == null) {
+            this.clientID = new byte[16]; //TODO load from a configuration
+            Random r = new Random();
+            r.nextBytes(this.clientID);
+        }
         return clientID;
     }
 
+    /**
+     * set the content of the main window
+     * @param c a JPanel that contains the contents you want to display
+     */
+    public void setMainWindowContent(Container c) {
+        this.mainWindow.getContentPane().removeAll();
+        this.mainWindow.setContentPane(c);
+        this.mainWindow.revalidate();
+    }
 
 }
 

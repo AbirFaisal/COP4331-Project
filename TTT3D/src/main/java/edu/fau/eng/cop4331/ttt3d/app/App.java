@@ -12,6 +12,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
 
+import static java.lang.System.exit;
+
 
 public class App {
     JFrame mainWindow;
@@ -42,13 +44,7 @@ public class App {
         StartScreenView startScreenView = new StartScreenView(startScreenModel);
         StartScreenController startScreenController = new StartScreenController(startScreenModel, startScreenView);
 
-        //The view needs to be registered with the model so it can notify it of changes
-//        startScreenModel.register(startScreenView);
-
-        //The controller needs to be registered with the view so it can inform it of user events.
-//        startScreenView.registerController(startScreenController);
-
-        setMainWindow(
+        setMainWindowContent(
                 startScreenView.getContainer(startScreenModel.MAIN)
         );
 
@@ -59,8 +55,10 @@ public class App {
     }
 
     //set the content of the main window
-    public void setMainWindow(Container c) {
+    public void setMainWindowContent(Container c) {
+        this.mainWindow.getContentPane().removeAll();
         this.mainWindow.setContentPane(c);
+        this.mainWindow.revalidate();
     }
 
 
@@ -75,12 +73,13 @@ public class App {
 
     public void launchGame(GameType gameType) {
         GameModel gameModel = new GameModel();
+        System.out.println(gameModel.MAIN); //TODO remove
         GameView gameView = new GameView(gameModel);
 
         switch (gameType) {
             case SINGLE_PLAYER_GAME -> {
                 SinglePlayerGameController gameController = new SinglePlayerGameController();
-                setMainWindow(gameView.getContainer(GameModel.MAIN));
+                setMainWindowContent(gameView.getContainer(gameModel.MAIN));
             }
             case MULTI_PLAYER_CLIENT_GAME -> {}
             case MULTI_PLAYER_HOST_GAME -> {}

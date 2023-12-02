@@ -47,7 +47,7 @@ public class StartScreenController extends Controller {
 
     /**
      * When the user changes the server IP
-     * @return
+     * @return A handler that updates the model with a new value
      */
     Handler serverIPInfoUpdateHandler(){
         UUID uuid = model.SERVER_IP_TEXT_FIELD;
@@ -64,7 +64,7 @@ public class StartScreenController extends Controller {
 
     /**
      * When the user changes the server Port
-     * @return
+     * @return A handler that updates the model with a new value
      */
     Handler serverPortUpdateHandler(){
         UUID uuid = model.SERVER_PORT_TEXT_FIELD;

@@ -19,6 +19,7 @@ public class GameModel extends Model {
      */
     public UUID MAIN = UUID.randomUUID();
     public UUID HELLO_WORLD_JLABEL = UUID.randomUUID();
+    public UUID BUTTON_GRID = UUID.randomUUID();
 
     private int[][][] gameState3D; //used to state of game
 
@@ -42,6 +43,7 @@ public class GameModel extends Model {
 
     @Override
     public void setData(UUID key, Record data) {
-
     }
+
+
 }

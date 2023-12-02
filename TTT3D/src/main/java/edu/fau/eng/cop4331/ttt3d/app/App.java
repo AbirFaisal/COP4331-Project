@@ -66,7 +66,7 @@ public class App {
 
         switch (gameType) {
             case SINGLE_PLAYER_GAME -> {
-                SinglePlayerGameController gameController = new SinglePlayerGameController();
+                SinglePlayerGameController gameController = new SinglePlayerGameController(gameModel, gameView);
                 setMainWindowContent(gameView.getContainer(gameModel.MAIN));
             }
             case MULTI_PLAYER_CLIENT_GAME -> {}

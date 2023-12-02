@@ -55,6 +55,10 @@ public class App {
         setMainWindowContent(startScreenView.getContainer(startScreenModel.MAIN));
     }
 
+    /**
+     *
+     * @param gameType the type of game you want to launch
+     */
     public void launchGame(GameType gameType) {
         GameModel gameModel = new GameModel();
         System.out.println(gameModel.MAIN); //TODO remove

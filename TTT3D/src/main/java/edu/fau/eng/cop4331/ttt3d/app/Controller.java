@@ -26,7 +26,7 @@ public abstract class Controller {
      * then the (UUID, ActionEvent) will go into a handlerBuffer
      * later it will be handled by a Thread launched by runHandlers().
      */
-    public ArrayList<SimpleEntry> eventBuffer = new ArrayList<>();
+    public ArrayList<SimpleEntry<UUID, ActionEvent>> eventBuffer = new ArrayList<>();
 
     public void handle(UUID uuid, ActionEvent actionEvent) {
         SimpleEntry<UUID, ActionEvent> tuple = new SimpleEntry<>(uuid, actionEvent);

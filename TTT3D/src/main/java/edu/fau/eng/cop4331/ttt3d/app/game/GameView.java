@@ -63,44 +63,60 @@ public class GameView extends View {
         //generate the buttons
         for (int y = 0; y < 3; y++) {
             for (int x = 0; x < 3; x++) {
-                UUID buttonUUID = this.model.GAME_GRID_BUTTONS[x][y][layer];
-                JButton jButton = new JButton("-");
-                jButton.setPreferredSize(new Dimension(50,50));
-
-                //event handler will recieve this string "x,y"
-                //optionally it can use index to identify which button was pressed
-                String coordinates = x + "," + y + "," + layer;
-
-                //action event to be passed to the controller
-                ActionEvent ae = new ActionEvent(jButton, index, coordinates);
-                jButton.addActionListener(e -> this.controller.handle(uuid, ae));
-
-                //if model is updated with a new gameState then do this
-                int xf = x; //final
-                int yf = y; //final
-                int zf = layer; //final
-                Updater updater = new Updater() {
-                    @Override
-                    public void update() {
-                        System.out.println("xyz" + xf + yf + zf);
-                        //read the state from the game state record int the model datastructures
-                        GameModel.gameState3D gs3d = (GameModel.gameState3D) model.getData(uuid);
-                        int[][][] gs = gs3d.gameState3D();
-                        int state = gs[xf][yf][zf];
-
-                        //if 1 then "X" if -1 then "O" else "-"
-                        if (state == 1) jButton.setText("X");
-                        else if (state == -1) jButton.setText("O");
-                        else jButton.setText("-");
-                    }
-                };
-                updateMethods.put(buttonUUID, updater);
-
-                grid.add(jButton);
+                grid.add(gameButton(x, y, layer, index));
                 index +=1;
             }
         }
         return grid;
+    }
+
+    /**
+     * generates the game button given the x,y,z cordinates and index
+     *
+     * @param x cordinate
+     * @param y cordinate
+     * @param z layer
+     * @param index counter
+     * @return
+     */
+    JButton gameButton(int x, int y, int z, int index) {
+        UUID gameGridUUID = this.model.GAME_GRID;
+        UUID buttonUUID = this.model.GAME_GRID_BUTTONS[x][y][z];
+
+        JButton jButton = new JButton("-");
+        jButton.setPreferredSize(new Dimension(50,50));
+        jButton.setFont(new Font(null, Font.PLAIN, 40));
+
+        //event handler will recieve this string "x,y"
+        //optionally it can use index to identify which button was pressed
+        String coordinates = x + "," + y + "," + z;
+
+        //action event to be passed to the controller
+        ActionEvent ae = new ActionEvent(jButton, index, coordinates);
+        jButton.addActionListener(e -> this.controller.handle(gameGridUUID, ae));
+
+        //if model is updated with a new gameState then do this
+        int xf = x; //final
+        int yf = y; //final
+        int zf = z; //final
+        Updater updater = new Updater() {
+            @Override
+            public void update() {
+                System.out.println("xyz" + xf + yf + zf);
+                //read the state from the game state record int the model datastructures
+                GameModel.gameState3D gs3d = (GameModel.gameState3D) model.getData(gameGridUUID);
+                int[][][] gs = gs3d.gameState3D();
+                int state = gs[xf][yf][zf];
+
+                //if 1 then "X" if -1 then "O" else "-"
+                if (state == 1) jButton.setText("X");
+                else if (state == -1) jButton.setText("O");
+                else jButton.setText("-");
+            }
+        };
+        updateMethods.put(buttonUUID, updater);
+
+        return jButton;
     }
 
 

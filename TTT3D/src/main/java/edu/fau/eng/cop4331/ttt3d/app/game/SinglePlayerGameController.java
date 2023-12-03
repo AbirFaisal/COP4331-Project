@@ -59,7 +59,9 @@ public class SinglePlayerGameController extends Controller {
     //Game logic/////////////
     Solver solver = new Solver();
 
-    void makeMove(int x, int y, int z){};
+    void makeMove(int x, int y, int z){
+
+    };
 
     void interpretMove(int x, int y, int z) {
         System.out.println("interpreting move");
@@ -80,10 +82,13 @@ public class SinglePlayerGameController extends Controller {
             this.model.setData(buttonUUID, new GameModel.gameState3D(gs));
         }
         else System.out.println("invalidMove");
-        
-        //else return false
+
+        //check if there is a winner
+        gs3d = (GameModel.gameState3D) this.model.getData(this.model.GAME_GRID);
+        solver.solve(gs3d.gameState3D());
 
         //make the next move
+
     }
 
     boolean isValidMove(int x, int y, int z, int gameState[][][]) {

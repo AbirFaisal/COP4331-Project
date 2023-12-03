@@ -46,6 +46,8 @@ public abstract class Model {
         } else {
             //add the object
             this.dataStructures.put(key, data);
+            this.view.updateElement(key);
+
         }
     }
 

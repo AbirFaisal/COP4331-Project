@@ -46,8 +46,9 @@ public abstract class Model {
         } else {
             //add the object
             this.dataStructures.put(key, data);
-            this.view.updateElement(key);
 
+            //notify the view that data has changed
+            this.view.updateElement(key);
         }
     }
 

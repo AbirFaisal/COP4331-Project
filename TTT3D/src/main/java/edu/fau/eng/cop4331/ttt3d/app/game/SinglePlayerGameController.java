@@ -23,15 +23,12 @@ public class SinglePlayerGameController extends Controller {
 
 
     void setup() {
-        //empty game grid
-        //should init to zeros automatically
-        int[][][] newGameState = new int[3][3][3];
-        this.model.setData(model.GAME_GRID,
-                new GameModel.gameState3D(newGameState)
-        );
+        newGame();
 
         this.handlers.put(model.GAME_GRID, gridButtonPressedHandler());
     }
+
+
 
     //Event Handlers////////////////
 
@@ -39,7 +36,7 @@ public class SinglePlayerGameController extends Controller {
      * This handler recieves x,y cordinates of the button that was pressed
      * @return
      */
-    Handler gridButtonPressedHandler(){
+    Handler gridButtonPressedHandler() {
         return new Handler() {
             @Override
             public void handle(ActionEvent value) {
@@ -54,6 +51,10 @@ public class SinglePlayerGameController extends Controller {
             }
         };
     }
+
+
+
+
 
 
     //Game logic/////////////
@@ -85,10 +86,28 @@ public class SinglePlayerGameController extends Controller {
 
         //check if there is a winner
         gs3d = (GameModel.gameState3D) this.model.getData(this.model.GAME_GRID);
-        solver.solve(gs3d.gameState3D());
+        int winner = solver.solve(gs3d.gameState3D());
 
-        //make the next move
 
+        //no winner, make next move
+        if (winner == 3) {
+            System.out.println("X wins");
+            newGame();
+        }
+        else if (winner == -3) {
+            System.out.println("O wins");
+            newGame();
+        }
+
+    }
+
+    void newGame(){
+        //empty game grid
+        //should init to zeros automatically
+        int[][][] newGameState = new int[3][3][3];
+        this.model.setData(model.GAME_GRID,
+                new GameModel.gameState3D(newGameState)
+        );
     }
 
     boolean isValidMove(int x, int y, int z, int gameState[][][]) {

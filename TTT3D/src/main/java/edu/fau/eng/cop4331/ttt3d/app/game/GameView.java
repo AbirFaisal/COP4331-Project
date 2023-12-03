@@ -56,7 +56,7 @@ public class GameView extends View {
     JPanel xyButtonGrid(int layer) {
         JPanel grid = new JPanel();
         grid.setLayout(new GridLayout(3,3));
-        UUID uuid = this.model.GAME_GRID;
+        UUID gameGridUUID = this.model.GAME_GRID;
         UUID[][][] buttonUUIDS = this.model.GAME_GRID_BUTTONS;
         int index = 0;
 
@@ -67,6 +67,26 @@ public class GameView extends View {
                 index +=1;
             }
         }
+
+        //refreshes the buttons
+        Updater updater = new Updater() {
+            @Override
+            public void update() {
+                for (int z = 0; z < 3; z++) {
+                    for (int y = 0; y < 3; y++) {
+                        for (int x = 0; x < 3; x++) {
+                            UUID uuid = buttonUUIDS[x][y][z];
+                            GameModel.gameState3D gs3d = (GameModel.gameState3D) model.getData(model.GAME_GRID);
+                            int [][][] gs = gs3d.gameState3D();
+                            gs[x][y][z] = 0;
+                            model.setData(uuid, new GameModel.gameState3D(gs));
+                        }
+                    }
+                }
+            }
+        };
+        updateMethods.put(gameGridUUID, updater);
+
         return grid;
     }
 

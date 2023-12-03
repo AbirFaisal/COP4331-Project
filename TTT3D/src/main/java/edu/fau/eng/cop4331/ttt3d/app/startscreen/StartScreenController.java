@@ -24,11 +24,6 @@ public class StartScreenController extends Controller {
     }
 
     void setup() {
-        //example handler
-//        Handler startSinglePlayerGameHandler = (value) -> {
-////            App.getInstance().launchGame(GameType.SINGLE_PLAYER_GAME);
-//            System.out.println("Start Single Player Button Pressed");
-//        };
         handlers.put(model.START_SINGLE_PLAYER_GAME_BUTTON, startSinglePlayerGameHandler());
         handlers.put(model.SERVER_IP_TEXT_FIELD, serverIPInfoUpdateHandler());
         handlers.put(model.SERVER_PORT_TEXT_FIELD, serverPortUpdateHandler());
@@ -52,7 +47,7 @@ public class StartScreenController extends Controller {
 
     /**
      * When the user changes the server IP
-     * @return
+     * @return A handler that updates the model with a new value
      */
     Handler serverIPInfoUpdateHandler(){
         UUID uuid = model.SERVER_IP_TEXT_FIELD;
@@ -69,7 +64,7 @@ public class StartScreenController extends Controller {
 
     /**
      * When the user changes the server Port
-     * @return
+     * @return A handler that updates the model with a new value
      */
     Handler serverPortUpdateHandler(){
         UUID uuid = model.SERVER_PORT_TEXT_FIELD;

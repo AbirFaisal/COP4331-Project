@@ -20,11 +20,12 @@ public abstract class View {
     //methods that are called when update is called on a UUID mapped to jFrames
     public HashMap<UUID, Updater> updateMethods = new HashMap<>();
 
-    public Model model;
-    public View(Model model) {
-        this.model = model;
-        this.model.register(this);
-    }
+    //TODO remove, it seems like its not used
+//    public Model model;
+//    public View(Model model) {
+//        this.model = model;
+//        this.model.register(this);
+//    }
 
     //used to setup the view, setup the main view and add elements to it
     public abstract void setup();

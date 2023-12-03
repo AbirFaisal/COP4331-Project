@@ -13,7 +13,7 @@ public class GameView extends View {
     GameModel model;
 
     public GameView(GameModel gameModel) {
-        super(gameModel);
+//        super(gameModel);
         this.model = gameModel; //make view aware of model
         this.model.register(this); //make model aware of view
         setup(); //setup the view
@@ -67,7 +67,7 @@ public class GameView extends View {
                     //event to be passed to the controller
                     ActionEvent ae = new ActionEvent(jButton, 123, buttonText);
 
-                    this.controller.handle(uuid, ae);
+                    this.controller.handle(uuid, e);
                 });
 
                 //TODO style the buttons

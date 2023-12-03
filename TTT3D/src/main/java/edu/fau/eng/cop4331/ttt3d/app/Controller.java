@@ -11,12 +11,11 @@ import static java.lang.Thread.sleep;
 public abstract class Controller {
 
 
-    public Model model;
+//    public Model model;
 
     public interface Handler {
         void handle(ActionEvent value);
     }
-
     public HashMap<UUID, Handler> handlers = new HashMap<>();
 
 
@@ -62,8 +61,8 @@ public abstract class Controller {
     }
 
 
-    public void updateModel(UUID key, Record data) {
-        this.model.setData(key, data);
-    }
+//    public void updateModel(UUID key, Record data) {
+//        this.model.setData(key, data);
+//    }
 
 }

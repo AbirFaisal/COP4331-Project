@@ -13,9 +13,9 @@ public class StartScreenController extends Controller {
     StartScreenModel model;
     StartScreenView view;
 
-    public StartScreenController(StartScreenModel startScreenModel, StartScreenView startScreenView) {
-        this.model = startScreenModel;
-        this.view = startScreenView;
+    public StartScreenController(StartScreenModel scm, StartScreenView scv) {
+        this.model = scm;
+        this.view = scv;
         this.view.registerController(this);
 
         runHandlers();

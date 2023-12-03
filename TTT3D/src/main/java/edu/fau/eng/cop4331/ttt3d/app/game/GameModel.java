@@ -19,9 +19,23 @@ public class GameModel extends Model {
      */
     public UUID MAIN = UUID.randomUUID();
     public UUID HELLO_WORLD_JLABEL = UUID.randomUUID();
-    public UUID BUTTON_GRID = UUID.randomUUID();
+    public UUID GAME_GRID = UUID.randomUUID();
+    public UUID[][][] GAME_GRID_BUTTONS;
 
-    private int[][][] gameState3D; //used to state of game
+
+    public GameModel() {
+        this.GAME_GRID_BUTTONS = new UUID[3][3][3];
+        for (int z = 0; z < this.GAME_GRID_BUTTONS.length; z++) {
+            for (int y = 0; y < this.GAME_GRID_BUTTONS.length; y++) {
+                for (int x = 0; x < this.GAME_GRID_BUTTONS.length; x++) {
+                    this.GAME_GRID_BUTTONS[x][y][z] = UUID.randomUUID();
+//                    System.out.println(this.GAME_GRID_BUTTONS[x][y][z]);
+                }
+            }
+        }
+    }
+
+    //    private int[][][] gameState3D; //used to state of game
 
     public record gameState3D(int[][][] gameState3D){}
 

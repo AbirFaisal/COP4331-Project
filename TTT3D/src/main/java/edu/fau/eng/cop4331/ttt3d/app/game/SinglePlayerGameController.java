@@ -3,7 +3,9 @@ package edu.fau.eng.cop4331.ttt3d.app.game;
 import edu.fau.eng.cop4331.ttt3d.app.Controller;
 import edu.fau.eng.cop4331.ttt3d.util.Solver;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.util.Random;
 import java.util.UUID;
 
 public class SinglePlayerGameController extends Controller {
@@ -47,7 +49,7 @@ public class SinglePlayerGameController extends Controller {
                 int y = Integer.parseInt(s[1]);
                 int z = Integer.parseInt(s[2]);
                 System.out.println(x + "," + y + "," + z);
-                interpretMove(x, y, z);
+                makeMove(x, y, z, 1);
             }
         };
     }
@@ -60,48 +62,42 @@ public class SinglePlayerGameController extends Controller {
     //Game logic/////////////
     Solver solver = new Solver();
 
-    void makeMove(int x, int y, int z){
-
-    };
-
-    void interpretMove(int x, int y, int z) {
-        System.out.println("interpreting move");
-        //make sure the postion was empty
-//        boolean b = solver.isValidMove(x,y,z, gameState);
-
+    void makeMove(int x, int y, int z, int player) {
+        System.out.format("interpreting move xyz=%d,%d,%d player=%d", x, y, z, player);
         GameModel.gameState3D gs3d = (GameModel.gameState3D) this.model.getData(this.model.GAME_GRID);
+
+        //make sure the postion was empty
         boolean isValidMove = isValidMove(x, y, z, gs3d.gameState3D());
 
         UUID buttonUUID = this.model.GAME_GRID_BUTTONS[x][y][z];
 
         //if valid then update model
         if (isValidMove) {
-            System.out.println("validMove");
-            //update the model TODO move to makeMove()
-            int [][][] gs = gs3d.gameState3D();
-            gs[x][y][z] = 1;
+            System.out.println(" validMove");
+            //update the model
+            int[][][] gs = gs3d.gameState3D();
+            gs[x][y][z] = (player == 1) ? 1 : -1;
             this.model.setData(buttonUUID, new GameModel.gameState3D(gs));
-        }
-        else System.out.println("invalidMove");
 
-        //check if there is a winner
-        gs3d = (GameModel.gameState3D) this.model.getData(this.model.GAME_GRID);
-        int winner = solver.solve(gs3d.gameState3D());
+            //check if there is a winner
+            gs3d = (GameModel.gameState3D) this.model.getData(this.model.GAME_GRID);
+            int winner = solver.solve(gs3d.gameState3D());
 
+            //no winner, make next move
+            if (winner == 3) { //X
+                System.out.println("X wins");
+                JOptionPane.showMessageDialog(null, "You won");
+                newGame();
+            } else if (winner == -3) { //O
+                System.out.println("O wins");
+                JOptionPane.showMessageDialog(null, "You lost");
+                newGame();
+            } else if (player == 1) makeNextMove(gs3d.gameState3D());
 
-        //no winner, make next move
-        if (winner == 3) {
-            System.out.println("X wins");
-            newGame();
-        }
-        else if (winner == -3) {
-            System.out.println("O wins");
-            newGame();
-        }
-
+        } else System.out.println(" invalidMove");
     }
 
-    void newGame(){
+    void newGame() {
         //empty game grid
         //should init to zeros automatically
         int[][][] newGameState = new int[3][3][3];
@@ -110,21 +106,34 @@ public class SinglePlayerGameController extends Controller {
         );
     }
 
-    boolean isValidMove(int x, int y, int z, int gameState[][][]) {
+    boolean isValidMove(int x, int y, int z, int[][][] gameState) {
         if (gameState[x][y][z] == 0) return true;
         else return false;
     }
 
     /**
      * Single player mode
+     * Computer makes next move
      */
-    void makeNextMove(){
+    void makeNextMove(int[][][] gameState) {
         //select random position
+        Random r = new Random();
+        int x = r.nextInt(3);
+        int y = r.nextInt(3);
+        int z = r.nextInt(3);
 
-        //make sure move is valid
-        //interpretMove();
+        System.out.println("computer " + x + "," + y + "," + z);
 
-        //
+        while (!isValidMove(x, y, z, gameState)) {
+            System.out.println("NOT VALID");
+            x = r.nextInt(3);
+            y = r.nextInt(3);
+            z = r.nextInt(3);
+        }
+
+
+        z = 0; // force 2d game
+        makeMove(x, y, z, 0);
+
     }
-
 }

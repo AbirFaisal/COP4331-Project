@@ -122,7 +122,7 @@ public class GameView extends View {
         Updater updater = new Updater() {
             @Override
             public void update() {
-                System.out.println("xyz" + xf + yf + zf);
+//                System.out.println("xyz" + xf + yf + zf);
                 //read the state from the game state record int the model datastructures
                 GameModel.gameState3D gs3d = (GameModel.gameState3D) model.getData(gameGridUUID);
                 int[][][] gs = gs3d.gameState3D();

@@ -92,10 +92,21 @@ public class SinglePlayerGameController extends Controller {
                 System.out.println("O wins");
                 JOptionPane.showMessageDialog(null, "You lost");
                 newGame();
-            } else if (player == 1) makeNextMove(gs);
+            }
+            else if (tiedGame()) {
+                System.out.println("Tied Game");
+                JOptionPane.showMessageDialog(null, "The game was tied");
+                newGame();
+            }
+            else if (player == 1) makeNextMove(gs);
 
         } else System.out.println(" invalidMove");
     }
+
+    boolean tiedGame(){
+        return false;
+    }
+
 
     void newGame() {
         //empty game grid
@@ -121,8 +132,9 @@ public class SinglePlayerGameController extends Controller {
         int x = r.nextInt(3);
         int y = r.nextInt(3);
         int z = r.nextInt(3);
+        z = 0; // force 2d game
 
-        System.out.println("computer " + x + "," + y + "," + z);
+        System.out.println("\ncomputer " + x + "," + y + "," + z);
         System.out.println("gs3d=" + gameState[x][y][z]);
 
         while (gameState[x][y][z] != 0) {
@@ -130,10 +142,10 @@ public class SinglePlayerGameController extends Controller {
             x = r.nextInt(3);
             y = r.nextInt(3);
             z = r.nextInt(3);
+            z = 0; // force 2d game
         }
 
 
-        z = 0; // force 2d game
         makeMove(x, y, z, 0);
 
     }

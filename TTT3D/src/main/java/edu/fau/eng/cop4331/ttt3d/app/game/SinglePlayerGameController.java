@@ -107,7 +107,6 @@ public class SinglePlayerGameController extends Controller {
         return false;
     }
 
-
     void newGame() {
         //empty game grid
         //should init to zeros automatically

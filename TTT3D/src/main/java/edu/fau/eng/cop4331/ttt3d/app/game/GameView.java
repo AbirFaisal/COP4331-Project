@@ -25,7 +25,9 @@ public class GameView extends View {
         this.jFrames.put(model.MAIN, mainJPanel);
         mainJPanel.setLayout(new BoxLayout(mainJPanel, BoxLayout.Y_AXIS));
 
-        this.jFrames.get(model.MAIN).add(helloWorld());
+//        this.jFrames.get(model.MAIN).add(helloWorld());
+
+        this.jFrames.get(model.MAIN).add(winLossTieCounter());
         this.jFrames.get(model.MAIN).add(xyButtonGrid(0));
     }
 
@@ -44,6 +46,15 @@ public class GameView extends View {
         updateMethods.put(model.HELLO_WORLD_JLABEL, updater);
         return jLabel;
     }
+
+
+    JLabel winLossTieCounter(){
+        JLabel jLabel = new JLabel("Win: 0 Loss: 0 Tie: 0");
+
+
+        return jLabel;
+    }
+
 
     /**
      * Grid that contains 3x3 button array

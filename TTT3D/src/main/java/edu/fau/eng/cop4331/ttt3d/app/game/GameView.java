@@ -87,19 +87,13 @@ public class GameView extends View {
                         GameModel.gameState3D gs3d = (GameModel.gameState3D) model.getData(uuid);
                         int[][][] gs = gs3d.gameState3D();
                         int state = gs[xf][yf][zf];
-                        System.out.println("state " + state);
-
 
                         //if 1 then "X" if -1 then "O" else "-"
                         if (state == 1) jButton.setText("X");
                         else if (state == -1) jButton.setText("O");
-                        else {
-                            System.out.println("no updates to view");
-                            jButton.setText("-");
-                        }
+                        else jButton.setText("-");
                     }
                 };
-//                System.out.println("updateMethods" + x + y + layer);
                 updateMethods.put(buttonUUID, updater);
 
                 grid.add(jButton);

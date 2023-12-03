@@ -74,21 +74,13 @@ public class SinglePlayerGameController extends Controller {
         //if valid then update model
         if (isValidMove) {
             System.out.println("validMove");
-
             //update the model TODO move to makeMove()
             int [][][] gs = gs3d.gameState3D();
             gs[x][y][z] = 1;
-
-            System.out.println("buttonUUID=" + buttonUUID);
-            System.out.println("this.model.setData " + x + y + z);
             this.model.setData(buttonUUID, new GameModel.gameState3D(gs));
         }
-        else {
-            System.out.println("invalidMove");
-            System.out.println(buttonUUID);
-            System.out.println("this.model.setData " + x + y + z);
-        };
-
+        else System.out.println("invalidMove");
+        
         //else return false
 
         //make the next move

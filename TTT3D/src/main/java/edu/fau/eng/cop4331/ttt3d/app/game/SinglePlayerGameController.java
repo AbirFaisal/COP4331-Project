@@ -92,7 +92,7 @@ public class SinglePlayerGameController extends Controller {
                 System.out.println("O wins");
                 JOptionPane.showMessageDialog(null, "You lost");
                 newGame();
-            } else if (player == 1) makeNextMove(gs3d.gameState3D());
+            } else if (player == 1) makeNextMove(gs);
 
         } else System.out.println(" invalidMove");
     }
@@ -123,9 +123,10 @@ public class SinglePlayerGameController extends Controller {
         int z = r.nextInt(3);
 
         System.out.println("computer " + x + "," + y + "," + z);
+        System.out.println("gs3d=" + gameState[x][y][z]);
 
-        while (!isValidMove(x, y, z, gameState)) {
-            System.out.println("NOT VALID");
+        while (gameState[x][y][z] != 0) {
+            System.out.println("NOT VALID RECALCULATING");
             x = r.nextInt(3);
             y = r.nextInt(3);
             z = r.nextInt(3);

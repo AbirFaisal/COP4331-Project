@@ -73,17 +73,12 @@ public class App {
                 SinglePlayerGameController gameController = new SinglePlayerGameController(gameModel, gameView);
                 ChatBotController chatBotController = new ChatBotController(chatModel, chatView);
 
-
+                //show game and chat side by side
                 JSplitPane jSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
                 jSplitPane.add(gameView.getContainer(gameModel.MAIN));
                 jSplitPane.add(chatView.getContainer(chatModel.MAIN));
 
                 setMainWindowContent(jSplitPane);
-
-//                setMainWindowContent(gameView.getContainer(gameModel.MAIN));
-//                addMainWindowContent(chatView.getContainer(chatModel.MAIN));
-
-
             }
             case MULTI_PLAYER_CLIENT_GAME -> {
                 MultiPlayerClientController gameController = new MultiPlayerClientController(gameModel, gameView);

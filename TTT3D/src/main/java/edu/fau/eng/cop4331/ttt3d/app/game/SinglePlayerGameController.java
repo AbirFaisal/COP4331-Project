@@ -91,7 +91,7 @@ public class SinglePlayerGameController extends Controller {
             gs3d = (GameModel.gameState3D) this.model.getData(this.model.GAME_GRID);
             int winner = solver.solve(gs3d.gameState3D());
 
-            //no winner, make next move
+            //if no winner, make next move
             if (winner == 3) { //X
                 System.out.println("X wins");
                 updateStats(1);

@@ -39,4 +39,11 @@ public class GameModel extends Model {
 
     public record gameState3D(int[][][] gameState3D){}
 
+    public record stats(
+            int wins,
+            int losses,
+            int ties
+    ){}
+
+
 }

@@ -36,7 +36,7 @@ public class SinglePlayerGameController extends Controller {
 
     /**
      * This handler recieves x,y cordinates of the button that was pressed
-     * @return
+     * @return A Handler that reacts to button presses on it's grid.
      */
     Handler gridButtonPressedHandler() {
         return new Handler() {
@@ -62,6 +62,13 @@ public class SinglePlayerGameController extends Controller {
     //Game logic/////////////
     Solver solver = new Solver();
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @param z
+     * @param player
+     */
     void makeMove(int x, int y, int z, int player) {
         System.out.format("interpreting move xyz=%d,%d,%d player=%d", x, y, z, player);
         GameModel.gameState3D gs3d = (GameModel.gameState3D) this.model.getData(this.model.GAME_GRID);
@@ -92,11 +99,24 @@ public class SinglePlayerGameController extends Controller {
                 System.out.println("O wins");
                 JOptionPane.showMessageDialog(null, "You lost");
                 newGame();
-            } else if (player == 1) makeNextMove(gs);
+            }
+            else if (tiedGame()) {
+                System.out.println("Tied Game");
+                JOptionPane.showMessageDialog(null, "The game was tied");
+                newGame();
+            }
+            else if (player == 1) makeNextMove(gs);
 
         } else System.out.println(" invalidMove");
     }
 
+    boolean tiedGame(){
+        return false;
+    }
+
+    /**
+     * setup a new game
+     */
     void newGame() {
         //empty game grid
         //should init to zeros automatically
@@ -106,6 +126,14 @@ public class SinglePlayerGameController extends Controller {
         );
     }
 
+    /**
+     * check if the move is a valid move
+     * @param x coordinate
+     * @param y coordinate
+     * @param z coordinate
+     * @param gameState
+     * @return true if the move is valid, false if it is invalid.
+     */
     boolean isValidMove(int x, int y, int z, int[][][] gameState) {
         if (gameState[x][y][z] == 0) return true;
         else return false;
@@ -121,8 +149,9 @@ public class SinglePlayerGameController extends Controller {
         int x = r.nextInt(3);
         int y = r.nextInt(3);
         int z = r.nextInt(3);
+        z = 0; // force 2d game
 
-        System.out.println("computer " + x + "," + y + "," + z);
+        System.out.println("\ncomputer " + x + "," + y + "," + z);
         System.out.println("gs3d=" + gameState[x][y][z]);
 
         while (gameState[x][y][z] != 0) {
@@ -130,10 +159,10 @@ public class SinglePlayerGameController extends Controller {
             x = r.nextInt(3);
             y = r.nextInt(3);
             z = r.nextInt(3);
+            z = 0; // force 2d game
         }
 
 
-        z = 0; // force 2d game
         makeMove(x, y, z, 0);
 
     }

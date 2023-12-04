@@ -1,16 +1,17 @@
 package edu.fau.eng.cop4331.ttt3d.app;
 
-import edu.fau.eng.cop4331.ttt3d.app.game.GameModel;
-import edu.fau.eng.cop4331.ttt3d.app.game.GameType;
-import edu.fau.eng.cop4331.ttt3d.app.game.GameView;
-import edu.fau.eng.cop4331.ttt3d.app.game.SinglePlayerGameController;
+import edu.fau.eng.cop4331.ttt3d.app.game.*;
 import edu.fau.eng.cop4331.ttt3d.app.startscreen.StartScreenController;
 import edu.fau.eng.cop4331.ttt3d.app.startscreen.StartScreenModel;
 import edu.fau.eng.cop4331.ttt3d.app.startscreen.StartScreenView;
+import edu.fau.eng.cop4331.ttt3d.util.SettingsManager;
+import org.json.JSONArray;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
+
+import static java.lang.System.exit;
 
 
 public class App {
@@ -69,7 +70,10 @@ public class App {
                 SinglePlayerGameController gameController = new SinglePlayerGameController(gameModel, gameView);
                 setMainWindowContent(gameView.getContainer(gameModel.MAIN));
             }
-            case MULTI_PLAYER_CLIENT_GAME -> {}
+            case MULTI_PLAYER_CLIENT_GAME -> {
+                MultiPlayerClientController gameController = new MultiPlayerClientController(gameModel, gameView);
+                setMainWindowContent(gameView.getContainer(gameModel.MAIN));
+            }
             case MULTI_PLAYER_HOST_GAME -> {}
         }
 
@@ -78,14 +82,29 @@ public class App {
 
 
     /**
-     * Generate a client ID or try to load from settings.json
-     * @return 128bit Client ID
+     * Generate a client ID or try to load from settings
+     * @return 128bit Client ID as byte[16], 16 * 8bit = 128bits
      */
     public byte[] getClientID() {
         if (this.clientID == null) {
-            this.clientID = new byte[16]; //TODO load from a configuration
-            Random r = new Random();
-            r.nextBytes(this.clientID);
+            this.clientID = new byte[16];
+            SettingsManager sm = SettingsManager.getInstance();
+
+            //if no clientID in settings.json then generate and save
+            //else load from configureation
+            if (sm.getSettings().opt("clientID") == null) {
+                Random r = new Random();
+                r.nextBytes(this.clientID);
+                //save to settings
+                sm.setValue("clientID", this.clientID);
+            } else {
+                //load from settings
+                JSONArray clientIDJSONArray = sm.getSettings().getJSONArray("clientID");
+
+                for (int i = 0; i < clientIDJSONArray.length(); i++) {
+                    this.clientID[i] = (byte) clientIDJSONArray.getInt(i);
+                }
+            }
         }
         return clientID;
     }

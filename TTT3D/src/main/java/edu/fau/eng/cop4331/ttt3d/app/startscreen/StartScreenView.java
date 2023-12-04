@@ -37,7 +37,6 @@ public class StartScreenView extends View {
         this.jFrames.get(model.MAIN).add(startSinglePlayerGameButton());
         this.jFrames.get(model.MAIN).add(startMultiPlayerGameButton());
         this.jFrames.get(model.MAIN).add(startHostGameButton());
-
     }
 
     /**

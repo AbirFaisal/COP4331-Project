@@ -21,6 +21,7 @@ public class GameModel extends Model {
     public UUID HELLO_WORLD_JLABEL = UUID.randomUUID();
     public UUID GAME_GRID = UUID.randomUUID();
     public UUID[][][] GAME_GRID_BUTTONS;
+    public UUID STAT_COUNTER;
 
 
     public GameModel() {

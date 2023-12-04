@@ -26,6 +26,7 @@ public class SinglePlayerGameController extends Controller {
 
     void setup() {
         newGame();
+        resetStats();
 
         this.handlers.put(model.GAME_GRID, gridButtonPressedHandler());
     }
@@ -83,25 +84,28 @@ public class SinglePlayerGameController extends Controller {
             System.out.println(" validMove");
             //update the model
             int[][][] gs = gs3d.gameState3D();
-            gs[x][y][z] = (player == 1) ? 1 : -1;
+            gs[x][y][z] = (player == 1) ? 1 : -1; //X=1 O=-1
             this.model.setData(buttonUUID, new GameModel.gameState3D(gs));
 
             //check if there is a winner
             gs3d = (GameModel.gameState3D) this.model.getData(this.model.GAME_GRID);
             int winner = solver.solve(gs3d.gameState3D());
 
-            //no winner, make next move
+            //if no winner, make next move
             if (winner == 3) { //X
                 System.out.println("X wins");
+                updateStats(1);
                 JOptionPane.showMessageDialog(null, "You won");
                 newGame();
             } else if (winner == -3) { //O
                 System.out.println("O wins");
+                updateStats(-1);
                 JOptionPane.showMessageDialog(null, "You lost");
                 newGame();
             }
             else if (tiedGame()) {
                 System.out.println("Tied Game");
+                updateStats(0);
                 JOptionPane.showMessageDialog(null, "The game was tied");
                 newGame();
             }
@@ -109,6 +113,39 @@ public class SinglePlayerGameController extends Controller {
 
         } else System.out.println(" invalidMove");
     }
+
+
+    /**
+     * Updates the game stats in the model with the new values
+     *
+     * @param winLossTie 1=win -1=loss 0=tie
+     */
+    void updateStats(int winLossTie){
+        //get data from model
+        GameModel.stats stats = (GameModel.stats) this.model.getData(this.model.STAT_COUNTER);
+        GameModel.stats  newStats = null;
+
+        switch (winLossTie){
+            case 1: {
+                //update the stats
+                newStats = new GameModel.stats(stats.wins() + 1, stats.losses(), stats.ties());
+                break;
+            }
+            case -1: {
+                //update the stats
+                newStats = new GameModel.stats(stats.wins(), stats.losses() + 1, stats.ties());
+                break;
+            }
+            case 0: {
+                //update the stats
+                newStats = new GameModel.stats(stats.wins(), stats.losses(), stats.ties() + 1);
+                break;
+            }
+        }
+        //update the model with the new stats
+        this.model.setData(this.model.STAT_COUNTER, newStats);
+    }
+
 
     boolean tiedGame(){
         return false;
@@ -124,6 +161,10 @@ public class SinglePlayerGameController extends Controller {
         this.model.setData(model.GAME_GRID,
                 new GameModel.gameState3D(newGameState)
         );
+    }
+
+    void resetStats(){
+        this.model.setData(model.STAT_COUNTER, new GameModel.stats(0,0,0));
     }
 
     /**

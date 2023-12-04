@@ -10,9 +10,6 @@ import static java.lang.Thread.sleep;
 
 public abstract class Controller {
 
-
-//    public Model model;
-
     public interface Handler {
         void handle(ActionEvent value);
     }

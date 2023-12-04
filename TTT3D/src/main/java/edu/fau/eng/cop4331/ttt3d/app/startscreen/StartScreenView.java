@@ -29,14 +29,30 @@ public class StartScreenView extends View {
     public void setup() {
         JPanel mainJPanel = new JPanel();
         this.jFrames.put(model.MAIN, mainJPanel);
-        mainJPanel.setLayout(new BoxLayout(mainJPanel, BoxLayout.Y_AXIS));
+
+        //centering panel for asthetic purposes.
+        JPanel centeringPanel = new JPanel();
+        centeringPanel.setLayout(new BoxLayout(centeringPanel, BoxLayout.Y_AXIS));
+
+        centeringPanel.add(new JLabel("Server IP"));
+        centeringPanel.add(serverIPJTextField());
+
+        centeringPanel.add(new JLabel("Server Port"));
+        centeringPanel.add(serverPortJTextField());
+
+        centeringPanel.add(startSinglePlayerGameButton());
+        centeringPanel.add(startMultiPlayerGameButton());
+        centeringPanel.add(startHostGameButton());
+
+
+        this.jFrames.get(model.MAIN).add(centeringPanel);
 
         //add elemets of this view
-        this.jFrames.get(model.MAIN).add(serverIPJTextField());
-        this.jFrames.get(model.MAIN).add(serverPortJTextField());
-        this.jFrames.get(model.MAIN).add(startSinglePlayerGameButton());
-        this.jFrames.get(model.MAIN).add(startMultiPlayerGameButton());
-        this.jFrames.get(model.MAIN).add(startHostGameButton());
+//        this.jFrames.get(model.MAIN).add(serverIPJTextField());
+//        this.jFrames.get(model.MAIN).add(serverPortJTextField());
+//        this.jFrames.get(model.MAIN).add(startSinglePlayerGameButton());
+//        this.jFrames.get(model.MAIN).add(startMultiPlayerGameButton());
+//        this.jFrames.get(model.MAIN).add(startHostGameButton());
     }
 
     /**

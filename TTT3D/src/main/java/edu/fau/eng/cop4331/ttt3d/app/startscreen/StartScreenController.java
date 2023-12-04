@@ -8,9 +8,6 @@ import edu.fau.eng.cop4331.ttt3d.util.SettingsManager;
 import java.awt.event.ActionEvent;
 import java.util.UUID;
 
-import static java.lang.System.exit;
-import static java.lang.System.in;
-
 public class StartScreenController extends Controller {
 
     StartScreenModel model;

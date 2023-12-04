@@ -48,9 +48,22 @@ public class GameView extends View {
     }
 
 
-    JLabel winLossTieCounter(){
+    JLabel winLossTieCounter() {
         JLabel jLabel = new JLabel("Win: 0 Loss: 0 Tie: 0");
+        UUID uuid = this.model.STAT_COUNTER;
 
+        Updater updater = new Updater() {
+            @Override
+            public void update() {
+                GameModel.stats stats = (GameModel.stats) model.getData(uuid);
+                int win = stats.wins();
+                int loss = stats.losses();
+                int tie = stats.ties();
+                String statStr = "Win:" + win + " Loss:" + loss + " Tie:"+ tie;
+                jLabel.setText(statStr);
+            }
+        };
+        updateMethods.put(model.STAT_COUNTER, updater);
 
         return jLabel;
     }

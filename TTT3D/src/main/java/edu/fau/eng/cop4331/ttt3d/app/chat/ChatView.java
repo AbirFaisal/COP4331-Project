@@ -21,12 +21,13 @@ public class ChatView extends View {
     @Override
     public void setup() {
         JPanel mainJPanel = new JPanel();
+        mainJPanel.setLayout(new BoxLayout(mainJPanel, BoxLayout.Y_AXIS));
         this.jFrames.put(this.model.MAIN, mainJPanel);
 
-//        this.jFrames.get(this.model.MAIN).add(helloWorld());
 
-
+        this.jFrames.get(this.model.MAIN).add(chatLog());
         this.jFrames.get(this.model.MAIN).add(messageBox());
+        this.jFrames.get(this.model.MAIN).add(sendMessageButton());
     }
 
 
@@ -43,7 +44,17 @@ public class ChatView extends View {
     }
 
 
+    JScrollPane chatLog(){
+        JScrollPane jScrollPane = new JScrollPane();
+        jScrollPane.setPreferredSize(new Dimension(800,600));
+        jScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
+        JTextArea textArea = new JTextArea(20, 20);
+
+        jScrollPane.add(textArea);
+
+        return jScrollPane;
+    }
 
     JTextArea messageBox() {
         JTextArea jTextArea = new JTextArea();

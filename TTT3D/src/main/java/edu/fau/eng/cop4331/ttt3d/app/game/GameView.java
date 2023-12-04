@@ -13,7 +13,6 @@ public class GameView extends View {
     GameModel model;
 
     public GameView(GameModel gameModel) {
-//        super(gameModel);
         this.model = gameModel; //make view aware of model
         this.model.register(this); //make model aware of view
         setup(); //setup the view
@@ -44,7 +43,6 @@ public class GameView extends View {
 
 
     /////UI elements/////////
-
     JLabel helloWorld() {
         JLabel jLabel = new JLabel("Hello World");
         //called by the model when it's corresponding values change

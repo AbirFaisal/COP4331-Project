@@ -23,14 +23,15 @@ public class GameModel extends Model {
     public UUID[][][] GAME_GRID_BUTTONS;
     public UUID STAT_COUNTER;
 
-
+    /**
+     * initializes the UUIDs for GAME_GRID_BUTTONS
+     */
     public GameModel() {
         this.GAME_GRID_BUTTONS = new UUID[3][3][3];
         for (int z = 0; z < this.GAME_GRID_BUTTONS.length; z++) {
             for (int y = 0; y < this.GAME_GRID_BUTTONS.length; y++) {
                 for (int x = 0; x < this.GAME_GRID_BUTTONS.length; x++) {
                     this.GAME_GRID_BUTTONS[x][y][z] = UUID.randomUUID();
-//                    System.out.println(this.GAME_GRID_BUTTONS[x][y][z]);
                 }
             }
         }

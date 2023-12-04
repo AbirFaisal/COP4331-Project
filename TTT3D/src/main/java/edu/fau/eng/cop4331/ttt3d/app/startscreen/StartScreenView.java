@@ -18,7 +18,6 @@ public class StartScreenView extends View {
     StartScreenModel model;
 
     public StartScreenView(StartScreenModel startScreenModel) {
-//        super(startScreenModel);
         this.model = startScreenModel; //make view aware of model
         this.model.register(this); //make model aware of view
         setup(); //setup the view

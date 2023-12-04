@@ -1,5 +1,8 @@
 package edu.fau.eng.cop4331.ttt3d.app;
 
+import edu.fau.eng.cop4331.ttt3d.app.chat.ChatBotController;
+import edu.fau.eng.cop4331.ttt3d.app.chat.ChatModel;
+import edu.fau.eng.cop4331.ttt3d.app.chat.ChatView;
 import edu.fau.eng.cop4331.ttt3d.app.game.*;
 import edu.fau.eng.cop4331.ttt3d.app.startscreen.StartScreenController;
 import edu.fau.eng.cop4331.ttt3d.app.startscreen.StartScreenModel;
@@ -19,7 +22,7 @@ public class App {
     //Singleton Pattern
     private static App instance;
     private App() {
-        this.mainWindow = new JFrame("Main Window");
+        this.mainWindow = new JFrame("TTT3D");
         this.clientID = getClientID();
     }
     public static synchronized App getInstance() {
@@ -33,7 +36,7 @@ public class App {
      */
     public void setup() {
         initStartScreen();
-        this.mainWindow.setSize(600,800);//400 width and 500 height
+        this.mainWindow.setSize(800,600);//400 width and 500 height
         this.mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ///TODO this.mainWindow.setLayout();
         this.mainWindow.setVisible(true);
@@ -60,16 +63,31 @@ public class App {
      */
     public void launchGame(GameType gameType) {
         GameModel gameModel = new GameModel();
-        System.out.println(gameModel.MAIN); //TODO remove
         GameView gameView = new GameView(gameModel);
+
+        ChatModel chatModel = new ChatModel();
+        ChatView chatView = new ChatView(chatModel);
 
         switch (gameType) {
             case SINGLE_PLAYER_GAME -> {
                 SinglePlayerGameController gameController = new SinglePlayerGameController(gameModel, gameView);
-                setMainWindowContent(gameView.getContainer(gameModel.MAIN));
+                ChatBotController chatBotController = new ChatBotController(chatModel, chatView);
+
+
+                JSplitPane jSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+                jSplitPane.add(gameView.getContainer(gameModel.MAIN));
+                jSplitPane.add(chatView.getContainer(chatModel.MAIN));
+
+                setMainWindowContent(jSplitPane);
+
+//                setMainWindowContent(gameView.getContainer(gameModel.MAIN));
+//                addMainWindowContent(chatView.getContainer(chatModel.MAIN));
+
+
             }
             case MULTI_PLAYER_CLIENT_GAME -> {
                 MultiPlayerClientController gameController = new MultiPlayerClientController(gameModel, gameView);
+                //TODO ChatClientController
                 setMainWindowContent(gameView.getContainer(gameModel.MAIN));
             }
             case MULTI_PLAYER_HOST_GAME -> {}
@@ -108,12 +126,21 @@ public class App {
     }
 
     /**
-     * set the content of the main window
+     * set the content of the main window, replace existing content
      * @param c a JPanel that contains the contents you want to display
      */
     public void setMainWindowContent(Container c) {
         this.mainWindow.getContentPane().removeAll();
         this.mainWindow.setContentPane(c);
+        this.mainWindow.revalidate();
+    }
+
+    /**
+     * add the content to the main window
+     * @param c a JPanel that contains the contents you want to display
+     */
+    public void addMainWindowContent(Container c) {
+        this.mainWindow.add(c);
         this.mainWindow.revalidate();
     }
 

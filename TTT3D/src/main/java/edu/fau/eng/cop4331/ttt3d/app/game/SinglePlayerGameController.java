@@ -94,9 +94,7 @@ public class SinglePlayerGameController extends Controller {
             //no winner, make next move
             if (winner == 3) { //X
                 System.out.println("X wins");
-
                 updateStats(1);
-
                 JOptionPane.showMessageDialog(null, "You won");
                 newGame();
             } else if (winner == -3) { //O
@@ -146,7 +144,7 @@ public class SinglePlayerGameController extends Controller {
         }
         //update the model with the new stats
         this.model.setData(this.model.STAT_COUNTER, newStats);
-    };
+    }
 
 
     boolean tiedGame(){

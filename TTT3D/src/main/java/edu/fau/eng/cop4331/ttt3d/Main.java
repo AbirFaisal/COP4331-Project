@@ -33,8 +33,9 @@ public class Main {
 
 
 
-//        exit(0);
-
+        //load settings
+        SettingsManager settingsManager = SettingsManager.getInstance();
+        settingsManager.loadSettings();
 
         //if --server then launch game server instead of user application
         if (argmap.get("--server") != null) {

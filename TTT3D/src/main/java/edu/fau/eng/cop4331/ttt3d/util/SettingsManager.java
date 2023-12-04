@@ -37,12 +37,12 @@ public class SettingsManager {
         return settings;
     }
 
-    public void setValue(String key, Object value) {
+    public synchronized void setValue(String key, Object value) {
         this.settings.put(key, value);
         saveSettingsToFile();
     }
 
-    void saveSettingsToFile() {
+    synchronized void saveSettingsToFile() {
         //save the changes to settings.json
         String path = SettingsManager.class.getClassLoader().getResource(settingsFileName).getPath();
         File file = new File(path);

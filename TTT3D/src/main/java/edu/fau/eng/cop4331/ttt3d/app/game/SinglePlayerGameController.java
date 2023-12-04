@@ -190,7 +190,6 @@ public class SinglePlayerGameController extends Controller {
         int x = r.nextInt(3);
         int y = r.nextInt(3);
         int z = r.nextInt(3);
-        z = 0; // force 2d game
 
         System.out.println("\ncomputer " + x + "," + y + "," + z);
         System.out.println("gs3d=" + gameState[x][y][z]);
@@ -200,7 +199,6 @@ public class SinglePlayerGameController extends Controller {
             x = r.nextInt(3);
             y = r.nextInt(3);
             z = r.nextInt(3);
-            z = 0; // force 2d game
         }
 
 

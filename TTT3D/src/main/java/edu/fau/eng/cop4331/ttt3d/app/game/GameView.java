@@ -28,7 +28,16 @@ public class GameView extends View {
 //        this.jFrames.get(model.MAIN).add(helloWorld());
 
         this.jFrames.get(model.MAIN).add(winLossTieCounter());
+
+        this.jFrames.get(model.MAIN).add(new JLabel("Layer1"));
         this.jFrames.get(model.MAIN).add(xyButtonGrid(0));
+
+        this.jFrames.get(model.MAIN).add(new JLabel("Layer2"));
+        this.jFrames.get(model.MAIN).add(xyButtonGrid(1));
+
+        this.jFrames.get(model.MAIN).add(new JLabel("Layer3"));
+        this.jFrames.get(model.MAIN).add(xyButtonGrid(2));
+
     }
 
 

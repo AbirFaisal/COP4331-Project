@@ -33,7 +33,7 @@ public class App {
      */
     public void setup() {
         initStartScreen();
-        this.mainWindow.setSize(800,600);//400 width and 500 height
+        this.mainWindow.setSize(600,800);//400 width and 500 height
         this.mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ///TODO this.mainWindow.setLayout();
         this.mainWindow.setVisible(true);

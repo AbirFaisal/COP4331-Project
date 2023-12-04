@@ -1,13 +1,10 @@
 package edu.fau.eng.cop4331.ttt3d.util;
 
-import edu.fau.eng.cop4331.ttt3d.Main;
-import edu.fau.eng.cop4331.ttt3d.app.App;
 import org.json.JSONObject;
 
-import java.io.*;
-import java.util.Scanner;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 public class SettingsManager {
 

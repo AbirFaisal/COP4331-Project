@@ -1,8 +1,7 @@
 {
-  "defaultServer": "1.2.3.4",
-  "altServer": "5.6.7.8",
-  "customServer": "9.10.11.12",
+  "defaultServer": "127.0.0.1",
+  "userDefinedServer": "0.0.0.0",
   "defaultPort": 32034,
-  "customPort": 0,
+  "userDefinedPort": 0,
   "rateLimitSeconds": 1
 }

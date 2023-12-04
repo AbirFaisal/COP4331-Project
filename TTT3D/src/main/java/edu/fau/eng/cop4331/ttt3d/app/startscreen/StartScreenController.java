@@ -69,9 +69,7 @@ public class StartScreenController extends Controller {
 
                 SettingsManager.getInstance().setValue("userDefinedServer", serverIPRecord.ipAddress());
                 SettingsManager.getInstance().setValue("userDefinedPort", serverPortRecord.port());
-
-                exit(0);
-
+                
                 //launch the game
                 App.getInstance().launchGame(GameType.SINGLE_PLAYER_GAME);
             }

@@ -6,7 +6,6 @@ public class Solver {
     //class that contains game solvers
 
     public Solver() {
-
     }
 
     /**

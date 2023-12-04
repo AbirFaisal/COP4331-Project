@@ -32,7 +32,6 @@ public class Main {
         }
 
 
-
         //load settings
         SettingsManager settingsManager = SettingsManager.getInstance();
         settingsManager.loadSettings();

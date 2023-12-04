@@ -1,17 +1,21 @@
 package edu.fau.eng.cop4331.ttt3d;
 
 import edu.fau.eng.cop4331.ttt3d.app.App;
-import edu.fau.eng.cop4331.ttt3d.server.Server;
 
-import javax.swing.*;
+import java.io.*;
+import java.nio.file.Files;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
+import java.util.stream.Collectors;
+
+import edu.fau.eng.cop4331.ttt3d.util.SettingsManager;
+import org.json.JSONObject;
 
 import static java.lang.System.exit;
-import static java.lang.System.in;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Map<String, Integer> argmap = new HashMap<>();
 
         //interpret command line arguments
@@ -27,8 +31,13 @@ public class Main {
             }
         }
 
-        //TODO load settings
-        System.out.println(System.class.getResource("settings.json"));
+        //load settings
+        SettingsManager sm = SettingsManager.getInstance();
+        System.out.println(sm.
+
+
+
+//        exit(0);
 
 
         //if --server then launch game server instead of user application

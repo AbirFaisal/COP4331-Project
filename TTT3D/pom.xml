@@ -33,6 +33,11 @@
             <version>RELEASE</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>RELEASE</version>
+        </dependency>
 
         <!--        <dependency>-->
 <!--            <groupId>org.junit</groupId>-->

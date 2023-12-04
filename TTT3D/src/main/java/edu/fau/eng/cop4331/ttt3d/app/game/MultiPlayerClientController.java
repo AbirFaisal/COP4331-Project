@@ -8,7 +8,15 @@ import java.util.UUID;
 
 public class MultiPlayerClientController extends Controller {
 
+    GameModel model;
+    GameView view;
 
+    public MultiPlayerClientController(GameModel gameModel, GameView gameView) {
+        this.model = gameModel;
+        this.model.register(gameView);
+        this.view = gameView;
+        this.view.registerController(this);
+    }
 
 
     //Use cases

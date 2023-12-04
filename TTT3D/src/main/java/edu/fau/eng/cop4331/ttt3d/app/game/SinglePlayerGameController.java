@@ -36,7 +36,7 @@ public class SinglePlayerGameController extends Controller {
 
     /**
      * This handler recieves x,y cordinates of the button that was pressed
-     * @return
+     * @return A Handler that reacts to button presses on it's grid.
      */
     Handler gridButtonPressedHandler() {
         return new Handler() {
@@ -62,6 +62,13 @@ public class SinglePlayerGameController extends Controller {
     //Game logic/////////////
     Solver solver = new Solver();
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @param z
+     * @param player
+     */
     void makeMove(int x, int y, int z, int player) {
         System.out.format("interpreting move xyz=%d,%d,%d player=%d", x, y, z, player);
         GameModel.gameState3D gs3d = (GameModel.gameState3D) this.model.getData(this.model.GAME_GRID);
@@ -107,6 +114,9 @@ public class SinglePlayerGameController extends Controller {
         return false;
     }
 
+    /**
+     * setup a new game
+     */
     void newGame() {
         //empty game grid
         //should init to zeros automatically
@@ -116,6 +126,14 @@ public class SinglePlayerGameController extends Controller {
         );
     }
 
+    /**
+     * check if the move is a valid move
+     * @param x coordinate
+     * @param y coordinate
+     * @param z coordinate
+     * @param gameState
+     * @return true if the move is valid, false if it is invalid.
+     */
     boolean isValidMove(int x, int y, int z, int[][][] gameState) {
         if (gameState[x][y][z] == 0) return true;
         else return false;

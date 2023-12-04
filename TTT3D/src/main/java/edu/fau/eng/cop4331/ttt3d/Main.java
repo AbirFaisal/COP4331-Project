@@ -31,10 +31,6 @@ public class Main {
             }
         }
 
-        //load settings
-        SettingsManager sm = SettingsManager.getInstance();
-        System.out.println(sm.
-
 
 
 //        exit(0);

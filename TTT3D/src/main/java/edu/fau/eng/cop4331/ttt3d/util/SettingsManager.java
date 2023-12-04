@@ -23,7 +23,7 @@ public class SettingsManager {
         return instance;
     }
 
-    void loadSettings() {
+    public void loadSettings() {
         //settings.json in resources folder
         try {
             String jsonString = new String(
@@ -36,17 +36,11 @@ public class SettingsManager {
         System.out.println(this.settings);
     }
 
-
-    public String getSetting(){
-        return "";
+    public JSONObject getSettings() {
+        return settings;
     }
 
-    public String getValue(String key) {
-        settings.get(key);
-        return "";
-    }
-
-    void setValue(String key, String value) {
+    public void setValue(String key, Object value) {
         this.settings.put(key, value);
         saveSettingsToFile();
     }
@@ -65,5 +59,8 @@ public class SettingsManager {
         }
     }
 
-
+    @Override
+    public String toString() {
+        return this.settings.toString();
+    }
 }

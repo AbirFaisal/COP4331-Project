@@ -5,6 +5,7 @@ import edu.fau.eng.cop4331.ttt3d.app.View;
 import javax.swing.*;
 import java.awt.*;
 import java.time.Instant;
+import java.util.UUID;
 
 public class ChatView extends View {
 
@@ -48,10 +49,12 @@ public class ChatView extends View {
      * @return
      */
     JScrollPane chatLog() {
+        UUID uuid = this.model.CHAT_LOG;
+
         JTextArea textArea = new JTextArea("");
         textArea.setEditable(false);
 
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10; i++) {
             int p = ((i % 2) == 0) ?  1 : 2;
             textArea.append("Player"+ p + ": Hello World\n\n");
         }
@@ -69,6 +72,7 @@ public class ChatView extends View {
                 textArea.append("new text");
             }
         };
+        updateMethods.put(uuid, updater);
 
         return jScrollPane;
     }
@@ -78,6 +82,8 @@ public class ChatView extends View {
      * @return
      */
     JTextArea messageBox() {
+        UUID uuid = this.model.MESSAGE_BOX;
+
         JTextArea jTextArea = new JTextArea();
         jTextArea.setPreferredSize(new Dimension(100,50));
         Updater updater = new Updater() {
@@ -86,7 +92,7 @@ public class ChatView extends View {
 
             }
         };
-        updateMethods.put(model.MESSAGE_BOX, updater);
+        updateMethods.put(uuid, updater);
         return jTextArea;
     }
 
@@ -95,7 +101,12 @@ public class ChatView extends View {
      * @return
      */
     JButton sendMessageButton(){
+        UUID uuid = this.model.SEND_MESSAGE_BUTTON;
         JButton jButton = new JButton("Send");
+
+        jButton.addActionListener(actionEvent -> {
+            this.controller.handle(uuid, actionEvent);
+        });
 
         return jButton;
     }

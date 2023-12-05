@@ -110,7 +110,7 @@ public class StartScreenView extends View {
     //NOTE: Try to keep these methods in order as they appear visually
 
     /**
-     *
+     * @author Abir Faisal
      * @return a JTextField for the user to type in the server IP and port
      */
     JTextField serverIPJTextField() {
@@ -159,7 +159,7 @@ public class StartScreenView extends View {
     }
 
     /**
-     *
+     * @author Abir Faisal
      * @return
      */
     JTextField serverPortJTextField() {
@@ -213,29 +213,52 @@ public class StartScreenView extends View {
 
 
     //TODO convert to a loop
+
+    /**
+     *
+     * @author Abir Faisal
+     * @return
+     */
     JButton startSinglePlayerGameButton() {
         //instantiate the button
-        JButton singlePlayerGameButton = new JButton("Single Player");
+        JButton jButton = new JButton("Single Player");
+        UUID uuid = this.model.START_SINGLE_PLAYER_GAME_BUTTON;
 
-        singlePlayerGameButton.addActionListener(actionEvent -> {
-            this.controller.handle(model.START_SINGLE_PLAYER_GAME_BUTTON, actionEvent);
+        jButton.addActionListener(actionEvent -> {
+            this.controller.handle(uuid, actionEvent);
         });
 
-        return singlePlayerGameButton;
+        return jButton;
     }
+
+    /**
+     *
+     * @author Abir Faisal
+     * @return
+     */
     JButton startMultiPlayerGameButton() {
         //instantiate the button
         JButton multiPlayerGameButton = new JButton("Multi Player");
+        UUID uuid = this.model.START_MULTI_PLAYER_GAME_BUTTON;
 
+        //TODO change to proper implimentation
         multiPlayerGameButton.addActionListener(e -> {
             App.getInstance().launchGame(GameType.MULTI_PLAYER_CLIENT_GAME);
         });
         return multiPlayerGameButton;
     }
+
+    /**
+     *
+     * @author Abir Faisal
+     * @return
+     */
     JButton startHostGameButton() {
         //instantiate the button
         JButton multiPlayerHostGameButton = new JButton("Host Game");
+        UUID uuid = this.model.START_MULTI_HOST_GAME_BUTTON;
 
+        //TODO change to proper implimentation
         multiPlayerHostGameButton.addActionListener(e -> {
             App.getInstance().launchGame(GameType.MULTI_PLAYER_HOST_GAME);
         });

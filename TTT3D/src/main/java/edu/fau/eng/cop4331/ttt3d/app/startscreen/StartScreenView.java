@@ -163,8 +163,8 @@ public class StartScreenView extends View {
      * @return
      */
     JTextField serverPortJTextField() {
-        JTextField serverPortTextField = new JTextField("1234");
-        serverPortTextField.setMaximumSize(new Dimension(300, 25));
+        JTextField jTextField = new JTextField("1234");
+        jTextField.setMaximumSize(new Dimension(300, 25));
         UUID uuid = this.model.SERVER_PORT_TEXT_FIELD;
 
         //when the text field is changed
@@ -173,41 +173,42 @@ public class StartScreenView extends View {
             @Override
             public void insertUpdate(DocumentEvent e) {
                 controller.handle(uuid,
-                        new ActionEvent(serverPortTextField, 0, serverPortTextField.getText())
+                        new ActionEvent(jTextField, 0, jTextField.getText())
                 );
             }
             @Override
             public void removeUpdate(DocumentEvent e) {
                 controller.handle(uuid,
-                        new ActionEvent(serverPortTextField, 0, serverPortTextField.getText())
+                        new ActionEvent(jTextField, 0, jTextField.getText())
                 );
             }
             @Override
             public void changedUpdate(DocumentEvent e) {}
         };
-        serverPortTextField.getDocument().addDocumentListener(dl);
+        jTextField.getDocument().addDocumentListener(dl);
 
 
         //updates the UI if there is a change in the Model
         Updater updater = () -> {
 
             //get the data from the model as ServerInfo
-            StartScreenModel.ServerPort port = (StartScreenModel.ServerPort) this.model.getData(uuid);
+            StartScreenModel.ServerPort port =
+                    (StartScreenModel.ServerPort) this.model.getData(uuid);
 
             //if the text is different then update it, else do nothing
-            if (!serverPortTextField.getText().equals(port.port())) {
+            if (!jTextField.getText().equals(port.port())) {
                 //set text without triggering event
-                serverPortTextField.getDocument().removeDocumentListener(dl);
-                serverPortTextField.setText(port.port());
+                jTextField.getDocument().removeDocumentListener(dl);
+                jTextField.setText(port.port());
                 //restore the change listener
-                serverPortTextField.getDocument().addDocumentListener(dl);
+                jTextField.getDocument().addDocumentListener(dl);
             }
 
 
         };
         this.updateMethods.put(uuid, updater);
 
-        return serverPortTextField;
+        return jTextField;
     }
 
 

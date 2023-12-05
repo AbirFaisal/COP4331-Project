@@ -2,6 +2,8 @@ package edu.fau.eng.cop4331.ttt3d.app.chat;
 
 import edu.fau.eng.cop4331.ttt3d.app.Model;
 
+import java.util.ArrayList;
+import java.util.Stack;
 import java.util.UUID;
 
 public class ChatModel extends Model {
@@ -27,8 +29,8 @@ public class ChatModel extends Model {
     public UUID SEND_MESSAGE_BUTTON = UUID.randomUUID();
 
     //data structures
-
-    public record chatLog(String[] messages){}
+    public record chatLog(Stack<String> messages){}
+    public record messageBox(String message){}
 
 
 }

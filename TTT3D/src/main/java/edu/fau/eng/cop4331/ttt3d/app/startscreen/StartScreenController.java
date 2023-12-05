@@ -2,6 +2,7 @@ package edu.fau.eng.cop4331.ttt3d.app.startscreen;
 
 import edu.fau.eng.cop4331.ttt3d.app.App;
 import edu.fau.eng.cop4331.ttt3d.app.Controller;
+import edu.fau.eng.cop4331.ttt3d.app.Handler;
 import edu.fau.eng.cop4331.ttt3d.app.game.GameType;
 import edu.fau.eng.cop4331.ttt3d.util.SettingsManager;
 

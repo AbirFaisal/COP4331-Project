@@ -1,6 +1,7 @@
 package edu.fau.eng.cop4331.ttt3d.app.chat;
 
 import edu.fau.eng.cop4331.ttt3d.app.Controller;
+import edu.fau.eng.cop4331.ttt3d.app.Handler;
 
 import java.awt.event.ActionEvent;
 import java.util.*;

@@ -10,9 +10,6 @@ import static java.lang.Thread.sleep;
 
 public abstract class Controller {
 
-    public interface Handler {
-        void handle(ActionEvent value);
-    }
     public HashMap<UUID, Handler> handlers = new HashMap<>();
 
 
@@ -22,6 +19,7 @@ public abstract class Controller {
      * then the (UUID, ActionEvent) will go into a handlerBuffer
      * later it will be handled by a Thread launched by runHandlers().
      */
+
     public ArrayList<SimpleEntry<UUID, ActionEvent>> eventBuffer = new ArrayList<>();
 
     public void handle(UUID uuid, ActionEvent actionEvent) {

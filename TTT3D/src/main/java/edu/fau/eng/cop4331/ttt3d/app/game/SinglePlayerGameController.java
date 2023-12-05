@@ -1,6 +1,7 @@
 package edu.fau.eng.cop4331.ttt3d.app.game;
 
 import edu.fau.eng.cop4331.ttt3d.app.Controller;
+import edu.fau.eng.cop4331.ttt3d.app.Handler;
 import edu.fau.eng.cop4331.ttt3d.util.Solver;
 
 import javax.swing.*;

@@ -12,11 +12,7 @@ public abstract class View {
     public HashMap<UUID, Container> jFrames = new HashMap<>();
     public Controller controller;
 
-    /**
-     * Updater interface.
-     * the method update() is called when something in the view needs to be updated.
-     */
-    public interface Updater { void update();}
+
     //methods that are called when update is called on a UUID mapped to jFrames
     public HashMap<UUID, Updater> updateMethods = new HashMap<>();
 

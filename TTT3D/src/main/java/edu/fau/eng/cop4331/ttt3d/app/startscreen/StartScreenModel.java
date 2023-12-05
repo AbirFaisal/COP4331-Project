@@ -24,6 +24,8 @@ public class StartScreenModel extends Model {
     public UUID SERVER_IP_TEXT_FIELD = UUID.randomUUID();
     public UUID SERVER_PORT_TEXT_FIELD = UUID.randomUUID();
     public UUID START_SINGLE_PLAYER_GAME_BUTTON = UUID.randomUUID();
+    public UUID START_MULTI_PLAYER_GAME_BUTTON = UUID.randomUUID();
+    public UUID START_MULTI_HOST_GAME_BUTTON = UUID.randomUUID();
 
 
     //example data strcuture holding some information to be

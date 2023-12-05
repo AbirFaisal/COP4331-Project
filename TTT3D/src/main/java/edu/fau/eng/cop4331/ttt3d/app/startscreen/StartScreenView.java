@@ -18,7 +18,6 @@ public class StartScreenView extends View {
     StartScreenModel model;
 
     public StartScreenView(StartScreenModel startScreenModel) {
-//        super(startScreenModel);
         this.model = startScreenModel; //make view aware of model
         this.model.register(this); //make model aware of view
         setup(); //setup the view
@@ -111,7 +110,7 @@ public class StartScreenView extends View {
     //NOTE: Try to keep these methods in order as they appear visually
 
     /**
-     *
+     * @author Abir Faisal
      * @return a JTextField for the user to type in the server IP and port
      */
     JTextField serverIPJTextField() {
@@ -160,12 +159,12 @@ public class StartScreenView extends View {
     }
 
     /**
-     *
+     * @author Abir Faisal
      * @return
      */
     JTextField serverPortJTextField() {
-        JTextField serverPortTextField = new JTextField("1234");
-        serverPortTextField.setMaximumSize(new Dimension(300, 25));
+        JTextField jTextField = new JTextField("1234");
+        jTextField.setMaximumSize(new Dimension(300, 25));
         UUID uuid = this.model.SERVER_PORT_TEXT_FIELD;
 
         //when the text field is changed
@@ -174,73 +173,95 @@ public class StartScreenView extends View {
             @Override
             public void insertUpdate(DocumentEvent e) {
                 controller.handle(uuid,
-                        new ActionEvent(serverPortTextField, 0, serverPortTextField.getText())
+                        new ActionEvent(jTextField, 0, jTextField.getText())
                 );
             }
             @Override
             public void removeUpdate(DocumentEvent e) {
                 controller.handle(uuid,
-                        new ActionEvent(serverPortTextField, 0, serverPortTextField.getText())
+                        new ActionEvent(jTextField, 0, jTextField.getText())
                 );
             }
             @Override
             public void changedUpdate(DocumentEvent e) {}
         };
-        serverPortTextField.getDocument().addDocumentListener(dl);
+        jTextField.getDocument().addDocumentListener(dl);
 
 
         //updates the UI if there is a change in the Model
         Updater updater = () -> {
 
             //get the data from the model as ServerInfo
-            StartScreenModel.ServerPort port = (StartScreenModel.ServerPort) this.model.getData(uuid);
+            StartScreenModel.ServerPort port =
+                    (StartScreenModel.ServerPort) this.model.getData(uuid);
 
             //if the text is different then update it, else do nothing
-            if (!serverPortTextField.getText().equals(port.port())) {
+            if (!jTextField.getText().equals(port.port())) {
                 //set text without triggering event
-                serverPortTextField.getDocument().removeDocumentListener(dl);
-                serverPortTextField.setText(port.port());
+                jTextField.getDocument().removeDocumentListener(dl);
+                jTextField.setText(port.port());
                 //restore the change listener
-                serverPortTextField.getDocument().addDocumentListener(dl);
+                jTextField.getDocument().addDocumentListener(dl);
             }
 
 
         };
         this.updateMethods.put(uuid, updater);
 
-        return serverPortTextField;
+        return jTextField;
     }
 
 
 
     //TODO convert to a loop
+
+    /**
+     *
+     * @author Abir Faisal
+     * @return
+     */
     JButton startSinglePlayerGameButton() {
         //instantiate the button
-        JButton singlePlayerGameButton = new JButton("Single Player");
+        JButton jButton = new JButton("Single Player");
+        UUID uuid = this.model.START_SINGLE_PLAYER_GAME_BUTTON;
 
-        singlePlayerGameButton.addActionListener(actionEvent -> {
-            this.controller.handle(model.START_SINGLE_PLAYER_GAME_BUTTON, actionEvent);
+        jButton.addActionListener(actionEvent -> {
+            this.controller.handle(uuid, actionEvent);
         });
 
-        return singlePlayerGameButton;
+        return jButton;
     }
+
+    /**
+     *
+     * @author Abir Faisal
+     * @return
+     */
     JButton startMultiPlayerGameButton() {
         //instantiate the button
-        JButton multiPlayerGameButton = new JButton("Multi Player");
+        JButton jButton = new JButton("Multi Player");
+        UUID uuid = this.model.START_MULTI_PLAYER_GAME_BUTTON;
 
-        multiPlayerGameButton.addActionListener(e -> {
-            App.getInstance().launchGame(GameType.MULTI_PLAYER_CLIENT_GAME);
+        jButton.addActionListener(actionEvent -> {
+            this.controller.handle(uuid, actionEvent);
         });
-        return multiPlayerGameButton;
+        return jButton;
     }
+
+    /**
+     *
+     * @author Abir Faisal
+     * @return
+     */
     JButton startHostGameButton() {
         //instantiate the button
-        JButton multiPlayerHostGameButton = new JButton("Host Game");
+        JButton jButton = new JButton("Host Game");
+        UUID uuid = this.model.START_MULTI_HOST_GAME_BUTTON;
 
-        multiPlayerHostGameButton.addActionListener(e -> {
-            App.getInstance().launchGame(GameType.MULTI_PLAYER_HOST_GAME);
+        jButton.addActionListener(actionEvent -> {
+            this.controller.handle(uuid, actionEvent);
         });
 
-        return multiPlayerHostGameButton;
+        return jButton;
     }
 }

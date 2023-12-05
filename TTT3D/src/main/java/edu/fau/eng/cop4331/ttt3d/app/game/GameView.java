@@ -13,7 +13,6 @@ public class GameView extends View {
     GameModel model;
 
     public GameView(GameModel gameModel) {
-//        super(gameModel);
         this.model = gameModel; //make view aware of model
         this.model.register(this); //make model aware of view
         setup(); //setup the view
@@ -28,14 +27,22 @@ public class GameView extends View {
 //        this.jFrames.get(model.MAIN).add(helloWorld());
 
         this.jFrames.get(model.MAIN).add(winLossTieCounter());
+
+        this.jFrames.get(model.MAIN).add(new JLabel("Layer1"));
         this.jFrames.get(model.MAIN).add(xyButtonGrid(0));
+
+        this.jFrames.get(model.MAIN).add(new JLabel("Layer2"));
+        this.jFrames.get(model.MAIN).add(xyButtonGrid(1));
+
+        this.jFrames.get(model.MAIN).add(new JLabel("Layer3"));
+        this.jFrames.get(model.MAIN).add(xyButtonGrid(2));
+
     }
 
 
 
 
     /////UI elements/////////
-
     JLabel helloWorld() {
         JLabel jLabel = new JLabel("Hello World");
         //called by the model when it's corresponding values change

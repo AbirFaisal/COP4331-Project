@@ -238,14 +238,13 @@ public class StartScreenView extends View {
      */
     JButton startMultiPlayerGameButton() {
         //instantiate the button
-        JButton multiPlayerGameButton = new JButton("Multi Player");
+        JButton jButton = new JButton("Multi Player");
         UUID uuid = this.model.START_MULTI_PLAYER_GAME_BUTTON;
 
-        //TODO change to proper implimentation
-        multiPlayerGameButton.addActionListener(e -> {
-            App.getInstance().launchGame(GameType.MULTI_PLAYER_CLIENT_GAME);
+        jButton.addActionListener(actionEvent -> {
+            this.controller.handle(uuid, actionEvent);
         });
-        return multiPlayerGameButton;
+        return jButton;
     }
 
     /**
@@ -255,14 +254,13 @@ public class StartScreenView extends View {
      */
     JButton startHostGameButton() {
         //instantiate the button
-        JButton multiPlayerHostGameButton = new JButton("Host Game");
+        JButton jButton = new JButton("Host Game");
         UUID uuid = this.model.START_MULTI_HOST_GAME_BUTTON;
 
-        //TODO change to proper implimentation
-        multiPlayerHostGameButton.addActionListener(e -> {
-            App.getInstance().launchGame(GameType.MULTI_PLAYER_HOST_GAME);
+        jButton.addActionListener(actionEvent -> {
+            this.controller.handle(uuid, actionEvent);
         });
 
-        return multiPlayerHostGameButton;
+        return jButton;
     }
 }

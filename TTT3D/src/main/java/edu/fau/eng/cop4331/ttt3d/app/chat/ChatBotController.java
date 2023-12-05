@@ -32,9 +32,8 @@ public class ChatBotController extends Controller {
         return new Handler() {
             @Override
             public void handle(ActionEvent value) {
-                System.out.println(value);
-
                 System.out.println("send button pressed");
+
             }
         };
     }

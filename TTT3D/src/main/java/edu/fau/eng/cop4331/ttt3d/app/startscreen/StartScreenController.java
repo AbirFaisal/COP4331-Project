@@ -25,6 +25,9 @@ public class StartScreenController extends Controller {
 
     void setup() {
         handlers.put(model.START_SINGLE_PLAYER_GAME_BUTTON, startSinglePlayerGameHandler());
+        handlers.put(model.START_MULTI_PLAYER_GAME_BUTTON, startMultiPlayerGameHandler());
+        handlers.put(model.START_MULTI_HOST_GAME_BUTTON, startHostGameHandler());
+
         handlers.put(model.SERVER_IP_TEXT_FIELD, serverIPInfoUpdateHandler());
         handlers.put(model.SERVER_PORT_TEXT_FIELD, serverPortUpdateHandler());
 
@@ -56,25 +59,51 @@ public class StartScreenController extends Controller {
             @Override
             public void handle(ActionEvent value) {
                 System.out.println("Start Single Player Button Pressed");
-
                 //save the settings
-                StartScreenModel.ServerIP serverIPRecord =
-                        (StartScreenModel.ServerIP) instance.model.getData(model.SERVER_IP_TEXT_FIELD);
-
-                StartScreenModel.ServerPort serverPortRecord =
-                        (StartScreenModel.ServerPort) instance.model.getData(model.SERVER_PORT_TEXT_FIELD);
-
-                SettingsManager.getInstance().setValue("userDefinedServer", serverIPRecord.ipAddress());
-                SettingsManager.getInstance().setValue("userDefinedPort", serverPortRecord.port());
-                
+                saveUserSettings();
                 //launch the game
                 App.getInstance().launchGame(GameType.SINGLE_PLAYER_GAME);
             }
         };
     }
 
+    /**
+     *
+     * @return a Handler that launches a single player game
+     */
+    Handler startMultiPlayerGameHandler() {
+        StartScreenController instance = StartScreenController.this;
 
+        return new Handler() {
+            @Override
+            public void handle(ActionEvent value) {
+                System.out.println("Start Multi Player Button Pressed");
+                //save the settings
+                saveUserSettings();
+                //launch the game
+                App.getInstance().launchGame(GameType.MULTI_PLAYER_CLIENT_GAME);
+            }
+        };
+    }
 
+    /**
+     *
+     * @return a Handler that launches a single player game
+     */
+    Handler startHostGameHandler() {
+        StartScreenController instance = StartScreenController.this;
+
+        return new Handler() {
+            @Override
+            public void handle(ActionEvent value) {
+                System.out.println("Start Host Game Button Pressed");
+                //save the settings
+                saveUserSettings();
+                //launch the game
+                App.getInstance().launchGame(GameType.MULTI_PLAYER_HOST_GAME);
+            }
+        };
+    }
 
 
 
@@ -114,6 +143,26 @@ public class StartScreenController extends Controller {
                 System.out.println(instance.model.getData(uuid));
             }
         };
+    }
+
+
+    //controller logic
+
+    void saveUserSettings() {
+        StartScreenController instance = StartScreenController.this;
+
+
+        //save the settings
+        StartScreenModel.ServerIP serverIPRecord =
+                (StartScreenModel.ServerIP) instance.model.getData(model.SERVER_IP_TEXT_FIELD);
+
+        StartScreenModel.ServerPort serverPortRecord =
+                (StartScreenModel.ServerPort) instance.model.getData(model.SERVER_PORT_TEXT_FIELD);
+
+        SettingsManager.getInstance().setValue("userDefinedServer", serverIPRecord.ipAddress());
+        SettingsManager.getInstance().setValue("userDefinedPort", serverPortRecord.port());
+
+
     }
 
 }

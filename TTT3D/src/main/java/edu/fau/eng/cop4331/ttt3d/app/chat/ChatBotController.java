@@ -2,6 +2,8 @@ package edu.fau.eng.cop4331.ttt3d.app.chat;
 
 import edu.fau.eng.cop4331.ttt3d.app.Controller;
 
+import java.awt.event.ActionEvent;
+
 public class ChatBotController extends Controller {
 
 
@@ -23,8 +25,21 @@ public class ChatBotController extends Controller {
 
     //event handlers
 
+    Handler sendChatHandler(){
+        return new Handler() {
+            @Override
+            public void handle(ActionEvent value) {
+
+            }
+        };
+    }
 
 
+    //application logic
 
+    void getBotResponse() {
+        String[] responses = {"Ok", "I understand", "Sure"};
+
+    }
 
 }

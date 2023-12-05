@@ -43,19 +43,40 @@ public class ChatView extends View {
         return jLabel;
     }
 
+    /**
+     * @author Abir Faisal
+     * @return
+     */
+    JScrollPane chatLog() {
+        JTextArea textArea = new JTextArea("");
+        textArea.setEditable(false);
 
-    JScrollPane chatLog(){
-        JScrollPane jScrollPane = new JScrollPane();
+        for (int i = 0; i < 100; i++) {
+            int p = ((i % 2) == 0) ?  1 : 2;
+            textArea.append("Player"+ p + ": Hello World\n\n");
+        }
+
+        JScrollPane jScrollPane = new JScrollPane(textArea);
         jScrollPane.setPreferredSize(new Dimension(800,600));
         jScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
-        JTextArea textArea = new JTextArea(20, 20);
+        Updater updater = new Updater() {
+            @Override
+            public void update() {
+                //get record from model
 
-        jScrollPane.add(textArea);
+                //update the ui
+                textArea.append("new text");
+            }
+        };
 
         return jScrollPane;
     }
 
+    /**
+     * @author Abir Faisal
+     * @return
+     */
     JTextArea messageBox() {
         JTextArea jTextArea = new JTextArea();
         jTextArea.setPreferredSize(new Dimension(100,50));
@@ -69,6 +90,10 @@ public class ChatView extends View {
         return jTextArea;
     }
 
+    /**
+     * @author Abir Faisal
+     * @return
+     */
     JButton sendMessageButton(){
         JButton jButton = new JButton("Send");
 

@@ -5,6 +5,7 @@ import edu.fau.eng.cop4331.ttt3d.app.View;
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.text.DefaultCaret;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.time.Instant;
@@ -50,30 +51,31 @@ public class ChatView extends View {
     }
 
     /**
+     * The chat log where the user can see the send and
+     * recieved messages
+     *
      * @author Abir Faisal
      * @return
      */
     JScrollPane chatLog() {
         UUID uuid = this.model.CHAT_LOG;
 
-        JTextArea textArea = new JTextArea("");
-        textArea.setEditable(false);
+        JTextArea jTextArea = new JTextArea("");
+        jTextArea.setEditable(false);
+        DefaultCaret dc = (DefaultCaret) jTextArea.getCaret();
+        dc.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
 
-        for (int i = 0; i < 10; i++) {
-            int p = ((i % 2) == 0) ?  1 : 2;
-            textArea.append("Player"+ p + ": Hello World\n\n");
-        }
-
-        JScrollPane jScrollPane = new JScrollPane(textArea);
+        JScrollPane jScrollPane = new JScrollPane(jTextArea);
         jScrollPane.setPreferredSize(new Dimension(800,600));
         jScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
 
         Updater updater = () -> {
             //get record from model
                 ChatModel.chatLog cl =
                         (ChatModel.chatLog) this.model.getData(uuid);
             Stack<String> messages = cl.messages();
-            textArea.append(messages.peek() + "\n\n");
+            jTextArea.append(messages.peek() + "\n\n");
         };
         updateMethods.put(uuid, updater);
 
@@ -81,6 +83,9 @@ public class ChatView extends View {
     }
 
     /**
+     * The message box where the user
+     * types in a message that they want to send.
+     *
      * @author Abir Faisal
      * @return
      */
@@ -89,6 +94,7 @@ public class ChatView extends View {
 
         JTextArea jTextArea = new JTextArea();
         jTextArea.setPreferredSize(new Dimension(100,50));
+
 
         DocumentListener dl = new DocumentListener() {
             @Override

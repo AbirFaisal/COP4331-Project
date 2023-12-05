@@ -23,7 +23,12 @@ public abstract class View {
 //        this.model.register(this);
 //    }
 
-    //used to setup the view, setup the main view and add elements to it
+    /**
+     * Used to setup the view, setup the main view and add elements to it
+     * This should be called in the constructor
+     *
+     * @author Abir Faisal
+     */
     public abstract void setup();
 
 
@@ -33,6 +38,8 @@ public abstract class View {
      * Registers a controller with the view so that the view
      * is aware of where it needs to send actions and events.
      * The view will call it's handle(UUID) method when soemthing happens.
+     *
+     * @author Abir Faisal
      * @param controller A subclass that extends the abstract Controller
      */
     public void registerController(Controller controller){
@@ -43,6 +50,7 @@ public abstract class View {
     /**
      * Updates an element of the view given its corresponding UUID
      *
+     * @author Abir Faisal
      * @param uuid UUID as defined in the model of the view
      */
     public void updateElement(UUID uuid) {
@@ -52,6 +60,8 @@ public abstract class View {
 
     /**
      * Refresh/Update the whole view.
+     *
+     * @author Abir Faisal
      */
     public void refreshView(){
         BiConsumer<? super UUID, ? super Updater> biConsumer = (uuid, updater) -> updater.update();
@@ -60,6 +70,8 @@ public abstract class View {
 
     /**
      * Get a component of the view
+     *
+     * @author Abir Faisal
      * @param uuid UUID as defined in the model of the view
      */
     public Container getContainer(UUID uuid){

@@ -66,6 +66,10 @@ public class SinglePlayerGameController extends Controller {
 
     /**
      *
+     * Validates and makes a move and updates the model
+     * Also tells user if the game was won and if so resets the game
+     *
+     * @author Abir Faisal
      * @param x
      * @param y
      * @param z
@@ -119,6 +123,7 @@ public class SinglePlayerGameController extends Controller {
     /**
      * Updates the game stats in the model with the new values
      *
+     * @author Abir Faisal
      * @param winLossTie 1=win -1=loss 0=tie
      */
     void updateStats(int winLossTie){
@@ -153,6 +158,8 @@ public class SinglePlayerGameController extends Controller {
     }
 
     /**
+     *
+     * @author Abir Faisal
      * setup a new game
      */
     void newGame() {
@@ -170,6 +177,8 @@ public class SinglePlayerGameController extends Controller {
 
     /**
      * check if the move is a valid move
+     *
+     * @author Abir Faisal
      * @param x coordinate
      * @param y coordinate
      * @param z coordinate
@@ -184,26 +193,26 @@ public class SinglePlayerGameController extends Controller {
     /**
      * Single player mode
      * Computer makes next move
+     *
+     * @author Abir Faisal
      */
     void makeNextMove(int[][][] gameState) {
         //select random position
         Random r = new Random();
-        int x = r.nextInt(3);
-        int y = r.nextInt(3);
-        int z = r.nextInt(3);
+        int x = r.nextInt(gameState.length);
+        int y = r.nextInt(gameState[x].length);
+        int z = r.nextInt(gameState[x][y].length);
 
-        System.out.println("\ncomputer " + x + "," + y + "," + z);
-        System.out.println("gs3d=" + gameState[x][y][z]);
+        System.out.println("\ncomputer move " + x + "," + y + "," + z);
 
+        //validate decision
         while (gameState[x][y][z] != 0) {
             System.out.println("NOT VALID RECALCULATING");
-            x = r.nextInt(3);
-            y = r.nextInt(3);
-            z = r.nextInt(3);
+            x = r.nextInt(gameState.length);
+            y = r.nextInt(gameState[x].length);
+            z = r.nextInt(gameState[x][y].length);
         }
-
-
-        makeMove(x, y, z, 0);
+        makeMove(x, y, z, 0); //player 0 is always opponent
 
     }
 }

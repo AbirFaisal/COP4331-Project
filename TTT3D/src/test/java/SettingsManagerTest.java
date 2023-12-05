@@ -1,6 +1,7 @@
 import edu.fau.eng.cop4331.ttt3d.util.SettingsManager;
 import org.junit.jupiter.api.Test;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class SettingsManagerTest {
@@ -14,18 +15,16 @@ public class SettingsManagerTest {
         SettingsManager sm = SettingsManager.getInstance();
         sm.loadSettings();
 
-        int customPort = sm.getSettings().getInt("customPort");
+        String customPort = sm.getSettings().getString("userDefinedPort");
         System.out.println("before: " + customPort);
 
-
-        Random r = new Random();
-        sm.setValue("customPort", r.nextInt(65535));
+        sm.setValue("userDefinedPort", "0");
 
         sm.loadSettings();
-        int newCustomPort = sm.getSettings().getInt("customPort");
+        String newCustomPort = sm.getSettings().getString("userDefinedPort");
         System.out.println("after: " + newCustomPort);
 
-        assert (customPort != newCustomPort): "Settings did not change";
+        assert (!customPort.equals(newCustomPort)) : "Settings did not change";
     }
 
 

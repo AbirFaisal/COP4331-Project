@@ -5,6 +5,10 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
+import static java.lang.System.exit;
 
 public class SettingsManager {
 
@@ -21,16 +25,28 @@ public class SettingsManager {
     }
 
     public void loadSettings() {
-        //settings.json in resources folder
-        try {
-            String jsonString = new String(
-                    SettingsManager.class.getClassLoader().getResourceAsStream(settingsFileName).readAllBytes()
-            );
-            this.settings = new JSONObject(jsonString);
-        }catch (IOException e) {
+        //check if settings.json exists
+        File file = new File(settingsFileName);
 
+        try {
+            //if exist then load from file
+            if (file.exists()) {
+                String jsonString = Files.readString(Path.of(file.getPath()));
+                this.settings = new JSONObject(jsonString);
+
+            } else {
+                //get default settings
+                String jsonString = new String(
+                        SettingsManager.class.getClassLoader().getResourceAsStream(settingsFileName).readAllBytes()
+                );
+                //load into this and save to file
+                this.settings = new JSONObject(jsonString);
+                saveSettingsToFile();
+            }
+        }catch (IOException e) {
+            System.out.println("Failed to load settings");
         }
-        System.out.println(this.settings);
+        System.out.println(this.settings);//TODO remove?
     }
 
     public JSONObject getSettings() {
@@ -44,14 +60,14 @@ public class SettingsManager {
 
     synchronized void saveSettingsToFile() {
         //save the changes to settings.json
-        String path = SettingsManager.class.getClassLoader().getResource(settingsFileName).getPath();
-        File file = new File(path);
+        File file = new File(settingsFileName);
 
         try {
             PrintWriter writer = new PrintWriter(file);
             writer.write(this.settings.toString());
             writer.close();
         }catch (IOException e) {
+            System.out.println(e);
             System.out.println("failed to save settings");
         }
     }

@@ -12,6 +12,13 @@ public class MultiPlayerClientController extends Controller {
         this.model.register(gameView);
         this.view = gameView;
         this.view.registerController(this);
+
+        setup();
+    }
+
+
+    void setup(){
+
     }
 
 

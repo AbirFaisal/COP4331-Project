@@ -15,9 +15,16 @@ import java.util.UUID;
 
 public class StartScreenView extends View {
 
-    //The model that this view will refrence
+    //The model that this view will reference
+    //when it needs to update
     StartScreenModel model;
 
+    /**
+     * Instantiate and setup the View
+     *
+     * @author Abir Faisal
+     * @param startScreenModel StartScreenModel
+     */
     public StartScreenView(StartScreenModel startScreenModel) {
         this.model = startScreenModel; //make view aware of model
         this.model.register(this); //make model aware of view
@@ -45,18 +52,12 @@ public class StartScreenView extends View {
         centeringPanel.add(startHostGameButton());
 
 
+        //put centering panel in mainJpanel
         this.jFrames.get(model.MAIN).add(centeringPanel);
-
-        //add elemets of this view
-//        this.jFrames.get(model.MAIN).add(serverIPJTextField());
-//        this.jFrames.get(model.MAIN).add(serverPortJTextField());
-//        this.jFrames.get(model.MAIN).add(startSinglePlayerGameButton());
-//        this.jFrames.get(model.MAIN).add(startMultiPlayerGameButton());
-//        this.jFrames.get(model.MAIN).add(startHostGameButton());
     }
 
     /**
-     * Example function
+     * Example function for refrence purposes
      * @return
      */
     JLabel helloWorld() {
@@ -111,6 +112,8 @@ public class StartScreenView extends View {
     //NOTE: Try to keep these methods in order as they appear visually
 
     /**
+     * Text field where the user enters the server IP
+     *
      * @author Abir Faisal
      * @return a JTextField for the user to type in the server IP and port
      */
@@ -160,6 +163,9 @@ public class StartScreenView extends View {
     }
 
     /**
+     *
+     * Text field where the user enters the server port number
+     *
      * @author Abir Faisal
      * @return
      */
@@ -217,6 +223,7 @@ public class StartScreenView extends View {
     //TODO convert to a loop
 
     /**
+     *  Button that starts a single player game
      *
      * @author Abir Faisal
      * @return
@@ -234,6 +241,7 @@ public class StartScreenView extends View {
     }
 
     /**
+     * Button that starts a multi player game
      *
      * @author Abir Faisal
      * @return
@@ -250,6 +258,7 @@ public class StartScreenView extends View {
     }
 
     /**
+     * Button that starts a hosting a game for one other player
      *
      * @author Abir Faisal
      * @return

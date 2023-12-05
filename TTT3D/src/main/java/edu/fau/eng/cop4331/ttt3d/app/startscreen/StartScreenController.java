@@ -50,7 +50,10 @@ public class StartScreenController extends Controller {
 
     //Action handlers
     /**
+     * Save server settings and tell Application
+     * to launch GameType.SINGLE_PLAYER_GAME
      *
+     * @author Abir Faisal
      * @return a Handler that launches a single player game
      */
     Handler startSinglePlayerGameHandler() {
@@ -69,7 +72,10 @@ public class StartScreenController extends Controller {
     }
 
     /**
+     * Save server settings and tell Application
+     * to launch GameType.MULTI_PLAYER_CLIENT_GAME
      *
+     * @author Abir Faisal
      * @return a Handler that launches a single player game
      */
     Handler startMultiPlayerGameHandler() {
@@ -88,7 +94,10 @@ public class StartScreenController extends Controller {
     }
 
     /**
+     * Save server settings and tell Application
+     * to launch GameType.MULTI_PLAYER_HOST_GAME
      *
+     * @author Abir Faisal
      * @return a Handler that launches a single player game
      */
     Handler startHostGameHandler() {
@@ -110,6 +119,8 @@ public class StartScreenController extends Controller {
 
     /**
      * When the user changes the server IP
+     *
+     * @author Abir Faisal
      * @return A handler that updates the model with a new value
      */
     Handler serverIPInfoUpdateHandler(){
@@ -129,6 +140,8 @@ public class StartScreenController extends Controller {
 
     /**
      * When the user changes the server Port
+     *
+     * @author Abir Faisal
      * @return A handler that updates the model with a new value
      */
     Handler serverPortUpdateHandler(){
@@ -147,8 +160,13 @@ public class StartScreenController extends Controller {
     }
 
 
-    //controller logic
+    //controller logic///////////////////////////
 
+    /**
+     * Save the user settings from the ServerIP and port text input fields
+     *
+     * @author Abir Faisal
+     */
     void saveUserSettings() {
         StartScreenController instance = StartScreenController.this;
 
@@ -162,8 +180,6 @@ public class StartScreenController extends Controller {
 
         SettingsManager.getInstance().setValue("userDefinedServer", serverIPRecord.ipAddress());
         SettingsManager.getInstance().setValue("userDefinedPort", serverPortRecord.port());
-
-
     }
 
 }

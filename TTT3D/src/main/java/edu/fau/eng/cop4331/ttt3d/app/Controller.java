@@ -10,18 +10,29 @@ import static java.lang.Thread.sleep;
 
 public abstract class Controller {
 
+    //Contains a set of UUID and handlers implimenting the Handler interface
     public HashMap<UUID, Handler> handlers = new HashMap<>();
-
 
     /**
      * When the user interacts with the View,
      * the View will notify the Controller that a (UUID, actionEvent) has occurred,
      * then the (UUID, ActionEvent) will go into a handlerBuffer
      * later it will be handled by a Thread launched by runHandlers().
+     *
+     * @author Abir Faisal
+     *
      */
 
     public ArrayList<SimpleEntry<UUID, ActionEvent>> eventBuffer = new ArrayList<>();
 
+    /**
+     * passes events from the UI into the event buffer.
+     * It is handled when the runHandlers thread checks it.
+     *
+     * @author Abir Faisal
+     * @param uuid
+     * @param actionEvent
+     */
     public void handle(UUID uuid, ActionEvent actionEvent) {
         SimpleEntry<UUID, ActionEvent> tuple = new SimpleEntry<>(uuid, actionEvent);
         eventBuffer.add(tuple);
@@ -29,7 +40,10 @@ public abstract class Controller {
 
     /**
      * This will monitor the event buffer and handle any events
+     *
+     * @author Abir Faisal
      */
+    //TODO convert to iterator pattern
     public void runHandlers() {
         new Thread(() -> {
             while (true) {
@@ -54,10 +68,4 @@ public abstract class Controller {
             }
         }).start();
     }
-
-
-//    public void updateModel(UUID key, Record data) {
-//        this.model.setData(key, data);
-//    }
-
 }

@@ -3,10 +3,7 @@ package edu.fau.eng.cop4331.ttt3d.app.chat;
 import edu.fau.eng.cop4331.ttt3d.app.Controller;
 
 import java.awt.event.ActionEvent;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Stack;
-import java.util.UUID;
+import java.util.*;
 
 public class ChatBotController extends Controller {
 
@@ -43,7 +40,6 @@ public class ChatBotController extends Controller {
 
     Handler sendChatButtonHandler() {
         UUID messageBoxUUID = this.model.MESSAGE_BOX;
-        UUID chatLogUUID = this.model.CHAT_LOG;
 
         return value -> {
             System.out.println("send button pressed");
@@ -56,15 +52,7 @@ public class ChatBotController extends Controller {
             this.model.setData(messageBoxUUID, new ChatModel.messageBox(""));
 
             //append the message to the chat
-            ChatModel.chatLog cl =
-                    (ChatModel.chatLog) this.model.getData(chatLogUUID);
-            Stack<String> messages = cl.messages();
-
-            //put the new message on the top of the stack
-            messages.push("Player 1: " + message);
-
-            //update the chatlog datastructure in the model
-            this.model.setData(chatLogUUID, new ChatModel.chatLog(messages));
+            appendChatLog("Player 1: " + message);
 
             //get response from bot
             getBotResponse();
@@ -72,6 +60,12 @@ public class ChatBotController extends Controller {
         };
     }
 
+    /**
+     * Append a message to the chatLog data structure in the model
+     *
+     * @author Abir Faisal
+     * @param message String message you want to append
+     */
     void appendChatLog(String message) {
         UUID chatLogUUID = this.model.CHAT_LOG;
 
@@ -81,7 +75,7 @@ public class ChatBotController extends Controller {
         Stack<String> messages = cl.messages();
 
         //put the new message on the top of the stack
-        messages.push("Player 1: " + message);
+        messages.push(message);
 
         //update the chatlog datastructure in the model
         this.model.setData(chatLogUUID, new ChatModel.chatLog(messages));
@@ -103,7 +97,11 @@ public class ChatBotController extends Controller {
 
     void getBotResponse() {
         String[] responses = {"Ok", "I understand", "Sure"};
+        Random r = new Random();
+        int i = r.nextInt(responses.length);
 
+        appendChatLog(responses[i]);
+       
     }
 
 }

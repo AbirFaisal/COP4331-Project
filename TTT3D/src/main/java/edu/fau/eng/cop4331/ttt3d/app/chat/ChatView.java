@@ -1,5 +1,6 @@
 package edu.fau.eng.cop4331.ttt3d.app.chat;
 
+import edu.fau.eng.cop4331.ttt3d.app.Updater;
 import edu.fau.eng.cop4331.ttt3d.app.View;
 
 import javax.swing.*;

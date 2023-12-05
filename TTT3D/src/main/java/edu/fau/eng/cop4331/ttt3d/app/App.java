@@ -32,7 +32,7 @@ public class App {
 
     /**
      * Set up the components of the main window and/or application
-     *
+     * @author Abir Faisal
      */
     public void setup() {
         initStartScreen();
@@ -45,11 +45,17 @@ public class App {
     /**
      * run the application
      *
+     * @author Abir Faisal
      */
     public void run() {
         //TODO this might be useless...
     }
 
+    /**
+     * Setup the initial MVC you want to show the user
+     *
+     * @author Abir Faisal
+     */
     public void initStartScreen(){
         StartScreenModel startScreenModel = new StartScreenModel();
         StartScreenView startScreenView = new StartScreenView(startScreenModel);
@@ -58,7 +64,9 @@ public class App {
     }
 
     /**
+     *  Launch the application specified by the initial screen
      *
+     * @author Abir Faisal
      * @param gameType the type of game you want to launch
      */
     public void launchGame(GameType gameType) {
@@ -94,6 +102,8 @@ public class App {
 
     /**
      * Generate a client ID or try to load from settings
+     *
+     * @author Abir Faisal
      * @return 128bit Client ID as byte[16], 16 * 8bit = 128bits
      */
     public byte[] getClientID() {
@@ -122,6 +132,8 @@ public class App {
 
     /**
      * set the content of the main window, replace existing content
+     *
+     * @author Abir Faisal
      * @param c a JPanel that contains the contents you want to display
      */
     public void setMainWindowContent(Container c) {
@@ -132,6 +144,8 @@ public class App {
 
     /**
      * add the content to the main window
+     * 
+     * @author Abir Faisal
      * @param c a JPanel that contains the contents you want to display
      */
     public void addMainWindowContent(Container c) {

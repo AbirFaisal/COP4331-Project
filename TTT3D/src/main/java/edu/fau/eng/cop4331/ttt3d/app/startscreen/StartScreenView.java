@@ -56,59 +56,6 @@ public class StartScreenView extends View {
         this.jFrames.get(model.MAIN).add(centeringPanel);
     }
 
-    /**
-     * Example function for refrence purposes
-     * @return
-     */
-    JLabel helloWorld() {
-        //instantiate the object
-        JLabel jLabel = new JLabel("Hello World");
-
-        //OPTIONAL: put reference to object into HashMap
-//        this.jFrames.put(StartScreenModel.Keys.HELLO_WORLD_JLABEL, jLabel);
-
-        //create an update method
-        Updater updater = () -> {
-            //handle update logic here
-            //for example get some data from the corresponding model
-
-            String currentTime = Instant.now().toString();
-            jLabel.setText(currentTime);
-        };
-
-        //put a reference to the update method into the HashMap
-        updateMethods.put(model.HELLO_WORLD_JLABEL, updater);
-        return jLabel;
-    }
-
-    //example button
-    JButton testButton() {
-        //instantiate the object
-        JButton jButton = new JButton("button Text");
-
-        //OPTIONAL: put reference to object into HashMap
-//        this.jFrames.put(StartScreenModel.Keys.HELLO_WORLD_JLABEL, jLabel);
-
-        //create an update method
-        Updater updater = () -> {
-            //handle update logic here
-            //for example get some data from the corresponding model
-            jButton.setText("Text changed from update()");
-
-            //update another element
-            updateElement(model.HELLO_WORLD_JLABEL);
-        };
-
-        //add action listener if needed.
-        jButton.addActionListener(e -> {
-            updater.update();
-        });
-
-        //put a reference to the update method into the HashMap
-        updateMethods.put(model.TEST_BUTTON, updater);
-        return jButton;
-    }
-
     //NOTE: Try to keep these methods in order as they appear visually
 
     /**

@@ -25,8 +25,6 @@ public class GameView extends View {
         this.jFrames.put(model.MAIN, mainJPanel);
         mainJPanel.setLayout(new BoxLayout(mainJPanel, BoxLayout.Y_AXIS));
 
-//        this.jFrames.get(model.MAIN).add(helloWorld());
-
         this.jFrames.get(model.MAIN).add(winLossTieCounter());
 
         this.jFrames.get(model.MAIN).add(new JLabel("Layer1"));
@@ -40,21 +38,7 @@ public class GameView extends View {
 
     }
 
-
-
-
     /////UI elements/////////
-    JLabel helloWorld() {
-        JLabel jLabel = new JLabel("Hello World");
-        //called by the model when it's corresponding values change
-        Updater updater = () -> {
-            String currentTime = Instant.now().toString();
-            jLabel.setText(currentTime);
-        };
-        updateMethods.put(model.HELLO_WORLD_JLABEL, updater);
-        return jLabel;
-    }
-
 
     JLabel winLossTieCounter() {
         JLabel jLabel = new JLabel("Win: 0 Loss: 0 Tie: 0");

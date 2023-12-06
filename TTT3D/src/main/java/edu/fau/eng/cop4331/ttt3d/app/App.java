@@ -1,8 +1,6 @@
 package edu.fau.eng.cop4331.ttt3d.app;
 
-import edu.fau.eng.cop4331.ttt3d.app.chat.ChatBotController;
-import edu.fau.eng.cop4331.ttt3d.app.chat.ChatModel;
-import edu.fau.eng.cop4331.ttt3d.app.chat.ChatView;
+import edu.fau.eng.cop4331.ttt3d.app.chat.*;
 import edu.fau.eng.cop4331.ttt3d.app.game.*;
 import edu.fau.eng.cop4331.ttt3d.app.startscreen.StartScreenController;
 import edu.fau.eng.cop4331.ttt3d.app.startscreen.StartScreenModel;
@@ -79,7 +77,7 @@ public class App {
         switch (gameType) {
             case SINGLE_PLAYER_GAME -> {
                 SinglePlayerGameController gameController = new SinglePlayerGameController(gameModel, gameView);
-                ChatBotController chatBotController = new ChatBotController(chatModel, chatView);
+                ChatController chatController = new ChatBotController(chatModel, chatView);
 
                 //show game and chat side by side
                 JSplitPane jSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
@@ -90,9 +88,16 @@ public class App {
             }
             case MULTI_PLAYER_CLIENT_GAME -> {
                 MultiPlayerClientController gameController = new MultiPlayerClientController(gameModel, gameView);
+                ChatController chatController = new ChatClientController(chatModel, chatView);
+
                 //TODO ChatClientController
-                setMainWindowContent(gameView.getContainer(gameModel.MAIN));
-            }
+
+                //show game and chat side by side
+                JSplitPane jSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+                jSplitPane.add(gameView.getContainer(gameModel.MAIN));
+                jSplitPane.add(chatView.getContainer(chatModel.MAIN));
+
+                setMainWindowContent(jSplitPane);            }
             case MULTI_PLAYER_HOST_GAME -> {}
         }
 

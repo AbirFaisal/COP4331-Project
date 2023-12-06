@@ -19,7 +19,8 @@ public class ChatClientController extends ChatController {
             while (true) {
                 for (int i = 0; i < this.sentMessageBuffer.size(); i++) {
                     //send the message
-
+                    System.out.println("Sending Message: " + sentMessageBuffer.get(i));
+                    sendMessage(this.sentMessageBuffer.get(i));
 
                     //remove from buffer
                     this.sentMessageBuffer.remove(i);

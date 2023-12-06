@@ -1,6 +1,7 @@
 package edu.fau.eng.cop4331.ttt3d;
 
 import edu.fau.eng.cop4331.ttt3d.app.App;
+import edu.fau.eng.cop4331.ttt3d.server.Server;
 import edu.fau.eng.cop4331.ttt3d.util.SettingsManager;
 
 import java.io.IOException;
@@ -31,9 +32,13 @@ public class Main {
 
         //if --server then launch game server instead of user application
         if (argmap.get("--server") != null) {
-            System.out.println("Run Server");
+            System.out.println("Running Server");
             //port for server
-            //ip and port for load balance and failover
+
+            Server server = new Server();
+            server.run();
+
+            //TODO ip and port for load balance and failover
 
             //TODO Server server = new Server(port, secondaryServerIP, );
             //server.run();

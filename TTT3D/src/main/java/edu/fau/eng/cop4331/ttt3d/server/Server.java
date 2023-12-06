@@ -11,10 +11,10 @@ public class Server {
 
 
     /**
+     * This is the server for clients
      *
-     * @author Abir Faisal, Jamilius Caesar
+     * @author Abir Faisal, Jamahl Farrington
      */
-
     ArrayList threads = new ArrayList<>();
 
     ServerSocket server;
@@ -22,9 +22,11 @@ public class Server {
 
     public Server() throws IOException {
         server = new ServerSocket(serverPort);
+    }
 
-        while (true){
-            System.out.println("Waiting for connection");
+    public void run() throws IOException {
+        while (true) {
+            System.out.println("Waiting for connection: " + server);
 
             //created socket waits for connection
             Socket socket = server.accept();
@@ -45,13 +47,7 @@ public class Server {
             ois.close();
             oos.close();
             socket.close();
-
         }
-
-    }
-
-    public void run() {
-
     }
 
 

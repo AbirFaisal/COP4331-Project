@@ -8,7 +8,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 public class Server {
-    
+
     /**
      * This is the server for clients
      *

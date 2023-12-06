@@ -81,8 +81,6 @@ public abstract class ChatController extends Controller {
         };
     }
 
-
-
     //controller logic////////////
 
     /**
@@ -97,9 +95,6 @@ public abstract class ChatController extends Controller {
      * @author Abir Faisal
      */
     public abstract void sentMessageBufferHandler();
-
-
-
 
     /**
      * Append a message to the chatLog data structure in the model

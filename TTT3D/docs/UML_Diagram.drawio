@@ -1,4 +1,4 @@
-<mxfile host="Electron" modified="2023-12-06T05:10:55.375Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.2 Chrome/114.0.5735.289 Electron/25.9.4 Safari/537.36" etag="RoJGGVaBiUckiZB-4y_u" version="22.1.2" type="device">
+<mxfile host="Electron" modified="2023-12-06T05:21:26.318Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.2 Chrome/114.0.5735.289 Electron/25.9.4 Safari/537.36" etag="kpue8stOpe-g6YjfrdJ2" version="22.1.2" type="device">
   <diagram name="Page-1" id="vykC9j6pn-rPIw1Q71zG">
     <mxGraphModel dx="1234" dy="-85" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#ffffff" math="0" shadow="0">
       <root>
@@ -62,11 +62,6 @@
             <mxGeometry x="39.17000000000001" y="8183" width="371" height="292" as="geometry" />
           </mxCell>
         </UserObject>
-        <mxCell id="Vy_UHbmqTs_x0eIeatpz-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontColor=#000000;" parent="1" target="Vy_UHbmqTs_x0eIeatpz-5" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="243.48" y="8253.16" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
         <mxCell id="Vy_UHbmqTs_x0eIeatpz-10" value="Description: Each Swing component has an by declaring an new Updater with the Updater interface and putting it into the updateMethods hashmap.&lt;br style=&quot;font-size: 18px;&quot;&gt;&lt;br style=&quot;font-size: 18px;&quot;&gt;When the model notifies the view the View calls the corresponding update method executes" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#000000;fontFamily=Courier New;fontStyle=0;fontSize=18;" parent="1" vertex="1">
           <mxGeometry x="460.92" y="8204" width="340" height="250" as="geometry" />
         </mxCell>

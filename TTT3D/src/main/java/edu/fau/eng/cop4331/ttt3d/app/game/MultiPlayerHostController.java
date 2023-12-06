@@ -7,6 +7,12 @@ public class MultiPlayerHostController extends Controller {
     GameModel model;
     GameView view;
 
+    /**
+     * Constructor
+     *
+     * @param gameModel GameModel
+     * @param gameView GameView
+     */
     public MultiPlayerHostController(GameModel gameModel, GameView gameView) {
         this.model = gameModel;
         this.model.register(gameView);
@@ -16,8 +22,10 @@ public class MultiPlayerHostController extends Controller {
         setup();
     }
 
+    /**
+     * Setup the controller
+     */
     void setup(){
-
     };
 
 

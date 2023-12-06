@@ -13,6 +13,11 @@ public abstract class ChatController extends Controller {
     ChatView view;
     ArrayList<String> sentMessageBuffer;
 
+    /**
+     * Constructor
+     * @param chatModel ChatModel
+     * @param chatView ChatView
+     */
     public ChatController(ChatModel chatModel, ChatView chatView) {
         this.model = chatModel;
         this.view = chatView;
@@ -23,6 +28,9 @@ public abstract class ChatController extends Controller {
         setup();
     }
 
+    /**
+     * Setup the controller
+     */
     void setup() {
         handlers.put(this.model.SEND_MESSAGE_BUTTON, sendChatButtonHandler());
         handlers.put(this.model.MESSAGE_BOX, messageBoxEventHandler());

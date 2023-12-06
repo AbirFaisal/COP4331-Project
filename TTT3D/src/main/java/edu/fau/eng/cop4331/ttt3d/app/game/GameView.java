@@ -13,12 +13,20 @@ public class GameView extends View {
 
     GameModel model;
 
+    /**
+     * Constructor
+     *
+     * @param gameModel GameModel
+     */
     public GameView(GameModel gameModel) {
         this.model = gameModel; //make view aware of model
         this.model.register(this); //make model aware of view
         setup(); //setup the view
     }
 
+    /**
+     * Setup the view
+     */
     @Override
     public void setup() {
         JPanel mainJPanel = new JPanel();
@@ -121,7 +129,7 @@ public class GameView extends View {
 
         JButton jButton = new JButton("-");
         jButton.setPreferredSize(new Dimension(50,50));
-        jButton.setFont(new Font(null, Font.PLAIN, 40));
+        jButton.setFont(new Font(null, Font.PLAIN, 35));
 
         //event handler will recieve this string "x,y"
         //optionally it can use index to identify which button was pressed
@@ -156,7 +164,10 @@ public class GameView extends View {
     }
 
 
-    //get and set
+    /**
+     *
+     * @return GameModel
+     */
     public GameModel getGameModel() {
         return model;
     }

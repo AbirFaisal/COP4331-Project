@@ -3,9 +3,8 @@ Repository for COP4331 Group Project
 
 ### Project: 
 A three dimensional multi-player tic-tac-toe game implemented in Java.
-With a chat feature.
 
-<img src="https://i.ibb.co/nwLD1wp/diagonal-run.jpg" width="300">
+With a chat feature.
 
 ### Group Info:
 
@@ -29,10 +28,12 @@ Build Instructions
 - Install Maven if not installed already
 
 Compile and Package:
-- Switch to directory `TTT3D/`
+- Make sure you are in the directory that contains pom.xml
 - Run: `mvn package`
 
 Running:
-- Switch to `target/` directory
+- Switch to `target/` directory (or wherever the jar file is)
 - Run `java -jar TicTacToe3D.jar`
 
+
+IF THE X AND O ARE NOT SHOWING THEN DRAG THE LINE DOWN THE MIDDLE TO THE RIGHT A BIT

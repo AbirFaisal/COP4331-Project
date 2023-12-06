@@ -8,6 +8,11 @@ import static java.lang.Thread.sleep;
 
 public class ChatBotController extends ChatController {
 
+    /**
+     * Constructor
+     * @param chatModel ChatModel
+     * @param chatView ChatView
+     */
     public ChatBotController(ChatModel chatModel, ChatView chatView) {
         super(chatModel, chatView);
         sentMessageBufferHandler();

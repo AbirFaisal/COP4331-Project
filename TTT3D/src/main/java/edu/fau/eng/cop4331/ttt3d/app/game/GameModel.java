@@ -37,10 +37,25 @@ public class GameModel extends Model {
         }
     }
 
-    //    private int[][][] gameState3D; //used to state of game
 
+    /**
+     * Holds the state of the game
+     * 1 = X
+     * 0 = empty
+     * -1 = O
+     *
+     * @param gameState3D int[][][]
+     */
     public record gameState3D(int[][][] gameState3D){}
 
+    /**
+     * Holds the number of wins, losses, and ties
+     * to be displayed in the view
+     *
+     * @param wins int
+     * @param losses int
+     * @param ties int
+     */
     public record stats(
             int wins,
             int losses,

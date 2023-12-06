@@ -20,8 +20,6 @@ public class ChatModel extends Model {
      * be unique to each instance of the class
      *
      */
-
-
     public UUID MAIN = UUID.randomUUID();
     public UUID HELLO_WORLD_JLABEL = UUID.randomUUID();
     public UUID CHAT_LOG = UUID.randomUUID();
@@ -29,7 +27,20 @@ public class ChatModel extends Model {
     public UUID SEND_MESSAGE_BUTTON = UUID.randomUUID();
 
     //data structures
+
+    /**
+     * Holds an stack array of String messages
+     * to be displayed by the view or updated by the controller
+     *
+     * @param messages Stack<String>
+     */
     public record chatLog(Stack<String> messages){}
+
+    /**
+     * Holds the text that the user types into the message box
+     *
+     * @param message String
+     */
     public record messageBox(String message){}
 
 

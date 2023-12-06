@@ -8,17 +8,11 @@ import static java.lang.Thread.sleep;
 
 public class ChatBotController extends ChatController {
 
-//    ArrayList<String> chatBotRecievedMsgBufffer;
-
     public ChatBotController(ChatModel chatModel, ChatView chatView) {
         super(chatModel, chatView);
-//        this.chatBotRecievedMsgBufffer = new ArrayList<>();
-        runBot();
+        messageBufferHandler();
     }
-
-    //event handlers///////////
-
-
+    
     //controller logic
 
     /**
@@ -27,7 +21,8 @@ public class ChatBotController extends ChatController {
      *
      * @author Abir Faisal
      */
-    void runBot() {
+    @Override
+    public void messageBufferHandler() {
         new Thread(() -> {
             while (true) {
                 for (int i = 0; i < this.sentChatMessageBuffer.size(); i++) {
@@ -44,6 +39,7 @@ public class ChatBotController extends ChatController {
             }
         }).start();
     }
+
 
     /**
      * gets a computer generated response and puts it into the chat

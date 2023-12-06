@@ -11,13 +11,13 @@ public abstract class ChatController extends Controller {
 
     ChatModel model;
     ChatView view;
-    ArrayList<String> sentChatMessageBuffer;
+    ArrayList<String> sentMessageBuffer;
 
     public ChatController(ChatModel chatModel, ChatView chatView) {
         this.model = chatModel;
         this.view = chatView;
         this.view.registerController(this);
-        this.sentChatMessageBuffer = new ArrayList<>();
+        this.sentMessageBuffer = new ArrayList<>();
 
         runHandlers();
         setup();
@@ -60,7 +60,7 @@ public abstract class ChatController extends Controller {
             appendChatLog("Player 1: " + message);
 
             //put the message in the message buffer for the chat bot
-            this.sentChatMessageBuffer.add(message);
+            this.sentMessageBuffer.add(message);
         };
     }
 
@@ -75,7 +75,7 @@ public abstract class ChatController extends Controller {
      *
      * @author Abir Faisal
      */
-    public abstract void messageBufferHandler();
+    public abstract void sentMessageBufferHandler();
 
 
     /**
@@ -101,6 +101,7 @@ public abstract class ChatController extends Controller {
 
     /**
      * Append a message to the chatLog data structure in the model
+     * This should be called when your messageBufferHandler produces response
      *
      * @author Abir Faisal
      * @param message String message you want to append

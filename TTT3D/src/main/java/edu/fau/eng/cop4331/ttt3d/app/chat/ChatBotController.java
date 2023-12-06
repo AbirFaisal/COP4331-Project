@@ -10,10 +10,10 @@ public class ChatBotController extends ChatController {
 
     public ChatBotController(ChatModel chatModel, ChatView chatView) {
         super(chatModel, chatView);
-        messageBufferHandler();
+        sentMessageBufferHandler();
     }
-    
-    //controller logic
+
+    //controller logic//////
 
     /**
      * Monitors the message buffer for any messages from the user
@@ -22,18 +22,18 @@ public class ChatBotController extends ChatController {
      * @author Abir Faisal
      */
     @Override
-    public void messageBufferHandler() {
+    public void sentMessageBufferHandler() {
         new Thread(() -> {
             while (true) {
-                for (int i = 0; i < this.sentChatMessageBuffer.size(); i++) {
+                for (int i = 0; i < this.sentMessageBuffer.size(); i++) {
                     //allow the bot to respond
-                    getBotResponse(this.sentChatMessageBuffer.get(i));
+                    getBotResponse(this.sentMessageBuffer.get(i));
                     //remove from buffer
-                    this.sentChatMessageBuffer.remove(i);
+                    this.sentMessageBuffer.remove(i);
                 }
 
                 try {
-                    sleep(100);
+                    sleep(100); //prevent using CPU cycles for no reason.
                 }catch (InterruptedException e) {
                 }
             }

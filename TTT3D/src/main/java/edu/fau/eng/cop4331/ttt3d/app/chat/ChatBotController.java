@@ -1,41 +1,21 @@
 package edu.fau.eng.cop4331.ttt3d.app.chat;
 
-import edu.fau.eng.cop4331.ttt3d.app.Controller;
 import edu.fau.eng.cop4331.ttt3d.app.Handler;
 
-import java.awt.event.ActionEvent;
 import java.util.*;
 
-public class ChatBotController extends Controller {
+import static java.lang.Thread.sleep;
 
+public class ChatBotController extends ChatController {
 
-    ChatModel model;
-    ChatView view;
+    ArrayList<String> chatBotRecievedMsgBufffer;
 
     public ChatBotController(ChatModel chatModel, ChatView chatView) {
-        this.model = chatModel;
-        this.view = chatView;
-        this.view.registerController(this);
-
-        runHandlers();
-        setup();
+        super(chatModel, chatView);
+        this.chatBotRecievedMsgBufffer = new ArrayList<>();
+        runBot();
     }
-
-
-    void setup() {
-        handlers.put(this.model.SEND_MESSAGE_BUTTON, sendChatButtonHandler());
-        handlers.put(this.model.MESSAGE_BOX, messageBoxEventHandler());
-
-        //init the chat log datastrcture
-        Stack<String> s = new Stack<String>();
-        s.push("");
-        this.model.setData(this.model.CHAT_LOG, new ChatModel.chatLog(s));
-
-        this.model.setData(this.model.MESSAGE_BOX, new ChatModel.messageBox(""));
-
-    }
-
-
+    
     //event handlers///////////
 
     /**
@@ -60,26 +40,8 @@ public class ChatBotController extends Controller {
             //append the message to the chat
             appendChatLog("Player 1: " + message);
 
-            //get response from bot
-            getBotResponse();
-
-        };
-    }
-
-    /**
-     * Updates the data in the model
-     * when the text in the message box changes
-     *
-     * @author Abir Faisal
-     * @return
-     */
-    Handler messageBoxEventHandler() {
-        UUID uuid = this.model.MESSAGE_BOX;
-        return actionEvent -> {
-            //update the model
-            this.model.setData(uuid,
-                    new ChatModel.messageBox(actionEvent.getActionCommand())
-            );
+            //put the message in the message buffer for the chat bot
+            this.chatBotRecievedMsgBufffer.add(message);
         };
     }
 
@@ -87,38 +49,41 @@ public class ChatBotController extends Controller {
     //controller logic
 
     /**
+     * Monitors the message buffer for any messages from the user
+     * if so then it responds to it
+     *
+     * @author Abir Faisal
+     */
+    void runBot() {
+        new Thread(() -> {
+            while (true) {
+                for (int i = 0; i < this.chatBotRecievedMsgBufffer.size(); i++) {
+                    //allow the bot to respond
+                    getBotResponse(this.chatBotRecievedMsgBufffer.get(i));
+                    //remove from buffer
+                    this.chatBotRecievedMsgBufffer.remove(i);
+                }
+
+                try {
+                    sleep(100);
+                }catch (InterruptedException e) {
+                }
+            }
+        }).start();
+    }
+
+    /**
      * gets a computer generated response and puts it into the chat
      *
      * @author Abir Faisal
      */
-    void getBotResponse() {
+    void getBotResponse(String message) {
         //TODO make more advanced
         String[] responses = {"Ok", "I understand", "Sure"};
         Random r = new Random();
         int i = r.nextInt(responses.length);
 
         appendChatLog("Bot: " + responses[i]);
-    }
-
-    /**
-     * Append a message to the chatLog data structure in the model
-     *
-     * @author Abir Faisal
-     * @param message String message you want to append
-     */
-    void appendChatLog(String message) {
-        UUID chatLogUUID = this.model.CHAT_LOG;
-
-        //append the message to the chat
-        ChatModel.chatLog cl =
-                (ChatModel.chatLog) this.model.getData(chatLogUUID);
-        Stack<String> messages = cl.messages();
-
-        //put the new message on the top of the stack
-        messages.push(message);
-
-        //update the chatlog datastructure in the model
-        this.model.setData(chatLogUUID, new ChatModel.chatLog(messages));
     }
 
 }

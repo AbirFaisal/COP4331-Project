@@ -24,15 +24,12 @@ public class SinglePlayerGameController extends Controller {
         setup();
     }
 
-
     void setup() {
         newGame();
         resetStats();
 
         this.handlers.put(model.GAME_GRID, gridButtonPressedHandler());
     }
-
-
 
     //Event Handlers////////////////
 
@@ -55,11 +52,6 @@ public class SinglePlayerGameController extends Controller {
             }
         };
     }
-
-
-
-
-
 
     //Game logic/////////////
     Solver solver = new Solver();

@@ -65,20 +65,6 @@ public abstract class ChatController extends Controller {
     }
 
     /**
-     * Monitors the message buffer for any messages from the user
-     * if so then it responds to it
-     *
-     * This can be a chat bot or client it should be implimented such that it
-     * reads the message buffer, handles it, then clear the message from the buffer
-     *
-     * Preferable it should be in it's own thread.
-     *
-     * @author Abir Faisal
-     */
-    public abstract void sentMessageBufferHandler();
-
-
-    /**
      * Updates the data in the model
      * when the text in the message box changes
      *
@@ -98,6 +84,22 @@ public abstract class ChatController extends Controller {
 
 
     //controller logic////////////
+
+    /**
+     * Monitors the message buffer for any messages from the user
+     * if so then it responds to it
+     *
+     * This can be a chat bot or client it should be implimented such that it
+     * reads the message buffer, handles it, then clear the message from the buffer
+     *
+     * Preferable it should be in it's own thread.
+     *
+     * @author Abir Faisal
+     */
+    public abstract void sentMessageBufferHandler();
+
+
+
 
     /**
      * Append a message to the chatLog data structure in the model

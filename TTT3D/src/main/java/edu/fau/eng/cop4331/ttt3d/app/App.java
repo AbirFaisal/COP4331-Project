@@ -83,6 +83,7 @@ public class App {
                 JSplitPane jSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
                 jSplitPane.add(gameView.getContainer(gameModel.MAIN));
                 jSplitPane.add(chatView.getContainer(chatModel.MAIN));
+                jSplitPane.setDividerLocation(250); //Needed for Windows bug
 
                 setMainWindowContent(jSplitPane);
             }
@@ -96,8 +97,11 @@ public class App {
                 JSplitPane jSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
                 jSplitPane.add(gameView.getContainer(gameModel.MAIN));
                 jSplitPane.add(chatView.getContainer(chatModel.MAIN));
+                jSplitPane.setDividerLocation(250); //Needed for Windows bug
 
-                setMainWindowContent(jSplitPane);            }
+                setMainWindowContent(jSplitPane);
+
+            }
             case MULTI_PLAYER_HOST_GAME -> {}
         }
 

@@ -129,7 +129,7 @@ public class GameView extends View {
 
         JButton jButton = new JButton("-");
         jButton.setPreferredSize(new Dimension(50,50));
-        jButton.setFont(new Font(null, Font.PLAIN, 35));
+        jButton.setFont(new Font(null, Font.PLAIN, 40));
 
         //event handler will recieve this string "x,y"
         //optionally it can use index to identify which button was pressed

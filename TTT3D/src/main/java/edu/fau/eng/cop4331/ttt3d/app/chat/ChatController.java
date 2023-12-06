@@ -3,6 +3,7 @@ package edu.fau.eng.cop4331.ttt3d.app.chat;
 import edu.fau.eng.cop4331.ttt3d.app.Controller;
 import edu.fau.eng.cop4331.ttt3d.app.Handler;
 
+import java.util.ArrayList;
 import java.util.Stack;
 import java.util.UUID;
 
@@ -10,11 +11,13 @@ public abstract class ChatController extends Controller {
 
     ChatModel model;
     ChatView view;
+    ArrayList<String> sentChatMessageBuffer;
 
     public ChatController(ChatModel chatModel, ChatView chatView) {
         this.model = chatModel;
         this.view = chatView;
         this.view.registerController(this);
+        this.sentChatMessageBuffer = new ArrayList<>();
 
         runHandlers();
         setup();
@@ -40,7 +43,27 @@ public abstract class ChatController extends Controller {
      * @author Abir Faisal
      * @return
      */
-    abstract Handler sendChatButtonHandler();
+    Handler sendChatButtonHandler() {
+        UUID messageBoxUUID = this.model.MESSAGE_BOX;
+
+        return value -> {
+            System.out.println("send button pressed");
+            //get the text from the message
+            ChatModel.messageBox mb =
+                    (ChatModel.messageBox) this.model.getData(messageBoxUUID);
+            String message = mb.message();
+
+            //clear the message in the model
+            this.model.setData(messageBoxUUID, new ChatModel.messageBox(""));
+
+            //append the message to the chat
+            appendChatLog("Player 1: " + message);
+
+            //put the message in the message buffer for the chat bot
+            this.sentChatMessageBuffer.add(message);
+        };
+    }
+
 
     /**
      * Updates the data in the model

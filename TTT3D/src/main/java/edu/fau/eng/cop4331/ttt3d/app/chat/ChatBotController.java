@@ -8,42 +8,15 @@ import static java.lang.Thread.sleep;
 
 public class ChatBotController extends ChatController {
 
-    ArrayList<String> chatBotRecievedMsgBufffer;
+//    ArrayList<String> chatBotRecievedMsgBufffer;
 
     public ChatBotController(ChatModel chatModel, ChatView chatView) {
         super(chatModel, chatView);
-        this.chatBotRecievedMsgBufffer = new ArrayList<>();
+//        this.chatBotRecievedMsgBufffer = new ArrayList<>();
         runBot();
     }
-    
+
     //event handlers///////////
-
-    /**
-     * Handles what happens when the send chat button is pressed
-     *
-     * @author Abir Faisal
-     * @return
-     */
-    Handler sendChatButtonHandler() {
-        UUID messageBoxUUID = this.model.MESSAGE_BOX;
-
-        return value -> {
-            System.out.println("send button pressed");
-            //get the text from the message
-            ChatModel.messageBox mb =
-                    (ChatModel.messageBox) this.model.getData(messageBoxUUID);
-            String message = mb.message();
-
-            //clear the message in the model
-            this.model.setData(messageBoxUUID, new ChatModel.messageBox(""));
-
-            //append the message to the chat
-            appendChatLog("Player 1: " + message);
-
-            //put the message in the message buffer for the chat bot
-            this.chatBotRecievedMsgBufffer.add(message);
-        };
-    }
 
 
     //controller logic
@@ -57,11 +30,11 @@ public class ChatBotController extends ChatController {
     void runBot() {
         new Thread(() -> {
             while (true) {
-                for (int i = 0; i < this.chatBotRecievedMsgBufffer.size(); i++) {
+                for (int i = 0; i < this.sentChatMessageBuffer.size(); i++) {
                     //allow the bot to respond
-                    getBotResponse(this.chatBotRecievedMsgBufffer.get(i));
+                    getBotResponse(this.sentChatMessageBuffer.get(i));
                     //remove from buffer
-                    this.chatBotRecievedMsgBufffer.remove(i);
+                    this.sentChatMessageBuffer.remove(i);
                 }
 
                 try {

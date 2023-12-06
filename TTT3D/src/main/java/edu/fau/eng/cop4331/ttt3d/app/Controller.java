@@ -61,7 +61,7 @@ public abstract class Controller {
                         //remove from buffer
                         eventBuffer.remove(i);
                     }
-                    sleep(100); //prevent using CPU cycles for no reason.
+                    sleep(50); //prevent using CPU cycles for no reason.
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }

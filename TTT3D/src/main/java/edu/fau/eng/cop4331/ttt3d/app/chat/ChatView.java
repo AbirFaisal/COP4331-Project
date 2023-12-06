@@ -40,16 +40,6 @@ public class ChatView extends View {
 
 
     /////UI elements/////////
-    JLabel helloWorld() {
-        JLabel jLabel = new JLabel("Hello World");
-        //called by the model when it's corresponding values change
-        Updater updater = () -> {
-            String currentTime = Instant.now().toString();
-            jLabel.setText(currentTime);
-        };
-        updateMethods.put(model.HELLO_WORLD_JLABEL, updater);
-        return jLabel;
-    }
 
     /**
      * The chat log where the user can see the send and

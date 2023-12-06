@@ -19,6 +19,11 @@ public class ChatView extends View {
 
     ChatModel model;
 
+    /**
+     * Constructor
+     *
+     * @param chatModel ChatModel
+     */
     public ChatView(ChatModel chatModel){
         this.model = chatModel;
         this.model.register(this);
@@ -26,6 +31,9 @@ public class ChatView extends View {
     }
 
 
+    /**
+     * Setup the view
+     */
     @Override
     public void setup() {
         JPanel mainJPanel = new JPanel();
@@ -40,13 +48,12 @@ public class ChatView extends View {
 
 
     /////UI elements/////////
-
     /**
      * The chat log where the user can see the send and
      * recieved messages
      *
      * @author Abir Faisal
-     * @return
+     * @return JScrollPane
      */
     JScrollPane chatLog() {
         UUID uuid = this.model.CHAT_LOG;
@@ -78,7 +85,7 @@ public class ChatView extends View {
      * types in a message that they want to send.
      *
      * @author Abir Faisal
-     * @return
+     * @return JTextArea
      */
     JTextArea messageBox() {
         UUID uuid = this.model.MESSAGE_BOX;
@@ -128,7 +135,7 @@ public class ChatView extends View {
 
     /**
      * @author Abir Faisal
-     * @return
+     * @return JButton
      */
     JButton sendMessageButton(){
         UUID uuid = this.model.SEND_MESSAGE_BUTTON;
@@ -140,7 +147,6 @@ public class ChatView extends View {
 
         return jButton;
     }
-
 
 
 }

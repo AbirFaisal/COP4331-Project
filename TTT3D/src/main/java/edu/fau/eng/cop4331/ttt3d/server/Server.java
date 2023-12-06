@@ -8,8 +8,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 public class Server {
-
-
+    
     /**
      * This is the server for clients
      *
@@ -20,10 +19,18 @@ public class Server {
     ServerSocket server;
     int serverPort = 32034;
 
+    /**
+     * Constructor
+     * @throws IOException
+     */
     public Server() throws IOException {
         server = new ServerSocket(serverPort);
     }
 
+    /**
+     * Run the server
+     * @throws IOException
+     */
     public void run() throws IOException {
         while (true) {
             System.out.println("Waiting for connection: " + server);
@@ -51,6 +58,11 @@ public class Server {
     }
 
 
+    /**
+     * TODO write debug info without blocking
+     * @param str String you want to print to terminal
+     * @param log true=append to log file, false=do nothing
+     */
     void nonBlockingPrintln(String str, boolean log) {
 
         if (log) {

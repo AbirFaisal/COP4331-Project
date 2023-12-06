@@ -145,12 +145,16 @@ public class SinglePlayerGameController extends Controller {
     }
 
 
+    /**
+     * Check if the game is tied
+     * @return true = tied, false = not tied
+     */
     boolean tiedGame(){
-        return false;
+        return false; //TODO
     }
 
     /**
-     *
+     * Setup a new game
      * @author Abir Faisal
      * setup a new game
      */

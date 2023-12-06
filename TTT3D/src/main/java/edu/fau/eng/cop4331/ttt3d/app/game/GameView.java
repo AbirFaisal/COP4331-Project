@@ -13,12 +13,20 @@ public class GameView extends View {
 
     GameModel model;
 
+    /**
+     * Constructor
+     *
+     * @param gameModel GameModel
+     */
     public GameView(GameModel gameModel) {
         this.model = gameModel; //make view aware of model
         this.model.register(this); //make model aware of view
         setup(); //setup the view
     }
 
+    /**
+     * Setup the view
+     */
     @Override
     public void setup() {
         JPanel mainJPanel = new JPanel();
@@ -156,7 +164,10 @@ public class GameView extends View {
     }
 
 
-    //get and set
+    /**
+     *
+     * @return GameModel
+     */
     public GameModel getGameModel() {
         return model;
     }

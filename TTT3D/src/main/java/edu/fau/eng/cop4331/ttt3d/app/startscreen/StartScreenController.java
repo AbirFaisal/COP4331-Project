@@ -14,6 +14,11 @@ public class StartScreenController extends Controller {
     StartScreenModel model;
     StartScreenView view;
 
+    /**
+     * Constructor
+     * @param scm StartScreenModel
+     * @param scv StartScreenView
+     */
     public StartScreenController(StartScreenModel scm, StartScreenView scv) {
         this.model = scm;
         this.view = scv;
@@ -24,6 +29,9 @@ public class StartScreenController extends Controller {
         setup();
     }
 
+    /**
+     * Setup the view
+     */
     void setup() {
         handlers.put(model.START_SINGLE_PLAYER_GAME_BUTTON, startSinglePlayerGameHandler());
         handlers.put(model.START_MULTI_PLAYER_GAME_BUTTON, startMultiPlayerGameHandler());
